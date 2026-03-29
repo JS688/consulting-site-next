@@ -1,0 +1,9 @@
+import Image from "next/image";
+<div className="relative w-full h-[600px]">
+  <Image
+    src="/animation.jpg"
+    alt="Ambient animation"
+    fill
+    className="object-cover animate-spin-slow"
+  />
+</div>

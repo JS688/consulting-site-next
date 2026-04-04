@@ -2,10 +2,10 @@
 function ServiceCard(service: Service) {
   const Icon = service.icon;
   return (
-    <div className="group relative rounded-2xl p-[1px] transition duration-300">
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
+    <div className="group relative rounded-2xl p-px transition duration-300">
+      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
       <div className="pointer-events-none absolute inset-x-10 bottom-8 h-24 rounded-full bg-[#d1b075]/12 blur-3xl opacity-0 transition duration-300 group-hover:opacity-100" />
-      <div className="relative z-10 flex h-full min-h-[300px] flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
+      <div className="relative z-10 flex h-full min-h-75 flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
         <p className="inline-flex items-center justify-center self-start rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
           {service.badge}
         </p>
@@ -42,6 +42,7 @@ function ServiceCard(service: Service) {
       </div>
     </div>
   );
+// ...existing code...
 }
 import Link from "next/link";
 import type { ComponentType } from "react";
@@ -123,7 +124,7 @@ export default function ServicesPage() {
             Built with you, refined until it’s right.
           </p>
 
-          <div className="relative mx-auto mt-8 w-full max-w-7xl overflow-hidden rounded-2xl aspect-[14/3]">
+          <div className="relative mx-auto mt-8 w-full max-w-7xl overflow-hidden rounded-2xl aspect-14/3">
             <video
               src="/logos/animation.mp4"
               autoPlay
@@ -139,10 +140,10 @@ export default function ServicesPage() {
         {/* SERVICES GRID: 2x2, E-Commerce (left top), Portfolio (right top), Business (left bottom), Landing Pages (right bottom) */}
         <div className="mx-auto mt-8 grid max-w-5xl gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-12">
           {/* E-Commerce (top left) */}
-          <div className="group relative rounded-2xl p-[1px] transition duration-300">
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
+          <div className="group relative rounded-2xl p-px transition duration-300">
+            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
             <div className="pointer-events-none absolute inset-x-10 bottom-8 h-24 rounded-full bg-[#d1b075]/12 blur-3xl opacity-0 transition duration-300 group-hover:opacity-100" />
-            <div className="relative z-10 flex h-full min-h-[300px] flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
+            <div className="relative z-10 flex h-full min-h-75 flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
               <p className="inline-flex items-center justify-center self-start rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
                 For Selling
               </p>
@@ -192,8 +193,7 @@ export default function ServicesPage() {
 </p>
           <a
             href="/free-appraisal"
-            className="inline-flex items-center rounded-full bg-[#d1b075] px-8 py-3 font-semibold text-black shadow-[0_0_20px_rgba(209,176,117,0.25)] hover:bg-[#e0c48a] hover:shadow-[0_0_28px_rgba(209,176,117,0.32)] transition text-base mt-2"
-            style={{ fontSize: '1.15rem' }}
+            className="inline-flex items-center rounded-full bg-[#d1b075] px-8 py-3 font-semibold text-black shadow-[0_0_20px_rgba(209,176,117,0.25)] hover:bg-[#e0c48a] hover:shadow-[0_0_28px_rgba(209,176,117,0.32)] transition text-base mt-2 text-[1.15rem]"
           >
             Free Website Review
           </a>
@@ -202,3 +202,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+

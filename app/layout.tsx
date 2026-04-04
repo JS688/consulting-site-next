@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "./components/Header";
+
 import Footer from "./components/Footer";
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-zinc-900 text-white antialiased flex flex-col min-h-screen">
         {/* Header stays at the top */}
         <Header />
+
 
         {/* Main content grows naturally */}
         <main className="flex-1">

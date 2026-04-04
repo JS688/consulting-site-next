@@ -1,40 +1,42 @@
-// app/layout.tsx
 import "./globals.css";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import React from "react";
 import Header from "./components/Header";
-import GoldenNeuralWave from "./components/GoldenNeuralWave";
 import Footer from "./components/Footer";
-import NeuralBackground from "./components/NeuralBackground";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Jultech — AI Business Consulting",
-  description:
-    "Jultech — AI strategy & implementation for growth-stage and mid-market companies.",
+export const metadata = {
+  title: "JulTech AI — AI‑Ready Websites",
+  description: "Premium, modern, AI‑ready websites built with clarity and trust.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import type { ReactNode } from "react";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-black text-white antialiased`}
-      >
+      <head>
+        {/* Remix Icons for footer + header icons */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+      </head>
+
+      <body className="bg-zinc-900 text-white antialiased flex flex-col min-h-screen">
+        {/* Header stays at the top */}
         <Header />
-        <GoldenNeuralWave />
 
-        {/* Client-only animated background */}
-        <NeuralBackground />
-
-        <main className="flex-1 pt-2">
-          <div className="mx-auto max-w-7xl px-6 py-8">
-            <section>{children}</section>
-          </div>
+        {/* Main content grows naturally */}
+        <main className="flex-1">
+          {children}
         </main>
 
+        {/* SSL notice shown on every page above the footer */}
+        <section className="bg-zinc-900 px-6 py-6 text-center text-sm text-gray-400">
+          <p className="opacity-80">
+            🔒 Your data is safe and secure. This website is protected with industry-standard SSL encryption.
+          </p>
+        </section>
+
+        {/* Footer stays at the bottom */}
         <Footer />
       </body>
     </html>

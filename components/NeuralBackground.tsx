@@ -8,12 +8,6 @@ export default function NeuralBackground() {
         className="absolute inset-0"
         style={{ willChange: "transform" }}
       >
-        <img
-          src="/animation.jpg"
-          alt="Neural spiral background"
-          className="w-full h-full object-cover spin-slow opacity-30"
-          draggable={false}
-        />
       </div>
     </div>
   );

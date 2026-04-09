@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex items-center gap-5 opacity-80">
             {/* Email */}
             <a
-              href="mailto:sokolskyjulia@gmail.com"
+              href="mailto:ai@jul-tech.com"
               className="hover:text-yellow-400 transition"
             >
               <i className="ri-mail-line text-lg"></i>
@@ -19,7 +19,7 @@ export default function Footer() {
 
             {/* Phone */}
             <a
-              href="tel:8001234566"
+              href="tel:+18034133952"
               className="hover:text-yellow-400 transition"
             >
               <i className="ri-phone-line text-lg"></i>
@@ -27,8 +27,10 @@ export default function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="#"
+              href="https://www.linkedin.com/in/julia-sokolsky/"
               className="hover:text-yellow-400 transition"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="ri-linkedin-fill text-lg"></i>
             </a>

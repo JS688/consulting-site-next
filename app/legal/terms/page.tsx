@@ -5,19 +5,19 @@ export default function TermsPage() {
     <div className="min-h-screen bg-zinc-900 text-white px-6 py-12">
       <div className="max-w-3xl mx-auto space-y-10">
         <h1 className="text-3xl font-bold text-[#e5c98a]">
-          Consulting Services Terms & Conditions
+          Consulting Services Terms and Conditions
         </h1>
         <div className="space-y-1 text-sm text-white/70">
           <p>JulTech AI Consulting Group LLC</p>
           <p>Columbia, SC, United States</p>
-          <p>sokolskyjulia@gmail.com</p>
+          <p>ai@jul-tech.com</p>
         </div>
         {/* SECTION TEMPLATE */}
         {[
           {
             title: "1. Agreement to Terms",
             text: [
-              "By purchasing consulting services through this website and selecting the checkbox indicating acceptance, the client (“Client”) agrees to be bound by these Terms & Conditions.",
+              "By purchasing consulting services through this website and selecting the checkbox indicating acceptance, the client (“Client”) agrees to be bound by these Terms and Conditions.",
               "This constitutes a legally binding agreement between the Client and JulTech AI Consulting Group LLC (“Consultant”)."
             ]
           },
@@ -57,7 +57,7 @@ export default function TermsPage() {
             ]
           },
           {
-            title: "6. Revisions & Changes",
+            title: "6. Revisions and Changes",
             text: [
               "Services include a reasonable number of revisions unless otherwise specified.",
               "Additional revisions, scope changes, or new requests may incur additional fees and may require a separate agreement."
@@ -93,7 +93,7 @@ export default function TermsPage() {
           {
             title: "11. Termination",
             text: [
-              "Consultant reserves the right to terminate services at any time if the Client breaches these Terms & Conditions.",
+              "Consultant reserves the right to terminate services at any time if the Client breaches these Terms and Conditions.",
               "Payments made are non-refundable and any outstanding balances remain due.",
               "Client may terminate services; however, all payments made are non-refundable and any completed or in-progress work will be billed accordingly."
             ]
@@ -109,7 +109,7 @@ export default function TermsPage() {
             title: "13. Electronic Acceptance",
             text: [
               "By checking the acceptance box at checkout, entering payment details, and completing the transaction, Client acknowledges and agrees that:",
-              "- They have read and understood these Terms & Conditions.",
+              "- They have read and understood these Terms and Conditions.",
               "- This action constitutes an electronic signature.",
               "- This agreement is legally binding and enforceable."
             ]
@@ -117,7 +117,7 @@ export default function TermsPage() {
           {
             title: "14. Entire Agreement",
             text: [
-              "These Terms & Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements."
+              "These Terms and Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements."
             ]
           }
         ].map((section, i) => (

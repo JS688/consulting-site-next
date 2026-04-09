@@ -84,7 +84,7 @@ export default function PrivacyPolicy() {
               </ul>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-white mb-1">6. Cookies & Analytics</h2>
+              <h2 className="text-lg font-semibold text-white mb-1">6. Cookies and Analytics</h2>
               <ul className="list-disc ml-6">
                 <li>This website may use minimal cookies for:</li>
                 <ul className="list-disc ml-10">
@@ -121,7 +121,7 @@ export default function PrivacyPolicy() {
                 <li>Request a copy of your data</li>
                 <li>Withdraw consent (where applicable)</li>
               </ul>
-              <p>To exercise these rights, contact us at: <a href="mailto:sokolskyjulia@gmail.com" className="underline">sokolskyjulia@gmail.com</a></p>
+              <p>To exercise these rights, contact us at: <a href="mailto:ai@jul-tech.com" className="underline">ai@jul-tech.com</a></p>
             </div>
             <div>
               <h2 className="text-lg font-semibold text-white mb-1">9. Data Security</h2>
@@ -163,7 +163,7 @@ export default function PrivacyPolicy() {
                 <li>For questions about this Privacy Policy or your data, contact:</li>
                 <li>JulTech AI Consulting Group LLC</li>
                 <li>Columbia, SC, United States</li>
-                <li><a href="mailto:sokolskyjulia@gmail.com" className="underline">sokolskyjulia@gmail.com</a></li>
+                <li><a href="mailto:ai@jul-tech.com" className="underline">ai@jul-tech.com</a></li>
               </ul>
             </div>
           </section>

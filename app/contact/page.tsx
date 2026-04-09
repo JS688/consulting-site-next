@@ -1,44 +1,61 @@
 export default function ContactPage() {
-  return <main className="max-w-content mx-auto px-6 py-16"> <h1>Contact</h1> </main>;
+  return (
+    <main className="min-h-screen bg-black px-6 py-16 text-white md:py-20">
+      <section className="mx-auto max-w-5xl text-center">
+        <h1 className="text-5xl font-extrabold tracking-[-0.5px] text-yellow-400 md:text-6xl">
+          Contact
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-3xl text-lg font-light leading-relaxed text-gray-300 md:text-xl">
+          Let's connect and talk through what your business needs next.
+        </p>
+
+        <div className="relative mx-auto mt-10 w-full max-w-6xl overflow-hidden rounded-2xl aspect-14/3">
+          <video
+            src="/letstry.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover opacity-85 blur-[1px]"
+          />
+          <div className="absolute inset-0 bg-black/12" />
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm md:text-base">
+          <a
+            href="mailto:ai@jul-tech.com"
+            className="rounded-full border border-yellow-400/35 px-5 py-3 text-yellow-200 transition hover:border-yellow-300 hover:text-yellow-100"
+            aria-label="Email JulTech AI"
+            title="Email JulTech AI"
+          >
+            ai@jul-tech.com
+          </a>
+          <a
+            href="tel:+18034133952"
+            className="rounded-full border border-yellow-400/35 px-5 py-3 text-yellow-200 transition hover:border-yellow-300 hover:text-yellow-100"
+            aria-label="Call JulTech AI"
+            title="Call JulTech AI"
+          >
+            +1 (803) 413-3952
+          </a>
+          <a
+            href="https://www.linkedin.com/in/julia-sokolsky/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-yellow-400/35 px-5 py-3 text-yellow-200 transition hover:border-yellow-300 hover:text-yellow-100"
+            aria-label="Visit Julia Sokolsky on LinkedIn"
+            title="Visit Julia Sokolsky on LinkedIn"
+          >
+            LinkedIn
+          </a>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-sm text-gray-500">
+          Your data is safe and secure. This website is protected with industry-standard SSL encryption.
+        </p>
+      </section>
+    </main>
+  );
 }
-<section className="bg-black text-white py-20 px-6">
-  <div className="max-w-2xl mx-auto text-center">
-
-    {/* Section Title */}
-    <h2 className="text-yellow-400 text-4xl font-extrabold tracking-tight mb-4">
-      Contact
-    </h2>
-
-    {/* Subheadline */}
-    <p className="text-gray-300 text-lg font-light mb-8">
-      Let’s connect — we’d love to hear from you.
-    </p>
-
-    {/* Contact Icons */}
-    <div className="flex justify-center items-center gap-6 text-2xl text-yellow-400">
-
-      {/* Email */}
-      <a href="mailto:sokolskyjulia@gmail.com" className="hover:text-yellow-300 transition">
-        <i className="ri-mail-line" />
-      </a>
-
-      {/* Phone */}
-      <a href="tel:8001234566" className="hover:text-yellow-300 transition">
-        <i className="ri-phone-line" />
-      </a>
-
-      {/* LinkedIn */}
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-        <i className="ri-linkedin-fill" />
-      </a>
-
-    </div>
-
-    {/* Footer Note */}
-    <p className="text-gray-500 text-sm mt-8">
-      Your data is safe and secure. This website is protected with industry-standard SSL encryption.
-    </p>
-
-  </div>
-</section>
 

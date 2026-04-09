@@ -11,7 +11,7 @@ export default function PrivacyPage() {
         <div className="space-y-1 text-sm text-white/70">
           <p>JulTech AI Consulting Group LLC</p>
           <p>Columbia, SC, United States</p>
-          <p>sokolskyjulia@gmail.com</p>
+          <p>ai@jul-tech.com</p>
         </div>
  {/* SECTION TEMPLATE */}
         {[
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             ]
           },
           {
-            title: "6. Revisions & Changes",
+            title: "6. Revisions and Changes",
             text: [
               "Services include a reasonable number of revisions unless otherwise specified.",
               "Additional revisions, scope changes, or new requests may incur additional fees and may require a separate agreement."
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
           {
             title: "11. Termination",
             text: [
-              "Consultant reserves the right to terminate services at any time if the Client breaches these Terms & Conditions.",
+              "Consultant reserves the right to terminate services at any time if the Client breaches these Terms and Conditions.",
               "Payments made are non-refundable and any outstanding balances remain due.",
               "Client may terminate services; however, all payments made are non-refundable and any completed or in-progress work will be billed accordingly."
             ]
@@ -121,7 +121,7 @@ export default function PrivacyPage() {
             title: "13. Electronic Acceptance",
             text: [
               "By checking the acceptance box at checkout, entering payment details, and completing the transaction, Client acknowledges and agrees that:",
-              "- They have read and understood these Terms & Conditions.",
+              "- They have read and understood these Terms and Conditions.",
               "- This action constitutes an electronic signature.",
               "- This agreement is legally binding and enforceable."
             ]
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
           {
             title: "14. Entire Agreement",
             text: [
-              "These Terms & Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements."
+              "These Terms and Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements."
             ]
           }
         ].map((section, i) => (

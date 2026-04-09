@@ -1,124 +1,93 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 const steps = [
   {
     id: "01",
-    title: "Discover",
-    subtitle: "Audit and clarity",
+    title: "Digital Bilingual Strategy",
+    subtitle:
+      "We help your business communicate clearly in English and Spanish so you can reach more customers and build trust across cultures.",
   },
   {
     id: "02",
-    title: "Design",
-    subtitle: "Architecture and strategy",
+    title: "Search Engine Optimization (SEO)",
+    subtitle:
+      "We optimize your website so it ranks higher on Google and gets discovered by people searching for your services.",
   },
   {
     id: "03",
-    title: "Deploy",
-    subtitle: "Build and launch",
+    title: "Answer Engine Optimization (AEO)",
+    subtitle:
+      "We structure your content so voice assistants like Siri, Alexa, and Google Assistant can read it clearly and choose your business as the answer.",
   },
   {
     id: "04",
-    title: "Optimize",
-    subtitle: "Insights and improvement",
+    title: "Generative Engine Optimization (GEO)",
+    subtitle:
+      "We prepare your website for AI tools like ChatGPT, Gemini, and Copilot so they can understand your content and reference your business in their responses.",
   },
 ];
-
 export default function SignatureFramework() {
+  const refs = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-show");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    refs.current.forEach((ref) => observer.observe(ref));
+  }, []);
+
   return (
-    <section className="bg-black text-white" style={{ padding: "80px 20px" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        {/* Grid Layout: Left Text + Right Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr",
-            gap: "60px",
-            alignItems: "center",
-          }}
-        >
-          {/* LEFT SIDE: Text */}
-          <div>
-            <p
-              className="text-xs font-semibold uppercase tracking-[0.26em]"
-              style={{ color: "rgb(245,197,24)", marginBottom: "16px" }}
-            >
-              OUR PROCESS
-            </p>
-            <h2
-              className="font-semibold leading-tight"
-              style={{ fontSize: "32px", marginBottom: "16px" }}
-            >
-              The JulTech Intelligence Framework™
-            </h2>
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.7)" }}
-            >
-              A simple system that turns your website into a smart growth engine.
-            </p>
-          </div>
+    <section className="bg-black text-white py-20 px-5">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[rgb(245,197,24)] mb-2">
+            OUR PROCESS
+          </p>
+          <h2 className="font-semibold leading-tight text-2xl md:text-3xl mb-2">
+            The JulTech Intelligence Framework™
+          </h2>
+          <p className="text-base leading-relaxed text-white/70">
+            A simple system that makes your website smarter, more visible, and more profitable.
+          </p>
+        </div>
 
-          {/* RIGHT SIDE: Cards in Row */}
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            {steps.map((step) => (
-              <div
-                key={step.id}
-                style={{
-                  width: "220px",
-                  padding: "24px",
-                  borderRadius: "16px",
-                  background: "#0b0b0b",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.boxShadow = "0 0 20px rgba(251,191,36,0.2)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                {/* Card Number */}
-                <div
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: "bold",
-                    color: "rgb(245,197,24)",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {step.id}
-                </div>
-
-                {/* Card Title */}
-                <h3
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: "600",
-                    marginBottom: "8px",
-                    color: "white",
-                  }}
-                >
-                  {step.title}
-                </h3>
-
-                {/* Card Subtitle */}
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "rgba(255,255,255,0.6)",
-                  }}
-                >
-                  {step.subtitle}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-5 justify-start">
+          {steps.map((step, index) => (
+            <div
+              key={step.id}
+              ref={(el) => {
+                if (el) {
+                  refs.current[index] = el;
+                }
+              }}
+              className="opacity-0 translate-y-5 w-56 p-6 rounded-2xl bg-[#0b0b0b] border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(251,191,36,0.2)]"
+            >
+              <div className="text-2xl font-bold text-[rgb(245,197,24)] mb-2">{step.id}</div>
+              <h3 className="text-lg font-semibold mb-2 text-white">{step.title}</h3>
+              <p className="text-sm text-gray-300 leading-6">{step.subtitle}</p>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Animation Styles */}
+      <style jsx>{`
+        .animate-show {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition: all 0.6s ease-out;
+        }
+      `}</style>
     </section>
   );
 }

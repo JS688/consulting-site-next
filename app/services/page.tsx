@@ -107,26 +107,26 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
-      <div className="min-h-screen px-6 py-8 md:py-10">
+      <div className="min-h-screen px-6 pb-8 pt-3 md:pb-10 md:pt-4">
         {/* HERO */}
-        <div className="mx-auto max-w-5xl pt-6 pb-6 text-center">
+        <div className="mx-auto max-w-5xl pt-1 pb-6 text-center">
           <h1 className="text-5xl font-extrabold leading-[1.05] tracking-[-0.5px] text-yellow-400 md:text-6xl">
             AI Website Solutions
           </h1>
 
-          <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-white md:text-xl">
+          <p className="mx-auto mt-5 max-w-4xl text-lg font-medium leading-relaxed text-white md:text-xl">
             Whether you're selling, showcasing, or scaling — we build the right
             experience
           </p>
 
-          <p className="mx-auto mt-3 flex items-center justify-center gap-2 text-sm italic text-[#d1b075]/85 md:text-base">
+          <p className="mx-auto mt-4 flex items-center justify-center gap-2 text-sm italic text-[#d1b075]/85 md:text-base">
             <span className="text-[#d1b075]">✦</span>
             Built with you, refined until it’s right.
           </p>
 
           <div className="relative mx-auto mt-8 w-full max-w-7xl overflow-hidden rounded-2xl aspect-14/3">
             <video
-              src="/logos/animation.mp4"
+              src="/services.mp4"
               autoPlay
               loop
               muted

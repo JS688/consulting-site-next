@@ -357,7 +357,7 @@ export default function FreeAppraisalPage() {
               <section className="transition-opacity duration-300">
                 <div className="mb-4 flex items-center justify-between gap-4">
                   <h2 className="text-lg font-semibold text-white">
-                    3. Terms & submission
+                    3. Terms and submission
                   </h2>
                   <span className="text-xs uppercase tracking-[0.2em] text-white/30">
                     Step {step} of 3
@@ -375,7 +375,7 @@ export default function FreeAppraisalPage() {
                     <span>
                       I agree to the{" "}
                       <Link href="/legal/terms" className="text-[#d1b075] underline">
-                        Terms & Conditions
+                        Terms and Conditions
                       </Link>
                       .
                     </span>

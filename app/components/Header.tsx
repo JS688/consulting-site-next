@@ -13,8 +13,8 @@ export default function Header() {
           {/* logo + brand */}
           <a
             href="/"
-            className="group flex translate-y-0.5 items-center gap-2.5 no-underline text-current transition-transform duration-200 hover:scale-[1.02]"
-            aria-label="Jultech homepage"
+            className="group flex -translate-y-1 items-center gap-2.5 no-underline text-current transition-transform duration-200 hover:scale-[1.02]"
+            aria-label="Homepage"
           >
             <div className="flex flex-col justify-center leading-tight">
               <div className="flex items-center gap-1">
@@ -35,7 +35,7 @@ export default function Header() {
           </a>
           {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            <a href="/about" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">About</a>
+            <a href="/" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Our Approach</a>
             <a href="/services" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Services</a>
             <a href="/results" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Results</a>
             <a href="/packages" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Packages</a>
@@ -52,7 +52,7 @@ export default function Header() {
       {/* MOBILE MENU */}
       {open && (
         <div className="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center space-y-8 text-2xl md:hidden">
-          <a href="/about" onClick={() => setOpen(false)}>About</a>
+          <a href="/" onClick={() => setOpen(false)}>Our Approach</a>
           <a href="/services" onClick={() => setOpen(false)}>Services</a>
           <a href="/results" onClick={() => setOpen(false)}>Results</a>
           <a href="/blog" onClick={() => setOpen(false)}>Blog</a>

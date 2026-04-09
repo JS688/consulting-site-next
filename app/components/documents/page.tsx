@@ -28,7 +28,7 @@ const sections = [
   {
     title: "1. Agreement to Terms",
     text: [
-      'By purchasing consulting services through this website and selecting the checkbox indicating acceptance, the client ("Client") agrees to be bound by these Terms & Conditions. This constitutes a legally binding agreement between the Client and JulTech AI Consulting Group LLC ("Consultant").',
+      'By purchasing consulting services through this website and selecting the checkbox indicating acceptance, the client ("Client") agrees to be bound by these Terms and Conditions. This constitutes a legally binding agreement between the Client and JulTech AI Consulting Group LLC ("Consultant").',
     ],
   },
   {
@@ -63,7 +63,7 @@ const sections = [
     ],
   },
   {
-    title: "6. Revisions & Changes",
+    title: "6. Revisions and Changes",
     text: [
       "Services include a reasonable number of revisions unless otherwise specified.",
       "Additional revisions, scope changes, or new requests may incur additional fees and may require a separate agreement.",
@@ -99,7 +99,7 @@ const sections = [
   {
     title: "11. Termination",
     text: [
-      "Consultant reserves the right to terminate services at any time if the Client breaches these Terms & Conditions.",
+      "Consultant reserves the right to terminate services at any time if the Client breaches these Terms and Conditions.",
       "In such cases:\n- Payments made are non-refundable\n- Any outstanding balances remain due",
       "Client may terminate services; however, all payments made are non-refundable and any completed or in-progress work will be billed accordingly.",
     ],
@@ -114,13 +114,13 @@ const sections = [
     title: "13. Electronic Acceptance",
     text: [
       "By checking the acceptance box at checkout, entering payment details, and completing the transaction, Client acknowledges and agrees that:",
-      "- They have read and understood these Terms & Conditions\n- This action constitutes an electronic signature\n- This agreement is legally binding and enforceable",
+      "- They have read and understood these Terms and Conditions\n- This action constitutes an electronic signature\n- This agreement is legally binding and enforceable",
     ],
   },
   {
     title: "14. Entire Agreement",
     text: [
-      "These Terms & Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements.",
+      "These Terms and Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements.",
     ],
   },
 ];
@@ -144,7 +144,7 @@ export default function TermsPage() {
 
           <div>
             <h1 className="text-2xl font-bold text-white">
-              Consulting Services Terms & Conditions
+              Consulting Services Terms and Conditions
             </h1>
             <p className="mt-2 text-sm text-white/50">
               Last updated: April 2026
@@ -156,7 +156,7 @@ export default function TermsPage() {
           <div className="space-y-0.5 text-xs text-white/50">
             <p>JulTech AI Consulting Group LLC</p>
             <p>Columbia, SC, United States</p>
-            <p>sokolskyjulia@gmail.com</p>
+            <p>ai@jul-tech.com</p>
           </div>
 
           {/* TERMS SECTIONS */}
@@ -202,7 +202,7 @@ export default function TermsPage() {
                     className="mt-0.5 h-4 w-4 accent-white rounded"
                   />
                   <span className="text-sm text-white/70 leading-relaxed">
-                    I have read and agree to the <span className="font-semibold text-white">Terms & Conditions</span> listed above.
+                    I have read and agree to the <span className="font-semibold text-white">Terms and Conditions</span> listed above.
                   </span>
                 </label>
 

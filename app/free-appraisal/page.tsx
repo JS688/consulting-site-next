@@ -114,7 +114,7 @@ export default function FreeAppraisalPage() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-zinc-900 px-6 py-10 text-white">
-        <div className="mx-auto max-w-[720px] px-2">
+        <div className="mx-auto max-w-180 px-2">
           <Link
             href="/services"
             className="inline-flex items-center gap-1 text-sm text-[#d1b075]/70 transition hover:text-[#d1b075]"
@@ -198,7 +198,7 @@ export default function FreeAppraisalPage() {
 
   return (
     <div className="min-h-screen bg-zinc-900 px-6 py-10 text-white">
-      <div className="mx-auto max-w-[720px] px-2">
+      <div className="mx-auto max-w-180 px-2">
         <Link
           href="/services"
           className="inline-flex items-center gap-1 text-sm text-[#d1b075]/70 transition hover:text-[#d1b075]"

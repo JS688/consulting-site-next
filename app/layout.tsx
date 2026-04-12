@@ -1,14 +1,51 @@
 import "./globals.css";
+import type { Metadata } from "next";
 import Header from "./components/Header";
 
 import Footer from "./components/Footer";
-
-export const metadata = {
-  title: "JulTech AI — AI‑Ready Websites",
-  description: "Premium, modern, AI‑ready websites built with clarity and trust.",
-};
+import { siteUrl } from "../lib/site";
 
 import type { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "JulTech AI | AI-Ready Websites and Global Visibility",
+    template: "%s | JulTech AI",
+  },
+  description:
+    "JulTech AI builds premium websites, multilingual visibility systems, and AI-ready digital experiences for global businesses.",
+  applicationName: "JulTech AI",
+  keywords: [
+    "JulTech AI",
+    "AI-ready websites",
+    "multilingual web design",
+    "SEO",
+    "AEO",
+    "GEO",
+    "case studies",
+    "AI consulting",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "JulTech AI",
+    title: "JulTech AI | AI-Ready Websites and Global Visibility",
+    description:
+      "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JulTech AI | AI-Ready Websites and Global Visibility",
+    description:
+      "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
+  },
+  category: "technology",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

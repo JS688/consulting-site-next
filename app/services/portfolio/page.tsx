@@ -15,8 +15,8 @@ export default function PortfolioPage() {
             ← Back to Services
           </Link>
 
-          <div className="group relative rounded-2xl p-[1px] transition duration-300">
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
+          <div className="group relative rounded-2xl p-px transition duration-300">
+            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
             <div className="pointer-events-none absolute inset-x-10 bottom-8 h-24 rounded-full bg-[#d1b075]/12 blur-3xl opacity-0 transition duration-300 group-hover:opacity-100" />
 
             <div className="relative z-10 flex flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">

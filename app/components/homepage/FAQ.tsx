@@ -93,9 +93,9 @@ export default function GlobalServicesFaqSection() {
       />
 
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.05),transparent_24%),linear-gradient(180deg,rgba(17,17,18,1),rgba(3,3,3,1))]" />
-      <div className="absolute inset-0 -z-10 opacity-[0.16] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:56px_56px]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] opacity-[0.16]" />
 
-      <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-8 lg:p-12">
+      <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/3 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-8 lg:p-12">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-400">
             FAQ
@@ -146,7 +146,7 @@ export default function GlobalServicesFaqSection() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-medium text-[#d4af37] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-[#d4af37]/40 hover:bg-white/[0.06] hover:shadow-[0_14px_36px_rgba(212,175,55,0.1)]"
+                className="rounded-full border border-white/10 bg-white/3 px-5 py-3 text-sm font-medium text-[#d4af37] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-[#d4af37]/40 hover:bg-white/6 hover:shadow-[0_14px_36px_rgba(212,175,55,0.1)]"
               >
                 {item.label}
               </Link>

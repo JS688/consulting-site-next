@@ -19,7 +19,7 @@ export default function Footer() {
 
             {/* Phone */}
             <a
-              href="tel:+18034133952"
+              href="#"
               className="hover:text-yellow-400 transition"
             >
               <i className="ri-phone-line text-lg"></i>

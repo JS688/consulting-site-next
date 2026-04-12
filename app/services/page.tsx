@@ -1,205 +1,263 @@
-"use client";// ServiceCard component for grid rendering
-function ServiceCard(service: Service) {
-  const Icon = service.icon;
-  return (
-    <div className="group relative rounded-2xl p-px transition duration-300">
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
-      <div className="pointer-events-none absolute inset-x-10 bottom-8 h-24 rounded-full bg-[#d1b075]/12 blur-3xl opacity-0 transition duration-300 group-hover:opacity-100" />
-      <div className="relative z-10 flex h-full min-h-75 flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
-        <p className="inline-flex items-center justify-center self-start rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
-          {service.badge}
-        </p>
-        <div className="mt-4 mb-1 flex items-center gap-2">
-          <Icon className="mt-1 h-6 w-6 shrink-0 text-[#d1b075] transition duration-300 group-hover:scale-110" />
-          <h3 className="text-lg font-semibold text-white whitespace-nowrap transition duration-300 group-hover:text-[#e7cd95] md:text-xl">
-            {service.title}
-          </h3>
-        </div>
-        <div className="mt-1 text-gray-100 text-[15px] leading-7">
-          {service.short}
-        </div>
-        <div className="mt-2 text-xs text-white/75">
-          {service.features}
-        </div>
-        <div className="mt-2 text-xs text-white/50 tracking-wide">
-          {service.delivery}
-        </div>
-        <div className="mt-3 border-t border-[#d1b075]/20" />
-        <div className="mt-3 flex items-center justify-center gap-4">
-          <Link
-            href={service.href}
-            className="rounded-lg bg-[#d1b075] px-4 py-2 font-medium text-black transition hover:bg-[#e0c48a] hover:shadow-[0_0_18px_rgba(209,176,117,0.38)]"
-          >
-            Read More →
-          </Link>
-          <Link
-            href="/contact"
-            className="rounded-lg border border-[#d1b075]/70 px-4 py-2 text-[#d1b075] transition hover:border-[#d1b075] hover:bg-[#d1b075]/10 hover:text-[#e7cd95]"
-          >
-            Request a Quote
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-// ...existing code...
-}
-import Link from "next/link";
-import type { ComponentType } from "react";
-import { ShoppingCart } from "lucide-react";
+"use client";
 
-type Service = {
-  badge: string;
-  title: string;
-  icon: ComponentType<{ className?: string }>;
-  short: string;
-  features: string;
-  delivery: string;
-  more: string;
-  href: string;
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Globe2,
+  LayoutPanelTop,
+  MessageSquareText,
+  Search,
+  Sparkles,
+  Languages,
+  BadgeCheck,
+} from "lucide-react";
+
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
 };
 
-const services: Service[] = [
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const services = [
   {
-    badge: "For Branding",
-    title: "Portfolio Websites",
-    icon: ({ className }: { className?: string }) => <span className={`text-[#e5c98a] text-2xl leading-none ${className ?? ""}`}>✦</span>,
-    short:
-      "Custom-coded portfolios built to showcase your work.",
-    features: "Strong storytelling · Smooth motion · Branded visuals",
-    delivery: "Typical delivery: 3–4 weeks",
-    more:
-      "Perfect for creators needing polished storytelling, galleries, smooth motion, and branded visuals that help attract premium clients.",
-    href: "/services/portfolio",
+    href: "/web-design",
+    icon: LayoutPanelTop,
+    eyebrow: "Design",
+    title: "Web Design",
+    description: "Custom-coded websites built for performance, clarity, and conversion.",
+    points: [
+      "Premium design and UX",
+      "Fast and scalable structure",
+      "Built for SEO and AI visibility",
+    ],
+    accent: false,
   },
   {
-    badge: "For Authority",
-    title: "Business / Corporate Websites",
-    icon: ({ className }: { className?: string }) => <span className={`text-[#e5c98a] text-2xl leading-none ${className ?? ""}`}>⇡</span>,
-    short:
-      "Professional websites that communicate your brand and value.",
-    features: "Structured pages · Strong messaging · Case-study layouts",
-    delivery: "Typical delivery: 5–7 weeks",
-    more:
-      "Built for credibility with structured service pages, strong messaging, and case-study style layouts that support sales conversations and long-term growth.",
-    href: "/services/business",
+    href: "/seo-services",
+    icon: Search,
+    eyebrow: "Visibility",
+    title: "SEO",
+    description: "Rank on Google and attract the right audience through structured content.",
+    points: [
+      "Technical SEO",
+      "Keyword strategy",
+      "Search intent optimization",
+    ],
+    accent: false,
   },
   {
-    badge: "For Launches",
-    title: "Landing Pages (1-Page Websites)",
-    icon: ({ className }: { className?: string }) => <span className={`text-[#e5c98a] text-2xl leading-none ${className ?? ""}`}>⌂</span>,
-    short: "Single-page websites built for conversions and fast launch.",
-    features: "Focused messaging · Strong CTAs · Fast performance",
-    delivery: "Typical delivery: 1–3 weeks",
-    more:
-      "Ideal for campaigns with focused messaging, strong calls to action, and streamlined layouts designed to increase inquiries and conversions.",
-    href: "/services/landing-pages",
+    href: "/aeo-services",
+    icon: Sparkles,
+    eyebrow: "AI Answers",
+    title: "AEO",
+    description: "Structure your content so AI systems can use it as a direct answer.",
+    points: [
+      "Answer-focused content",
+      "AI-friendly structure",
+      "Schema and clarity optimization",
+    ],
+    accent: false,
+  },
+  {
+    href: "/geo-services",
+    icon: Globe2,
+    eyebrow: "Recommendations",
+    title: "GEO",
+    description: "Position your business to be recommended by ChatGPT and modern AI systems.",
+    points: [
+      "Authority signals",
+      "Content clarity",
+      "AI recommendation positioning",
+    ],
+    accent: false,
+  },
+  {
+    href: "/multilingual-web-design",
+    icon: Languages,
+    eyebrow: "Growth",
+    title: "Multilingual Growth",
+    description: "Reach new markets across languages and increase global visibility.",
+    points: [
+      "English, Spanish, Portuguese, Russian",
+      "International SEO support",
+      "Cross-market communication",
+    ],
+    accent: true,
+  },
+  {
+    href: "/about",
+    icon: Languages,
+    eyebrow: "Trust",
+    title: "Multilingual Authority",
+    description:
+      "A brand story backed by language skill, international experience, and business strategy.",
+    points: [
+      "Global perspective",
+      "Language-driven positioning",
+      "Founder credibility",
+    ],
+    accent: false,
   },
 ];
 
 export default function ServicesPage() {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   return (
-    <div className="min-h-screen bg-zinc-900 text-white">
-      <div className="min-h-screen px-6 pb-8 pt-3 md:pb-10 md:pt-4">
-        {/* HERO */}
-        <div className="mx-auto max-w-5xl pt-1 pb-6 text-center">
-          <h1 className="text-5xl font-extrabold leading-[1.05] tracking-[-0.5px] text-yellow-400 md:text-6xl">
-            AI Website Solutions
-          </h1>
+    <main className="bg-[#030303] text-white">
+      <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-12 lg:py-20">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_28%),linear-gradient(180deg,rgba(12,12,12,1),rgba(3,3,3,1))]" />
+        <div className="absolute inset-0 -z-10 opacity-[0.14] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px]" />
 
-          <p className="mx-auto mt-5 max-w-4xl text-lg font-medium leading-relaxed text-white md:text-xl">
-            Whether you're selling, showcasing, or scaling — we build the right
-            experience
-          </p>
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/3 px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
+          <motion.div
+            className="mx-auto max-w-4xl text-center"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.45 }}
+          >
+            <motion.div
+              variants={itemVariants}
+              className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#d4af37]/20 bg-black/35 px-4 py-2 text-sm text-zinc-300"
+            >
+              <BadgeCheck className="h-4 w-4 text-[#d4af37]" />
+              The JulTech Visibility System™
+            </motion.div>
 
-          <p className="mx-auto mt-4 flex items-center justify-center gap-2 text-sm italic text-[#d1b075]/85 md:text-base">
-            <span className="text-[#d1b075]">✦</span>
-            Built with you, refined until it’s right.
-          </p>
+            <motion.h1
+              variants={itemVariants}
+              className="mx-auto mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-[#d4af37] sm:text-5xl lg:text-6xl"
+            >
+              Everything You Need to Get Found, Answered, and Chosen
+            </motion.h1>
 
-          <div className="relative mx-auto mt-8 w-full max-w-7xl overflow-hidden rounded-2xl aspect-14/3">
-            <video
-              src="/services.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover opacity-80 blur-[1px]"
-            />
-            <div className="absolute inset-0 bg-zinc-900/10" />
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-300"
+            >
+              We build premium websites and visibility systems that help businesses rank on Google, appear in AI answers, and expand across languages and markets.
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto mt-4 max-w-3xl text-sm text-zinc-400"
+            >
+              Based in the U.S., serving clients across the U.S., Latin America, and Europe in multiple languages.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 lg:px-12 lg:pb-20">
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-linear-to-b from-white/5 to-white/3 px-6 py-10 shadow-[0_24px_90px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
+              What we offer
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              A system built for modern search and AI
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
+              Each service works as part of one larger framework: design, search visibility, AI answers, recommendations, and multilingual expansion.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+
+              return (
+                <motion.article
+                  key={service.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
+                  className={[
+                    "group relative overflow-hidden rounded-[1.75rem] border p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] transition-all duration-300",
+                    service.accent
+                      ? "border-[#d4af37]/20 bg-white/4.5"
+                      : "border-white/10 bg-black/25",
+                  ].join(" ")}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/4">
+                      <Icon className="h-5 w-5 text-[#d4af37]" />
+                    </div>
+                    <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500">
+                      {service.eyebrow}
+                    </p>
+                  </div>
+
+                  <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-7 text-zinc-300">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-6 space-y-3 border-t border-white/10 pt-5">
+                    {service.points.map((point) => (
+                      <div key={point} className="flex items-start gap-3 text-sm text-zinc-300">
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
+                        <span>{point}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex items-center gap-3">
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#d4af37] px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
+                    >
+                      Learn more <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
+      </section>
 
-        {/* SERVICES GRID: 2x2, E-Commerce (left top), Portfolio (right top), Business (left bottom), Landing Pages (right bottom) */}
-        <div className="mx-auto mt-8 grid max-w-5xl gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-12">
-          {/* E-Commerce (top left) */}
-          <div className="group relative rounded-2xl p-px transition duration-300">
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#d1b075]/0 via-[#d1b075]/0 to-[#d1b075]/0 opacity-0 blur-xl transition duration-300 group-hover:from-[#d1b075]/25 group-hover:via-[#d1b075]/10 group-hover:to-[#d1b075]/25 group-hover:opacity-100" />
-            <div className="pointer-events-none absolute inset-x-10 bottom-8 h-24 rounded-full bg-[#d1b075]/12 blur-3xl opacity-0 transition duration-300 group-hover:opacity-100" />
-            <div className="relative z-10 flex h-full min-h-75 flex-col rounded-2xl border border-[#d1b075]/30 bg-zinc-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-[1.015] hover:border-[#d1b075]/60 hover:bg-zinc-950/85 hover:shadow-[0_0_35px_rgba(209,176,117,0.18)]">
-              <p className="inline-flex items-center justify-center self-start rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
-                For Selling
-              </p>
-              <div className="mt-4 mb-1 flex items-center gap-2">
-                <ShoppingCart className="mt-1 h-6 w-6 shrink-0 text-[#d1b075] transition duration-300 group-hover:scale-110" />
-                <h3 className="text-lg font-semibold text-white whitespace-nowrap transition duration-300 group-hover:text-[#e7cd95] md:text-xl">
-                  E-Commerce Websites (Online Stores)
-                </h3>
-              </div>
-              <div className="mt-1 text-gray-100 text-[15px] leading-7">
-                High-performing online stores built to sell, scale, and convert.
-              </div>
-              <div className="mt-2 text-xs text-white/75">
-                Fast checkout · Scalable structure · Conversion-focused
-              </div>
-              <div className="mt-2 text-xs text-white/50 tracking-wide">
-                Typical delivery: 4–6 weeks
-              </div>
-              <div className="mt-3 border-t border-[#d1b075]/20" />
-              <div className="mt-3 flex items-center justify-center gap-4">
-                <Link
-                  href="/services/e-commerce"
-                  className="rounded-lg bg-[#d1b075] px-4 py-2 font-medium text-black transition hover:bg-[#e0c48a] hover:shadow-[0_0_18px_rgba(209,176,117,0.38)]"
-                >
-                  Read More →
-                </Link>
-                <Link
-                  href="/contact"
-                  className="rounded-lg border border-[#d1b075]/70 px-4 py-2 text-[#d1b075] transition hover:border-[#d1b075] hover:bg-[#d1b075]/10 hover:text-[#e7cd95]"
-                >
-                  Request a Quote
-                </Link>
-              </div>
+      <section className="px-4 pb-20 sm:px-6 lg:px-12 lg:pb-24">
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-[#d4af37]/20 bg-[#0a0a0a] px-6 py-12 shadow-[0_35px_140px_rgba(0,0,0,0.55)] sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
+              Next step
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
+              Ready to build the right system for your brand?
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
+              Start with a project or request a free audit, and we will map the best path for your goals, market, and language needs.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
+              >
+                Start a Project
+              </Link>
+              <Link
+                href="/free-audit"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
+              >
+                Get Free Audit
+              </Link>
             </div>
           </div>
-          {/* Portfolio (top right) */}
-          <ServiceCard {...services[0]} />
-          {/* Business (bottom left) */}
-          <ServiceCard {...services[1]} />
-          {/* Landing Pages (bottom right) */}
-          <ServiceCard {...services[2]} />
         </div>
-        {/* FREE WEBSITE REVIEW BUTTON UNDER SERVICES GRID */}
-        <div className="mx-auto max-w-2xl mt-12 flex flex-col items-center justify-center">
-          <p className="text-white/60 text-sm mb-3">
-  Not sure what you need?
-</p>
-          <a
-            href="/free-appraisal"
-            className="inline-flex items-center rounded-full bg-[#d1b075] px-8 py-3 font-semibold text-black shadow-[0_0_20px_rgba(209,176,117,0.25)] hover:bg-[#e0c48a] hover:shadow-[0_0_28px_rgba(209,176,117,0.32)] transition text-base mt-2 text-[1.15rem]"
-          >
-            Free Website Review
-          </a>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
-

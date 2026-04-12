@@ -13,15 +13,20 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["app/components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/*": ["app/*"],
+    },
+    "forceConsistentCasingInFileNames": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "types": ["@types/react", "@types/react-dom"],
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "types": ["@types/react", "@types/react-dom"]
   },
   "include": [
     "next-env.d.ts",

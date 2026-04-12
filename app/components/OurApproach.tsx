@@ -52,7 +52,7 @@ export default function OurApproach() {
               </div>
               {index < approachSteps.length - 1 && (
                 <div className="absolute top-1/2 -right-8 z-20 flex -translate-y-1/2 items-center">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-400 text-black shadow-[0_0_20px_rgba(250,204,21,0.5)] transition-transform duration-300 group-hover:scale-110 animate-[pulseArrow_2s_infinite]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-400 text-black shadow-[0_0_20px_rgba(250,204,21,0.5)] transition-transform duration-300 group-hover:scale-110">
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>

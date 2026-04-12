@@ -3,6 +3,15 @@
   100% { transform: rotate(360deg); }
 }
 
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
 .spin-slow {
   animation: spin-slow 60s linear infinite;
 }

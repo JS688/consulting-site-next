@@ -32,14 +32,6 @@ export default function ContactPage() {
             ai@jul-tech.com
           </a>
           <a
-            href="tel:+18034133952"
-            className="rounded-full border border-yellow-400/35 px-5 py-3 text-yellow-200 transition hover:border-yellow-300 hover:text-yellow-100"
-            aria-label="Call JulTech AI"
-            title="Call JulTech AI"
-          >
-            +1 (803) 413-3952
-          </a>
-          <a
             href="https://www.linkedin.com/in/julia-sokolsky/"
             target="_blank"
             rel="noopener noreferrer"

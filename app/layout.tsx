@@ -12,7 +12,7 @@ import type { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black">
       <head>
         {/* Remix Icons for footer + header icons */}
         <link

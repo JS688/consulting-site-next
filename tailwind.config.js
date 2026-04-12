@@ -11,6 +11,14 @@ module.exports = {
         gold: "rgb(245,197,24)",
       },
       keyframes: {
+        bgMove: {
+          "0%": {
+            backgroundPosition: "0% 50%",
+          },
+          "100%": {
+            backgroundPosition: "100% 50%",
+          },
+        },
         paintIn: {
           "0%": {
             opacity: "0",
@@ -65,6 +73,7 @@ module.exports = {
         },
       },
       animation: {
+        bgMove: "bgMove 8s linear infinite",
         paintIn: "paintIn 1.4s ease-out forwards",
         goldSweep: "goldSweep 1.8s ease-out",
         dividerSlide: "dividerSlide 1.2s ease-out forwards",

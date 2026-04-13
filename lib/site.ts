@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://jul-tech.com";
+const DEFAULT_SITE_URL = "https://www.jul-tech.com";
 
 function normalizeSiteUrl(url: string) {
   if (!url) {

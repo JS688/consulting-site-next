@@ -45,6 +45,9 @@ export const metadata: Metadata = {
       "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
   },
   category: "technology",
+  verification: {
+    google: "c44v513uJHnBMYTU0ESaKu-tQJeUQ5TwY0f80UtvscE",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

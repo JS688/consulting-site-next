@@ -44,6 +44,10 @@ export const metadata: Metadata = {
     description:
       "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
   category: "technology",
   verification: {
     google: "c44v513uJHnBMYTU0ESaKu-tQJeUQ5TwY0f80UtvscE",

@@ -1,189 +1,190 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, MessageSquareText, Sparkles, Globe2 } from "lucide-react";
+import {
+  Search,
+  MessageSquareText,
+  Sparkles,
+  Languages,
+} from "lucide-react";
 
-const steps = [
+const cards = [
   {
+    step: "01",
+    label: "Search Intelligence",
+    abbr: "SEO",
+    title: "Get discovered when customers are actively searching.",
+    description:
+      "Your business appears on Google when people actively look for your services.",
     icon: Search,
-    title: "Search Visibility",
-    subtitle: "Google",
-    desc: "SEO helps your website rank on Google so customers can find your business when they search for your services",
-    label: "SEO",
+    gradient: "radial-gradient(circle at top left, rgba(212,175,55,0.08), transparent 40%)",
+    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
   },
   {
+    step: "02",
+    label: "Answer Intelligence",
+    abbr: "AEO",
+    title: "Become the answer AI systems rely on.",
+    description:
+      "Your business is positioned as the trusted response in AI tools and voice assistants.",
     icon: MessageSquareText,
-    title: "AI Voice Optimization",
-    subtitle: "AI Voice",
-    desc: "AEO structures your content so AI tools and voice assistants can understand and deliver it as a direct answer",
-    label: "AEO",
+    gradient: "radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 40%)",
+    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
   },
   {
+    step: "03",
+    label: "Recommendation Intelligence",
+    abbr: "GEO",
+    title: "Get recommended by AI systems.",
+    description:
+      "Your business gets recommended in AI-generated results across platforms like ChatGPT and Gemini.",
     icon: Sparkles,
-    title: "AI Recommendations",
-    subtitle: "AI Systems",
-    desc: "GEO positions your business to be recommended by AI systems like ChatGPT, Gemini, and other modern assistants",
-    label: "GEO",
+    gradient: "radial-gradient(circle at bottom left, rgba(212,175,55,0.08), transparent 40%)",
+    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
   },
   {
-    icon: Globe2,
-    title: "Global Visibility",
-    subtitle: "Multilingual",
-    desc: "Multilingual visibility helps your business expand into new markets across search and AI platforms",
-    label: "Multilingual",
+    step: "04",
+    label: "Multilingual Expansion",
+    abbr: "Spanish Market",
+    title: "Reach Spanish-speaking customers more effectively.",
+    description:
+      "Connect with Spanish-speaking customers across search and AI platforms.",
+    icon: Languages,
+    gradient: "radial-gradient(circle at bottom right, rgba(212,175,55,0.08), transparent 40%)",
+    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
   },
 ];
 
-
-
-const containerVariants = {
-  hidden: {},
+const container = {
+  hidden: { opacity: 0 },
   visible: {
-    transition: { staggerChildren: 0.18 },
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
   },
 };
 
-// Restore itemVariants for header/subheader
-const itemVariants = {
-  hidden: { opacity: 0, y: 18 },
+const item = {
+  hidden: { opacity: 0, y: 22 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
-const popOutVariants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 420, damping: 32, duration: 0.55 },
-  },
-};
-
-export default function VisibilityFlowSection() {
+export default function VisibilitySystemSection() {
   return (
-    <>
-      <section className="relative overflow-hidden bg-[#030303] px-4 py-16 text-white sm:px-6 md:px-8 lg:px-12 lg:py-20">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.04),transparent_24%),linear-gradient(180deg,rgba(12,12,12,1),rgba(3,3,3,1))]" />
-      <div className="absolute inset-0 -z-10 opacity-[0.14] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px]" />
-      <div className="mx-auto max-w-7xl">
-       
-        {/* Divider animation above The JulTech Visibility System™ */}
+    <section className="relative overflow-hidden bg-black px-6 py-24 text-white md:px-10 lg:px-16">
+      {/* Background video */}
+      <video
+        src="/section2.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover opacity-50 blur-[2px]"
+      />
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.08),transparent_40%)]" />
 
+      <div className="relative mx-auto max-w-6xl">
         <motion.div
-          className="mx-auto max-w-4xl pt-4 text-center lg:pt-6"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.25 }}
+          variants={container}
+          className="text-center"
         >
-          <motion.div
-            variants={itemVariants}
-            className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#d4af37]/20 bg-black/35 px-4 py-2 text-sm text-zinc-300 shadow-[0_0_40px_rgba(212,175,55,0.06)]"
+          <motion.p
+            variants={item}
+            className="text-xs font-medium uppercase tracking-[0.35em] text-[#d4af37]/80 md:text-sm"
           >
-            The JulTech Visibility System™
-          </motion.div>
+            AI VISIBILITY SYSTEM
+          </motion.p>
 
           <motion.h2
-            variants={itemVariants}
-            className="mx-auto mt-6 max-w-4xl text-center text-2xl font-bold leading-tight tracking-[-0.01em] text-[#d4af37] sm:text-2xl lg:text-3xl xl:text-4xl"
+            variants={item}
+            className="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl"
           >
-            The System Behind Visibility and AI Selection
+            Ranking alone doesn’t win
           </motion.h2>
+
+          <motion.p
+            variants={item}
+            className="mx-auto mt-4 text-lg leading-8 text-zinc-400 md:whitespace-nowrap md:text-xl"
+          >
+            Customers don’t just search — they ask, compare, and follow AI recommendations.
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className="mt-3 text-base font-semibold text-[#d4af37] md:text-lg"
+            style={{ textShadow: "0 0 24px rgba(212,175,55,0.6), 0 0 48px rgba(212,175,55,0.25)" }}
+          >
+            If you’re not part of that, you’re not part of the decision.
+          </motion.p>
         </motion.div>
 
+        <div className="mt-10">
 
-        {/* Four Pillars Grid System - Connected, Numbered, Sharper Descriptions */}
-        <div className="mt-12 w-full relative">
+          {/* 4 pillars */}
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a]">
+          <div className="grid gap-10 p-6 md:grid-cols-2 md:gap-12 md:p-10">
+          {cards.map((card) => {
+            const Icon = card.icon;
 
+            return (
+              <motion.article
+                key={card.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-3xl border border-[#d4af37]/25 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/50 md:p-10"
+                style={{ background: card.gradient }}
+              >
+                <div className="pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100" style={{ background: card.gradient, filter: "brightness(1.6)" }} />
 
-          {/* Connecting line behind cards */}
-          <div className="absolute left-0 right-0 top-1/2 hidden h-px bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent md:block z-0 w-full" />
-          <motion.div
-            className="relative grid grid-cols-1 gap-8 md:grid-cols-4 items-stretch w-full z-10"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.45 }}
-          >
-            {/* Pillar 1: Search Visibility */}
-            <motion.div
-              variants={popOutVariants}
-              className="flex flex-1 flex-col items-center text-center px-2"
-            >
-              <div className="relative flex h-full w-full flex-col items-center rounded-xl border border-[#d4af37]/30 bg-black/40 p-6 shadow-lg">
-                <p className="text-[11px] tracking-[0.4em] text-zinc-500 mb-2">01</p>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d4af37]/20 bg-black/50 mb-4">
-                  <Search className="h-7 w-7 text-[#d4af37]" />
+                <div className="relative flex items-start justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#d4af37]/30 bg-black/40 text-[#d4af37] transition-all duration-300 group-hover:border-[#d4af37]/50 group-hover:shadow-[0_0_24px_rgba(212,175,55,0.18)]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+
+                  <div className="text-xs font-medium uppercase tracking-[0.35em] text-zinc-500">
+                    {card.step}
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">Search Visibility</h3>
-                <p className="text-[0.98rem] text-zinc-300 leading-6 min-h-[56px] flex items-center justify-center">SEO helps your business rank on Google when customers search for your services.</p>
-              </div>
-            </motion.div>
-            {/* Pillar 2: AI Voice Optimization */}
-            <motion.div
-              variants={popOutVariants}
-              className="flex flex-1 flex-col items-center text-center px-2"
-            >
-              <div className="relative flex h-full w-full flex-col items-center rounded-xl border border-[#d4af37]/30 bg-black/40 p-6 shadow-lg">
-                <p className="text-[11px] tracking-[0.4em] text-zinc-500 mb-2">02</p>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d4af37]/20 bg-black/50 mb-4">
-                  <MessageSquareText className="h-7 w-7 text-[#d4af37]" />
+
+                <div className="relative mt-8">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-xs font-bold uppercase tracking-[0.28em] text-white">
+                      {card.label}
+                    </span>
+                    {card.abbr && (
+                      <span className="text-[10px] font-normal uppercase tracking-widest text-zinc-500">
+                        ({card.abbr})
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="mt-3 text-base font-medium leading-snug text-zinc-300">
+                    {card.title}
+                  </h3>
+
+                  <p className="mt-3 max-w-md text-sm leading-6 text-zinc-500">
+                    {card.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">AI Voice Optimization</h3>
-                <p className="text-[0.98rem] text-zinc-300 leading-6 min-h-[56px] flex items-center justify-center">AEO makes your content the answer for AI tools and voice assistants.</p>
-              </div>
-            </motion.div>
-            {/* Pillar 3: AI Recommendations */}
-            <motion.div
-              variants={popOutVariants}
-              className="flex flex-1 flex-col items-center text-center px-2"
-            >
-              <div className="relative flex h-full w-full flex-col items-center rounded-xl border border-[#d4af37]/30 bg-black/40 p-6 shadow-lg">
-                <p className="text-[11px] tracking-[0.4em] text-zinc-500 mb-2">03</p>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d4af37]/20 bg-black/50 mb-4">
-                  <Sparkles className="h-7 w-7 text-[#d4af37]" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">AI Recommendations</h3>
-                <p className="text-[0.98rem] text-zinc-300 leading-6 min-h-[56px] flex items-center justify-center">GEO gets your business recommended by ChatGPT, Gemini, and other AI systems.</p>
-              </div>
-            </motion.div>
-            {/* Pillar 4: Multilingual Visibility */}
-            <motion.div
-              variants={popOutVariants}
-              className="flex flex-1 flex-col items-center text-center px-2"
-            >
-              <div className="relative flex h-full w-full flex-col items-center rounded-xl border border-[#d4af37]/30 bg-black/40 p-6 shadow-lg">
-                <p className="text-[11px] tracking-[0.4em] text-zinc-500 mb-2">04</p>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d4af37]/20 bg-black/50 mb-4">
-                  <Globe2 className="h-7 w-7 text-[#d4af37]" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">Multilingual Visibility</h3>
-                <p className="text-[0.98rem] text-zinc-300 leading-6 min-h-[56px] flex items-center justify-center">Reach more customers and new markets across search and AI platforms.</p>
-              </div>
-            </motion.div>
-          </motion.div>
+              </motion.article>
+            );
+          })}
+          </div>
+          </div>
         </div>
-
       </div>
     </section>
-
-    {/* Framework summary line - now just above CTA, with tighter spacing */}
-    <p className="mt-6 mb-2 text-center text-sm text-zinc-400">
-      Your business needs to show up, answer, and be chosen.
-    </p>
-
-    {/* Start a Project CTA - below the summary line, with tighter spacing */}
-    <div className="mb-6 flex justify-center">
-      <a
-        href="/contact"
-        className="inline-block rounded-full bg-[#d4af37] px-7 py-3 text-base font-semibold text-black shadow-lg transition hover:bg-[#bfa13a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d4af37]/70 focus-visible:ring-offset-2"
-      >
-        Start Building Your Visibility System &rarr;
-      </a>
-    </div>    
-    </>
   );
 }

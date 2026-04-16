@@ -100,7 +100,7 @@ export default function AeoServicesPage() {
             SEO Services
           </a>
           <a href="/multilingual-web-design" className="text-[#d4af37]">
-            Multilingual Web Design
+            Bilingual Web Design
           </a>
         </div>
 

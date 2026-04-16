@@ -44,57 +44,86 @@ export default function Hero() {
         >
           <motion.h1
             variants={headerItemVariants}
-            className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:mx-0 lg:max-w-xl lg:text-6xl"
+            className="mx-auto max-w-4xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:mx-0 lg:max-w-3xl lg:text-5xl"
           >
-          <span className="relative inline-block">
-  <span className="absolute inset-0 bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] opacity-15 blur-[18px]" />
-
-  <span className="relative inline-block text-[#d4af37]">
-    <span className="animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent">
-      Rank on Google. Get Chosen by AI.
-    </span>
-  </span>
-</span>
+            <span className="relative inline-block w-full">
+              <span className="absolute inset-0 bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] opacity-15 blur-[18px]" />
+              <span className="relative inline-block text-[#d4af37] w-full">
+                  <span className="animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent text-center w-full block text-4xl sm:text-5xl lg:text-5xl font-large tracking-[0.08em]">
+                  MULTIPLY YOUR WEBSITE IMPACT
+                </span>
+                <span className="block h-1 sm:h-3 lg:h-2"></span>
+                <span className="animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent text-center w-full block text-2xl sm:text-3xl lg:text-3xl font-normal mt-8">
+                  Rank on Google. Get chosen by AI.
+                </span>
+              </span>
+            </span>
           </motion.h1>
 
           <motion.p
             variants={headerItemVariants}
-            className="mx-auto mt-10 max-w-3xl text-xl leading-9 text-zinc-300 sm:text-2xl"
+            className="mx-auto mt-14 mb-10 max-w-3xl text-xl leading-9 text-gray-300 sm:text-2xl font-normal"
           >
-          We design and build distinctive digital experiences for global brands, combining strategy, technology, and unique visual identity.
+            Built for businesses that lead — not compete — in search and AI. Transform your website into an intelligent system that attracts and converts qualified customers.
           </motion.p>
 
-          <motion.p
-            variants={headerItemVariants}
-            className="mt-6 text-[12px] whitespace-nowrap text-zinc-400 sm:text-sm"
-          >
-            Multilingual execution: English, Spanish, Portuguese, Russian
-          </motion.p>
 
           <motion.div
             variants={headerItemVariants}
             className="mt-14 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
           >
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-yellow-400 bg-yellow-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-300 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)]"
-            >
-              Start a Project
-            </Link>
-            <Link
               href="/free-appraisal"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-yellow-400/50 hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-full border border-yellow-400 bg-yellow-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-300 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)]"
             >
               Get Free Audit
             </Link>
+            <a
+              href="https://calendly.com/jultech-ai/new-meeting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 hover:border-white/35"
+            >
+              Book a Call Now
+            </a>
           </motion.div>
 
           <motion.p
             variants={headerItemVariants}
-            className="mt-3 text-[13px] text-zinc-500"
+            className="mt-4 text-xs text-zinc-500"
           >
-            Limited availability for new projects each month.
+            No guesswork. Just measurable results.
           </motion.p>
+
+          <div className="mt-8 flex flex-row items-center text-xl sm:text-2xl lg:text-2xl font-normal text-[#d4af37] w-full">
+            <motion.span
+              variants={headerItemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.2 }}
+              className=""
+            >
+              Be found.
+            </motion.span>
+            <motion.span
+              variants={headerItemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.5 }}
+              className="ml-2"
+            >
+              Be trusted.
+            </motion.span>
+            <motion.span
+              variants={headerItemVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.8 }}
+              className="ml-2"
+            >
+              Be chosen.
+            </motion.span>
+          </div>
         </motion.div>
 
         <motion.div
@@ -115,7 +144,6 @@ export default function Hero() {
               className="h-full w-full object-cover opacity-75 saturate-90"
             />
           </div>
-        
         </motion.div>
       </div>
 
@@ -127,18 +155,6 @@ export default function Hero() {
         animate="visible"
         className="relative mx-auto max-w-4xl px-6 pb-4 text-center mt-16"
       >
-        <p className="text-xl font-medium tracking-wide md:text-2xl">
-          <span className="relative inline-block">
-            <span className="absolute inset-0 bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] opacity-20 blur-xl" />
-            <span className="relative inline-block animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent">
-              English • Spanish • Portuguese • Russian
-            </span>
-          </span>
-        </p>
-        <p className="mt-1 text-sm tracking-wide text-zinc-400 md:text-base">
-          Be found. Be the answer. Be chosen.
-        </p>
-
         <div className="mx-auto mt-16 h-px w-full max-w-3xl bg-linear-to-r from-transparent via-[#d4af37]/70 to-transparent" />
       </motion.div>
     </section>

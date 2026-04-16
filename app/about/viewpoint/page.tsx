@@ -1,7 +1,7 @@
 import ViewpointPageContent from "./ViewpointPageContent";
 
 export const metadata = {
-  title: "Viewpoint — JulTech AI",
+  title: "Viewpoint — JulTech™ AI",
   description: "JulTech's viewpoint on design, strategy, and process.",
 };
 

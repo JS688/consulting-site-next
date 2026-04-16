@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const points = [
-  "Multilingual execution",
+  "Bilingual execution",
   "Custom design systems",
   "No templates or generic solutions",
   "Built for modern, international brands",

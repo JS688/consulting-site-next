@@ -83,7 +83,7 @@ const services = [
     href: "/multilingual-web-design",
     icon: Languages,
     eyebrow: "Growth",
-    title: "Multilingual Growth",
+    title: "Bilingual Growth",
     description: "Reach new markets across languages and increase global visibility.",
     points: [
       "English, Spanish, Portuguese, Russian",
@@ -96,7 +96,7 @@ const services = [
     href: "/about",
     icon: Languages,
     eyebrow: "Trust",
-    title: "Multilingual Authority",
+    title: "Bilingual Authority",
     description:
       "A brand story backed by language skill, international experience, and business strategy.",
     points: [

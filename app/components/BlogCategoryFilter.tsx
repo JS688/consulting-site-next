@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const categories = ["SEO", "AI", "Multilingual", "GEO"];
+const categories = ["SEO", "AI", "Bilingual", "GEO"];
 
 export default function BlogCategoryFilter({
   onSelect,

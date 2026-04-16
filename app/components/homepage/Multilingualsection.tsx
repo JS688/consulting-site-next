@@ -7,7 +7,7 @@ const pyramidSteps = [
   {
     icon: Globe2,
     title: "Expand your reach",
-    subtitle: "Multilingual SEO",
+    subtitle: "Bilingual SEO",
     desc: "Reach Spanish-speaking customers and move beyond a single-language market through search.",
   },
   {
@@ -20,22 +20,22 @@ const pyramidSteps = [
     icon: Sparkles,
     title: "Get chosen by AI",
     subtitle: "GEO",
-    desc: "Multilingual content gives AI systems the context they need to understand and recommend your business.",
+    desc: "Bilingual content gives AI systems the context they need to understand and recommend your business.",
   },
 ];
 
-export default function MultilingualExpansionSection() {
+export default function BilingualExpansionSection() {
   return (
     <section className="relative overflow-hidden bg-[#030303] px-4 py-16 text-white sm:px-6 lg:px-12">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_28%),linear-gradient(180deg,rgba(10,10,10,1),rgba(3,3,3,1))]" />
 
       <div className="mx-auto max-w-7xl">
 
-        {/* Styled Multilingual Visibility header with globe icon */}
+        {/* Styled Bilingual Visibility header with globe icon */}
         <div className="mx-auto max-w-4xl pt-4 text-center lg:pt-6">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#d4af37]/20 bg-black/35 px-4 py-2 text-sm text-zinc-300 shadow-[0_0_40px_rgba(212,175,55,0.06)]">
             <Globe2 className="h-5 w-5 text-[#d4af37]" />
-            Multilingual Visibility
+            Bilingual Visibility
           </div>
           <h2 className="mt-6 text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl lg:text-5xl">
             Expand Into New Markets
@@ -59,7 +59,7 @@ export default function MultilingualExpansionSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d4af37]/20 bg-black/35 shadow-[0_0_30px_rgba(212,175,55,0.08)] mb-3 mx-auto">
                   <Globe2 className="h-6 w-6 text-[#d4af37]" />
                 </div>
-                <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-1">Multilingual SEO</p>
+                <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-1">Bilingual SEO</p>
                 <h4 className="text-lg font-semibold text-white mb-1">Expand your reach</h4>
                 <p className="text-sm text-zinc-400">Reach Spanish-speaking customers and move beyond a single-language market through search.</p>
               </div>
@@ -83,7 +83,7 @@ export default function MultilingualExpansionSection() {
                 </div>
                 <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-1">GEO</p>
                 <h4 className="text-lg font-semibold text-white mb-1">Get chosen by AI</h4>
-                <p className="text-sm text-zinc-400">Multilingual content gives AI systems the context they need to understand and recommend your business.</p>
+                <p className="text-sm text-zinc-400">Bilingual content gives AI systems the context they need to understand and recommend your business.</p>
               </div>
             </div>
           </div>

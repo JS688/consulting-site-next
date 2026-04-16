@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Legal */}
           <p className="text-xs text-gray-500 text-center">
-            © 2026 JulTech AI —{" "}
+            © 2026 JulTech™. All rights reserved.{" "}
             <a href="/legal/privacy" className="hover:text-yellow-400 transition">Privacy</a> •{" "}
             <a href="/legal/terms" className="hover:text-yellow-400 transition">Terms</a>
           </p>

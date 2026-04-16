@@ -25,10 +25,7 @@ export default function Header() {
                   Jul
                 </span>
                 <span className="text-white font-bold text-[1.35rem] tracking-wider">
-                  Tech
-                </span>
-                <span className="ml-1 inline-flex items-center rounded-full border border-[rgb(245,197,24)]/40 bg-[rgb(245,197,24)]/12 px-1.5 py-px text-[10px] font-bold uppercase tracking-[0.24em] text-[rgb(245,197,24)]">
-                  AI
+                  Tech™
                 </span>
               </div>
               <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.26em] text-[rgb(245,197,24)]/85">
@@ -76,14 +73,18 @@ export default function Header() {
                 <Link href="/seo-services" className="block px-5 py-2 text-white hover:bg-zinc-800">SEO</Link>
                 <Link href="/aeo-services" className="block px-5 py-2 text-white hover:bg-zinc-800">AEO</Link>
                 <Link href="/geo-services" className="block px-5 py-2 text-white hover:bg-zinc-800">GEO</Link>
-                <Link href="/multilingual-web-design" className="block px-5 py-2 text-white hover:bg-zinc-800">Multilingual Web Design</Link>
+                <Link href="/multilingual-web-design" className="block px-5 py-2 text-white hover:bg-zinc-800">Bilingual Web Design</Link>
               </div>
             </div>
             <Link href="/case-studies" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Case Studies</Link>
             <Link href="/blog" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Blog</Link>
             <div className="flex items-center gap-2 ml-6">
-              <Link href="/free-appraisal" className="bg-zinc-800 text-white font-semibold px-4 py-2 rounded-lg hover:bg-zinc-700 transition">Free Audit</Link>
-              <Link href="/contact" className="bg-[rgb(245,197,24)] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[rgb(255,210,50)] transition">Contact</Link>
+              <Link href="/free-appraisal" className="bg-[rgb(245,197,24)] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[rgb(255,210,50)] transition">Free Audit</Link>
+              <Link href="/contact" className="border border-white/20 text-white font-semibold px-4 py-2 rounded-lg hover:border-white/40 hover:bg-white/5 transition">Strategy Call</Link>
+              <div className="flex items-center gap-1 ml-3 border-l border-white/10 pl-3">
+                <Link href="/" className="text-xs font-semibold px-2 py-1 rounded border border-[rgb(245,197,24)] text-[rgb(245,197,24)] hover:bg-[rgb(245,197,24)] hover:text-black transition">EN</Link>
+                <Link href="/es" className="text-xs font-semibold px-2 py-1 rounded border border-white/20 text-white/60 hover:border-[rgb(245,197,24)] hover:text-[rgb(245,197,24)] transition">ES</Link>
+              </div>
             </div>
           </nav>
           {/* DESKTOP CTA */}
@@ -110,14 +111,14 @@ export default function Header() {
               <Link href="/seo-services" onClick={() => setOpen(false)} className="text-yellow-300">SEO</Link>
               <Link href="/aeo-services" onClick={() => setOpen(false)} className="text-yellow-300">AEO</Link>
               <Link href="/geo-services" onClick={() => setOpen(false)} className="text-yellow-300">GEO</Link>
-              <Link href="/multilingual-web-design" onClick={() => setOpen(false)} className="text-yellow-300">Multilingual Web Design</Link>
+              <Link href="/multilingual-web-design" onClick={() => setOpen(false)} className="text-yellow-300">Bilingual Web Design</Link>
             </div>
           </details>
           <Link href="/case-studies" onClick={() => setOpen(false)}>Case Studies</Link>
           <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
           <div className="flex flex-col gap-3 w-full px-8">
-            <Link href="/free-appraisal" onClick={() => setOpen(false)} className="bg-zinc-800 text-white font-semibold px-4 py-2 rounded-lg hover:bg-zinc-700 transition text-center">Free Audit</Link>
-            <Link href="/contact" onClick={() => setOpen(false)} className="bg-[rgb(245,197,24)] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[rgb(255,210,50)] transition text-center">Contact</Link>
+            <Link href="/free-appraisal" onClick={() => setOpen(false)} className="bg-[rgb(245,197,24)] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[rgb(255,210,50)] transition text-center">Free Audit</Link>
+            <Link href="/contact" onClick={() => setOpen(false)} className="border border-white/20 text-white font-semibold px-4 py-2 rounded-lg hover:border-white/40 hover:bg-white/5 transition text-center">Strategy Call</Link>
           </div>
         </div>
       )}

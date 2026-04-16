@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "./components/Header";
 
 import Footer from "./components/Footer";
@@ -10,12 +11,12 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "JulTech AI | AI-Ready Websites and Global Visibility",
-    template: "%s | JulTech AI",
+    default: "JulTech™ AI | AI-Ready Websites and Global Visibility",
+    template: "%s | JulTech™ AI",
   },
   description:
     "JulTech AI builds premium websites, multilingual visibility systems, and AI-ready digital experiences for global businesses.",
-  applicationName: "JulTech AI",
+  applicationName: "JulTech™ AI",
   keywords: [
     "JulTech AI",
     "AI-ready websites",
@@ -32,15 +33,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "JulTech AI",
-    title: "JulTech AI | AI-Ready Websites and Global Visibility",
+    siteName: "JulTech™ AI",
+    title: "JulTech™ AI | AI-Ready Websites and Global Visibility",
     description:
       "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "JulTech AI | AI-Ready Websites and Global Visibility",
+    title: "JulTech™ AI | AI-Ready Websites and Global Visibility",
     description:
       "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
   },
@@ -61,6 +62,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Remix Icons for footer + header icons */}
         <link
           href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+        {/* Calendly popup styles */}
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
         />
       </head>
@@ -84,6 +90,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         {/* Footer stays at the bottom */}
         <Footer />
+        {/* Calendly popup widget */}
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

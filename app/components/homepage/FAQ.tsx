@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-const businessName = "JulTech AI Consulting Group LLC";
+const businessName = "JulTech™ AI Consulting Group LLC";
 
 const faqItems = [
   {
@@ -67,7 +67,7 @@ const serviceSchema = {
   "@type": "ProfessionalService",
   name: businessName,
   areaServed: ["United States", "Latin America", "Europe"],
-  serviceType: "Web Design, SEO, AEO, GEO, Multilingual Strategy",
+  serviceType: "Web Design, SEO, AEO, GEO, Bilingual Strategy",
   description:
     "Premium websites designed to rank on Google, surface in AI answers, and convert attention into qualified leads across multilingual markets.",
 };
@@ -77,7 +77,7 @@ const serviceLinks = [
   { href: "/seo-services", label: "SEO" },
   { href: "/aeo-services", label: "AEO" },
   { href: "/geo-services", label: "GEO" },
-  { href: "/multilingual-web-design", label: "Multilingual Web Design" },
+  { href: "/multilingual-web-design", label: "Bilingual Web Design" },
 ];
 
 export default function GlobalServicesFaqSection() {
@@ -133,15 +133,7 @@ export default function GlobalServicesFaqSection() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 max-w-4xl text-center">
-          <h3 className="text-lg font-semibold text-white">
-            Based in the USA, serving clients across the U.S., Latin America, and Europe
-          </h3>
-          <p className="mt-3 text-base text-zinc-300 sm:text-lg">
-            We work with businesses across multiple markets, delivering multilingual web design, SEO, AEO, and GEO strategies built for modern search and international growth.
-          </p>
-
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
             {serviceLinks.map((item) => (
               <Link
                 key={item.href}
@@ -153,7 +145,6 @@ export default function GlobalServicesFaqSection() {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 }

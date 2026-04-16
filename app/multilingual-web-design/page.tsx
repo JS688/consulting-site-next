@@ -11,7 +11,7 @@ const faqItems = [
   {
     question: "What is multilingual web design?",
     answer:
-      "Multilingual web design is the process of building websites that communicate clearly across multiple languages while supporting search visibility, AI understanding, and conversion.",
+      "Bilingual web design is the process of building websites that communicate clearly across multiple languages while supporting search visibility, AI understanding, and conversion.",
   },
   {
     question: "Why is multilingual web design important?",
@@ -21,7 +21,7 @@ const faqItems = [
   {
     question: "Can multilingual websites help SEO?",
     answer:
-      "Yes. Multilingual websites can improve visibility across different language searches and help search engines understand your international audience.",
+      "Yes. Bilingual websites can improve visibility across different language searches and help search engines understand your international audience.",
   },
   {
     question: "Can multilingual content help AI answers?",
@@ -51,11 +51,11 @@ const faqSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Multilingual Web Design",
+  name: "Bilingual Web Design",
   areaServed: ["United States", "Latin America", "Europe"],
-  serviceType: "Multilingual Web Design, SEO, AEO, GEO",
+  serviceType: "Bilingual Web Design, SEO, AEO, GEO",
   description:
-    "Multilingual web design services built to help businesses reach English, Spanish, Portuguese, and Russian-speaking audiences across search and AI platforms.",
+    "Bilingual web design services built to help businesses reach English, Spanish, Portuguese, and Russian-speaking audiences across search and AI platforms.",
 };
 
 const services = [
@@ -100,7 +100,7 @@ const services = [
     ],
   },
   {
-    title: "Multilingual Growth",
+    title: "Bilingual Growth",
     subtitle: "Expansion",
     desc: "Reach new markets across languages and increase global visibility.",
     points: [
@@ -111,7 +111,7 @@ const services = [
   },
 ];
 
-export default function MultilingualWebDesignPage() {
+export default function BilingualWebDesignPage() {
   return (
     <main className="bg-[#030303] px-4 py-16 text-white sm:px-6 lg:px-12">
       <script
@@ -133,7 +133,7 @@ export default function MultilingualWebDesignPage() {
             className="max-w-4xl"
           >
             <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
-              Multilingual Web Design
+              Bilingual Web Design
             </p>
 
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#d4af37] sm:text-5xl lg:text-6xl">
@@ -200,7 +200,7 @@ export default function MultilingualWebDesignPage() {
               FAQ
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
-              Common Questions About Multilingual Web Design
+              Common Questions About Bilingual Web Design
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
               Clear answers help both people and AI systems understand how

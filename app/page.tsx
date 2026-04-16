@@ -1,28 +1,20 @@
 
 import Hero from "./components/homepage/Hero";
-import FeaturedWork from "./components/homepage/FeaturedWork";
-import MissionBlock from "./components/MissionBlock";
 import SectionHowCustomersFind from "./components/homepage/SectionHowCustomersFind";
-import SectionLocalSeoFaq from "./components/homepage/FAQ";
-import SectionSeoAeoGeo from "./components/homepage/Multilingualsection";
-import SectionFourSystem from "./components/homepage/SectionFourSystem";
-import SectionCTA from "./components/homepage/SectionCTA";
-import WhatWeDo from "./components/homepage/WhatWeDo";
-import WhyJulTech from "./components/homepage/WhyJulTech";
+import VisibilityOutcomeSection from "./components/homepage/VisibilityOutcomeSection";
+
+import FAQSection from "./components/homepage/FAQSection";
 
 export default function HomePage() {
   return (
     <main className="bg-black text-white">
       <Hero />
-      <MissionBlock />
-      <WhatWeDo />
-      <FeaturedWork />
-      <WhyJulTech />
       <SectionHowCustomersFind />
-      <SectionSeoAeoGeo />
-      <SectionFourSystem />
-      <SectionLocalSeoFaq />
-      <SectionCTA />
+      {/* Gold line divider */}
+      <div className="w-full" style={{ borderTop: "1px solid rgba(212,175,55,0.35)", background: "linear-gradient(to bottom, rgba(212,175,55,0.08), transparent)", height: "80px" }} />
+      <VisibilityOutcomeSection />
+
+      <FAQSection />
     </main>
   );
 }

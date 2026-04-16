@@ -17,7 +17,7 @@ const posts: BlogCardProps[] = [
     excerpt: "How businesses are found and chosen in the AI era...",
   },
   {
-    title: "Multilingual Optimization — The Hidden Growth Lever",
+    title: "Bilingual Optimization — The Hidden Growth Lever",
     slug: "multilingual-optimization",
     date: "April 12, 2026",
     excerpt:

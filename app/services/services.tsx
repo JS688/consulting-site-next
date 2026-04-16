@@ -44,7 +44,7 @@ const services = [
     href: "/about",
     icon: Languages,
     eyebrow: "Trust",
-    title: "Multilingual Authority",
+    title: "Bilingual Authority",
     description:
       "A brand story backed by language skill, international experience, and business strategy.",
     points: [

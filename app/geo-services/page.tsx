@@ -98,7 +98,7 @@ export default function GeoServicesPage() {
         <div className="mt-8 space-y-4 text-zinc-300">
           <p>• Content structured for AI recommendation systems</p>
           <p>• Strong authority signals across your website</p>
-          <p>• Multilingual visibility for broader market reach</p>
+          <p>• Bilingual visibility for broader market reach</p>
           <p>• Clear positioning that supports AI understanding</p>
         </div>
 
@@ -113,7 +113,7 @@ export default function GeoServicesPage() {
             AEO Services
           </a>
           <a href="/multilingual-web-design" className="text-[#d4af37]">
-            Multilingual Web Design
+            Bilingual Web Design
           </a>
         </div>
 

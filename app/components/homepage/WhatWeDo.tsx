@@ -34,12 +34,9 @@ export default function WhatWeDo() {
           className="max-w-3xl"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">What We Do</p>
-          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            We create digital systems that go beyond aesthetics.
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl text-center">
+             Built to perform, scale, and stand out.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-zinc-300">
-            Built to perform, scale, and stand out.
-          </p>
         </motion.div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">

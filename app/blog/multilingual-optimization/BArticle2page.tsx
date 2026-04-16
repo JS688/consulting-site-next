@@ -2,11 +2,11 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 export default function Page() {
   return (
     <BlogPostLayout
-      title="Multilingual Optimization — The Hidden Growth Lever"
+      title="Bilingual Optimization — The Hidden Growth Lever"
       date="April 12, 2026"
     >
       <p>
-        Multilingual optimization isn’t just translation — it’s a growth engine.
+        Bilingual optimization isn’t just translation — it’s a growth engine.
         When your content speaks English, Spanish, Portuguese, and Russian, your
         visibility multiplies across markets, cultures, and AI systems.
       </p>

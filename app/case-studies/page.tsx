@@ -21,21 +21,11 @@ export default function CaseStudiesPage() {
       accent: "from-[#f6c21a]/35 via-[#7a6518]/20 to-transparent",
       panel: "from-zinc-900 via-zinc-950 to-black",
     },
-    {
-      slug: "nova-ai",
-      title: "AI Nova Solutions",
-      subtitle: "A bold and luxury digital identity for an AI-first brand",
-      tags: ["Brand Identity", "Web Experience", "Motion"],
-      eyebrow: "AI Identity",
-      accent: "from-white/20 via-[#f6c21a]/20 to-transparent",
-      panel: "from-zinc-950 via-black to-zinc-900",
-    },
   ];
 
   const quickLinks = [
     { href: "/services", label: "Solutions" },
     { href: "/case-studies/jultech", label: "JulTech Transformation" },
-    { href: "/case-studies/nova-ai", label: "AI Nova Solutions" },
   ];
 
   return (

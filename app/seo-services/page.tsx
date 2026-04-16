@@ -121,7 +121,7 @@ export default function SeoServicesPage() {
 
             <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
               <h3 className="text-lg font-semibold text-white">
-                Multilingual Growth
+                Bilingual Growth
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-300">
                 Expand reach across languages and markets with SEO built for international visibility.
@@ -140,7 +140,7 @@ export default function SeoServicesPage() {
               GEO Services
             </a>
             <a href="/multilingual-web-design" className="text-[#d4af37]">
-              Multilingual Web Design
+              Bilingual Web Design
             </a>
           </div>
         </section>

@@ -23,21 +23,13 @@ export default function EsHomePage() {
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-400 md:text-xl">
             Cada día, los clientes encuentran, confían y eligen negocios basándose en lo que ven en Google y sistemas de IA. Asegúrate de que tu negocio sea parte de esa decisión.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex items-center justify-center">
             <Link
-              href="/free-appraisal"
-              className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-7 py-4 text-sm font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(212,175,55,0.35)]"
+              href="/15-min-strategy-call"
+              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-[rgba(30,40,60,0.45)] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-[rgba(36,48,72,0.58)]"
             >
-              Obtén tu Auditoría Gratuita →
+              Agenda una llamada estratégica
             </Link>
-            <a
-              href="https://calendly.com/jultech-ai/new-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-[#d4af37]/80 transition-colors hover:text-[#d4af37]"
-            >
-              o agenda una llamada estratégica
-            </a>
           </div>
         </div>
       </section>
@@ -108,24 +100,16 @@ export default function EsHomePage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
               En 24–48 horas recibes un análisis claro de tu visibilidad actual y los pasos para mejorarla. Sin compromiso.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-10 flex items-center justify-center">
               <Link
-                href="/free-appraisal"
-                className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-7 py-4 text-sm font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(212,175,55,0.35)]"
+                href="/15-min-strategy-call"
+                className="inline-flex items-center justify-center rounded-full border border-white/40 bg-[rgba(30,40,60,0.45)] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-[rgba(36,48,72,0.58)]"
               >
-                Obtén tu Auditoría Gratuita →
+                Agenda una llamada estratégica
               </Link>
-              <a
-                href="https://calendly.com/jultech-ai/new-meeting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-[#d4af37]/80 transition-colors hover:text-[#d4af37]"
-              >
-                o agenda una llamada estratégica
-              </a>
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              Sin obligación. Cada auditoría es revisada personalmente.
+              Sin obligación. Cada llamada es revisada personalmente.
             </p>
           </div>
         </div>

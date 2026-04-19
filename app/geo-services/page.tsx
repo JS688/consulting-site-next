@@ -140,21 +140,15 @@ export default function GeoServicesPage() {
           </h2>
 
           <p className="mt-4 text-zinc-300">
-            Start a project or request a free audit to see how GEO can improve your visibility in AI-driven discovery.
+            Start a project to see how GEO can improve your visibility in AI-driven discovery.
           </p>
 
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-6 flex items-center justify-center">
             <a
               href="/contact"
               className="rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
             >
               Start a Project
-            </a>
-            <a
-              href="/free-audit"
-              className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
-            >
-              Get Free Audit
             </a>
           </div>
         </div>

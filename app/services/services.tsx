@@ -185,21 +185,15 @@ export default function ServicesPage() {
               Ready to build the right system for your brand?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              Start with a project or request a free audit, and we will map the best path for your goals, market, and language needs.
+              Start with a project, and we will map the best path for your goals, market, and language needs.
             </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex items-center justify-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
               >
                 Start a Project
-              </Link>
-              <Link
-                href="/free-audit"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
-              >
-                Get Free Audit
               </Link>
             </div>
           </div>

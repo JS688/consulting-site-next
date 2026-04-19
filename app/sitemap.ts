@@ -6,26 +6,18 @@ import { getAbsoluteUrl } from "../lib/site";
 const staticRoutes = [
   "",
   "/about",
-  "/about/viewpoint",
-  "/aeo-services",
   "/blog",
   "/case-studies",
   "/case-studies/jultech",
   "/case-studies/nova-ai",
   "/contact",
+  "/15-min-strategy-call",
   "/free-appraisal",
-  "/geo-services",
   "/legal/privacy",
   "/legal/terms",
-  "/multilingual-web-design",
+  "/one-hour-consultation",
   "/privacy",
-  "/seo-services",
   "/services",
-  "/services/business",
-  "/services/e-commerce",
-  "/services/landing-pages",
-  "/services/portfolio",
-  "/web-design",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

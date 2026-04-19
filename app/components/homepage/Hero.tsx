@@ -1,7 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+
+const shortConsultationUrl = "/strategy-call/15-min";
+const consultationUrl = "/strategy-call/1-hour";
+type HoverMode = "quick" | "full" | null;
 
 const headerItemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -23,6 +29,8 @@ const containerVariants: Variants = {
 };
 
 export default function Hero() {
+  const [hoverMode, setHoverMode] = useState<HoverMode>(null);
+
   return (
     <section className="relative overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
@@ -35,127 +43,141 @@ export default function Hero() {
         <div className="absolute inset-0 bg-linear-to-b from-black/25 via-black/55 to-black" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-10 pt-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-24 lg:pb-12 lg:pt-16 xl:gap-28">
-        <motion.div
-          variants={headerItemVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center lg:justify-self-start lg:pr-6 lg:text-left"
-        >
-          <motion.h1
-            variants={headerItemVariants}
-            className="mx-auto max-w-4xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:mx-0 lg:max-w-3xl lg:text-5xl"
-          >
-            <span className="relative inline-block w-full">
-              <span className="absolute inset-0 bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] opacity-15 blur-[18px]" />
-              <span className="relative inline-block text-[#d4af37] w-full">
-                  <span className="animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent text-center w-full block text-4xl sm:text-5xl lg:text-5xl font-large tracking-[0.08em]">
-                  MULTIPLY YOUR WEBSITE IMPACT
-                </span>
-                <span className="block h-1 sm:h-3 lg:h-2"></span>
-                <span className="animate-[shine_6s_linear_infinite] bg-[linear-gradient(110deg,#d4af37,#f5df9a,#d4af37)] bg-size-[200%_100%] bg-clip-text text-transparent text-center w-full block text-2xl sm:text-3xl lg:text-3xl font-normal mt-8">
-                  Rank on Google. Get chosen by AI.
-                </span>
-              </span>
-            </span>
-          </motion.h1>
-
-          <motion.p
-            variants={headerItemVariants}
-            className="mx-auto mt-14 mb-10 max-w-3xl text-xl leading-9 text-gray-300 sm:text-2xl font-normal"
-          >
-            Built for businesses that lead — not compete — in search and AI. Transform your website into an intelligent system that attracts and converts qualified customers.
-          </motion.p>
-
-
-          <motion.div
-            variants={headerItemVariants}
-            className="mt-14 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
-          >
-            <Link
-              href="/free-appraisal"
-              className="inline-flex items-center justify-center rounded-full border border-yellow-400 bg-yellow-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-300 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)]"
+      <div className="relative mx-auto min-h-[calc(100vh-5rem)] max-w-7xl px-6 pb-4 pt-4 lg:pt-8">
+        <div className="w-full grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+          <div className="max-w-xl space-y-8 pt-2 pb-4 text-left">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="font-bold leading-tight text-white"
             >
-              Get Free Audit
-            </Link>
-            <a
-              href="https://calendly.com/jultech-ai/new-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 hover:border-white/35"
+              <span className="block text-3xl sm:text-4xl lg:text-5xl">MULTIPLY YOUR</span>
+              <span className="block text-3xl sm:text-4xl lg:text-5xl">WEBSITE IMPACT</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-xl font-medium text-[#d4af37] lg:text-3xl"
             >
-              Book a Call Now
-            </a>
-          </motion.div>
+              Rank on Google. Get chosen by AI.
+            </motion.p>
 
-          <motion.p
-            variants={headerItemVariants}
-            className="mt-4 text-xs text-zinc-500"
-          >
-            No guesswork. Just measurable results.
-          </motion.p>
-
-          <div className="mt-8 flex flex-row items-center text-xl sm:text-2xl lg:text-2xl font-normal text-[#d4af37] w-full">
-            <motion.span
-              variants={headerItemVariants}
-              initial="hidden"
-              animate="visible"
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className=""
+              className="text-base text-white/60 md:whitespace-nowrap"
             >
-              Be found.
-            </motion.span>
-            <motion.span
-              variants={headerItemVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.5 }}
-              className="ml-2"
-            >
-              Be trusted.
-            </motion.span>
-            <motion.span
-              variants={headerItemVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.8 }}
-              className="ml-2"
-            >
-              Be chosen.
-            </motion.span>
+              Built for businesses that lead-not compete-in search and AI
+            </motion.p>
+
+            <div className="space-y-6 pt-4">
+              <p className="text-xs uppercase tracking-widest text-white/40">
+                Start fast or go deeper
+              </p>
+
+              <div className="space-y-2">
+                <p className="text-sm text-white/60">
+                  Get a quick analysis
+                </p>
+
+                <Link
+                  href={shortConsultationUrl}
+                  onMouseEnter={() => setHoverMode("quick")}
+                  onMouseLeave={() => setHoverMode(null)}
+                  onFocus={() => setHoverMode("quick")}
+                  onBlur={() => setHoverMode(null)}
+                  className="group inline-flex w-full max-w-76 items-center justify-center gap-3 rounded-full border border-slate-600/40 bg-slate-800/55 px-5 py-3.5 font-semibold text-white shadow-[0_10px_24px_rgba(15,23,42,0.16)] transition hover:border-slate-500/55 hover:bg-slate-700/65"
+                >
+                  <span>Book 15-Min Call</span>
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </Link>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-sm text-white/60">
+                  Need fast results? Solve it properly.
+                </p>
+
+                <Link
+                  href={consultationUrl}
+                  onMouseEnter={() => setHoverMode("full")}
+                  onMouseLeave={() => setHoverMode(null)}
+                  onFocus={() => setHoverMode("full")}
+                  onBlur={() => setHoverMode(null)}
+                  className="group inline-flex w-full max-w-76 items-center justify-center gap-3 rounded-full border border-blue-900/60 bg-blue-950/85 px-5 py-3.5 font-semibold text-white shadow-[0_10px_24px_rgba(8,47,73,0.18)] transition hover:border-blue-800/70 hover:bg-blue-900/90"
+                >
+                  <span>Book 1-Hour Strategy Call</span>
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
           </div>
-        </motion.div>
+          <div className="mt-0 flex w-full items-start justify-end">
+            <motion.div
+              variants={headerItemVariants}
+              initial="hidden"
+              animate="visible"
+              className={`relative z-10 w-full max-w-124 transition-all duration-500 lg:max-w-160 lg:translate-x-4 xl:max-w-176 ${
+                hoverMode === "quick"
+                  ? "scale-105 brightness-110 rotate-1"
+                  : hoverMode === "full"
+                    ? "scale-110 brightness-125 rotate-3"
+                    : "scale-100 brightness-100 rotate-0"
+              }`}
+            >
+              <div
+                className={`absolute -inset-4 rounded-[2.25rem] transition-all duration-500 ${
+                  hoverMode === "quick"
+                    ? "bg-[#d4af37]/20 opacity-30 blur-2xl"
+                    : hoverMode === "full"
+                      ? "bg-[#d4af37]/40 opacity-60 blur-3xl"
+                      : "bg-[#d4af37]/6 opacity-100 blur-3xl"
+                }`}
+              />
+              <div className="relative h-72 w-full overflow-hidden rounded-[2.25rem] md:h-96 lg:h-136">
+                <div className="absolute inset-0 z-10 bg-linear-to-b from-black/40 via-black/10 to-black/70" />
+                <video
+                  src="/newtry.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover opacity-55 saturate-90"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
 
         <motion.div
           variants={headerItemVariants}
           initial="hidden"
           animate="visible"
-          className="relative lg:justify-self-end lg:pl-6"
+          className="relative mx-auto flex w-full justify-center pb-6 pt-24 text-center"
         >
-          <div className="absolute -inset-4 rounded-[2.25rem] bg-[#d4af37]/8 blur-3xl" />
-          <div className="relative h-72 w-full overflow-hidden rounded-[2.25rem] md:h-88 lg:h-102 lg:w-[min(100%,40rem)]">
-            <div className="absolute inset-0 z-10 bg-linear-to-b from-black/40 via-black/10 to-black/70" />
-            <video
-              src="/newtry.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover opacity-75 saturate-90"
-            />
+          <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-xl font-medium text-[#d4af37] sm:gap-3 sm:text-2xl lg:text-[2rem]">
+            <span>Be found.</span>
+            <span>Be trusted.</span>
+            <span>
+              Be chosen.
+              <sup className="ml-1 text-[0.45em] align-super">TM</sup>
+            </span>
           </div>
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black to-transparent" />
-
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-black to-transparent" />
       <motion.div
         variants={headerItemVariants}
         initial="hidden"
         animate="visible"
-        className="relative mx-auto max-w-4xl px-6 pb-4 text-center mt-16"
+        className="relative mx-auto mt-4 max-w-4xl px-6 pb-0 text-center"
       >
-        <div className="mx-auto mt-16 h-px w-full max-w-3xl bg-linear-to-r from-transparent via-[#d4af37]/70 to-transparent" />
+        <div className="mx-auto h-px w-full max-w-3xl bg-linear-to-r from-transparent via-[#d4af37]/70 to-transparent" />
       </motion.div>
     </section>
   );

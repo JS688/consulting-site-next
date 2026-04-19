@@ -76,72 +76,58 @@ const item = {
 
 export default function VisibilitySystemSection() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 text-white md:px-10 lg:px-16">
-      {/* Background video */}
-      <video
-        src="/section2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover opacity-50 blur-[2px]"
-      />
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.08),transparent_40%)]" />
+    <section className="bg-[#111113] text-white">
+      {/* Heading — solid background */}
+      <div className="relative px-6 pb-12 pt-24 md:px-10 lg:px-16">
 
-      <div className="relative mx-auto max-w-6xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={container}
-          className="text-center"
-        >
-          <motion.p
-            variants={item}
-            className="text-xs font-medium uppercase tracking-[0.35em] text-[#d4af37]/80 md:text-sm"
+        <div className="relative mx-auto max-w-6xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={container}
+            className="text-center"
           >
-            AI VISIBILITY SYSTEM
-          </motion.p>
+            <motion.h2
+              variants={item}
+              className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl"
+            >
+              Ranking alone doesn’t win
+            </motion.h2>
 
-          <motion.h2
-            variants={item}
-            className="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl"
+            <motion.p
+              variants={item}
+              className="mx-auto mt-4 text-lg leading-8 text-zinc-400 md:whitespace-nowrap md:text-xl"
+            >
+              Customers don’t just search — they ask, compare, and follow AI recommendations
+            </motion.p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Cards — solid grey background, no video */}
+      <div className="bg-[#111113] px-6 pb-16 pt-10 md:px-10 lg:px-16">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="grid gap-10 md:grid-cols-2 md:gap-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.18 } },
+            }}
           >
-            Ranking alone doesn’t win
-          </motion.h2>
-
-          <motion.p
-            variants={item}
-            className="mx-auto mt-4 text-lg leading-8 text-zinc-400 md:whitespace-nowrap md:text-xl"
-          >
-            Customers don’t just search — they ask, compare, and follow AI recommendations.
-          </motion.p>
-
-          <motion.p
-            variants={item}
-            className="mt-3 text-base font-semibold text-[#d4af37] md:text-lg"
-            style={{ textShadow: "0 0 24px rgba(212,175,55,0.6), 0 0 48px rgba(212,175,55,0.25)" }}
-          >
-            If you’re not part of that, you’re not part of the decision.
-          </motion.p>
-        </motion.div>
-
-        <div className="mt-10">
-
-          {/* 4 pillars */}
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a]">
-          <div className="grid gap-10 p-6 md:grid-cols-2 md:gap-12 md:p-10">
           {cards.map((card) => {
             const Icon = card.icon;
 
             return (
               <motion.article
                 key={card.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 28, scale: 0.97 },
+                  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: "easeOut" } },
+                }}
                 whileHover={{ y: -6 }}
                 className="group relative overflow-hidden rounded-3xl border border-[#d4af37]/25 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/50 md:p-10"
                 style={{ background: card.gradient }}
@@ -181,8 +167,18 @@ export default function VisibilitySystemSection() {
               </motion.article>
             );
           })}
-          </div>
-          </div>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
+            className="mx-auto mt-14 max-w-4xl text-center text-base font-semibold text-[#d4af37] md:mt-16 md:text-lg"
+            style={{ textShadow: "0 0 24px rgba(212,175,55,0.6), 0 0 48px rgba(212,175,55,0.25)" }}
+          >
+Become a part of the decision in the new AI era of customer choice
+          </motion.p>
         </div>
       </div>
     </section>

@@ -11,8 +11,15 @@ export default function HomePage() {
       <Hero />
       <SectionHowCustomersFind />
       {/* Gold line divider */}
-      <div className="w-full" style={{ borderTop: "1px solid rgba(212,175,55,0.35)", background: "linear-gradient(to bottom, rgba(212,175,55,0.08), transparent)", height: "80px" }} />
+
+      <div className="w-full bg-[#111113] pb-4 pt-0">
+        <div className="h-0.5 w-full bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.25)_15%,rgba(255,255,255,0.25)_85%,transparent)]" />
+      </div>
       <VisibilityOutcomeSection />
+
+      <div className="w-full bg-black pb-4 pt-0">
+        <div className="h-0.5 w-full bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.25)_15%,rgba(255,255,255,0.25)_85%,transparent)]" />
+      </div>
 
       <FAQSection />
     </main>

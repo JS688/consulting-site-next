@@ -211,17 +211,9 @@ export default function FreeAppraisalPage() {
           <p className="mt-2 text-sm text-zinc-400">
             Prefer to talk? Pick a time and we'll review your visibility together.
           </p>
-          <button
-            type="button"
-            onClick={() =>
-              (window as any).Calendly?.initPopupWidget({
-                url: "https://calendly.com/jultech-ai/new-meeting",
-              })
-            }
-            className="jultech-calendly-btn mt-6"
-          >
+          <Link href="/15-min-strategy-call" className="jultech-calendly-btn mt-6 inline-block">
             Book a Strategy Call →
-          </button>
+          </Link>
         </div>
 
       </div>

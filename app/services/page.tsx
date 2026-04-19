@@ -1,263 +1,154 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Globe2,
-  LayoutPanelTop,
-  MessageSquareText,
-  Search,
-  Sparkles,
-  Languages,
-  BadgeCheck,
-} from "lucide-react";
-
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const services = [
-  {
-    href: "/web-design",
-    icon: LayoutPanelTop,
-    eyebrow: "Design",
-    title: "Web Design",
-    description: "Custom-coded websites built for performance, clarity, and conversion.",
-    points: [
-      "Premium design and UX",
-      "Fast and scalable structure",
-      "Built for SEO and AI visibility",
-    ],
-    accent: false,
-  },
-  {
-    href: "/seo-services",
-    icon: Search,
-    eyebrow: "Visibility",
-    title: "SEO",
-    description: "Rank on Google and attract the right audience through structured content.",
-    points: [
-      "Technical SEO",
-      "Keyword strategy",
-      "Search intent optimization",
-    ],
-    accent: false,
-  },
-  {
-    href: "/aeo-services",
-    icon: Sparkles,
-    eyebrow: "AI Answers",
-    title: "AEO",
-    description: "Structure your content so AI systems can use it as a direct answer.",
-    points: [
-      "Answer-focused content",
-      "AI-friendly structure",
-      "Schema and clarity optimization",
-    ],
-    accent: false,
-  },
-  {
-    href: "/geo-services",
-    icon: Globe2,
-    eyebrow: "Recommendations",
-    title: "GEO",
-    description: "Position your business to be recommended by ChatGPT and modern AI systems.",
-    points: [
-      "Authority signals",
-      "Content clarity",
-      "AI recommendation positioning",
-    ],
-    accent: false,
-  },
-  {
-    href: "/multilingual-web-design",
-    icon: Languages,
-    eyebrow: "Growth",
-    title: "Bilingual Growth",
-    description: "Reach new markets across languages and increase global visibility.",
-    points: [
-      "English, Spanish, Portuguese, Russian",
-      "International SEO support",
-      "Cross-market communication",
-    ],
-    accent: true,
-  },
-  {
-    href: "/about",
-    icon: Languages,
-    eyebrow: "Trust",
-    title: "Bilingual Authority",
-    description:
-      "A brand story backed by language skill, international experience, and business strategy.",
-    points: [
-      "Global perspective",
-      "Language-driven positioning",
-      "Founder credibility",
-    ],
-    accent: false,
-  },
-];
+import { SERVICE_PACKAGES } from "./servicePackages";
 
 export default function ServicesPage() {
+  const [active, setActive] = useState<string | null>(null);
+  const stairLayout = {
+    starter: {
+      wrapperClass: "max-w-[470px] sm:max-w-[510px] lg:max-w-[560px]",
+      cardClass: "min-h-[320px] lg:min-h-[350px]",
+      toneClass:
+        "border border-white/14 bg-zinc-100/6 shadow-[0_0_60px_rgba(255,255,255,0.05)]",
+    },
+    growth: {
+      wrapperClass: "max-w-[570px] sm:max-w-[620px] lg:max-w-[690px]",
+      cardClass: "min-h-[335px] lg:min-h-[365px]",
+      toneClass:
+        "border border-blue-300/22 bg-blue-500/8 shadow-[0_0_60px_rgba(59,130,246,0.08)]",
+    },
+    premium: {
+      wrapperClass: "max-w-[670px] sm:max-w-[740px] lg:max-w-[840px]",
+      cardClass: "min-h-[350px] lg:min-h-[395px]",
+      toneClass:
+        "border border-yellow-300/22 bg-yellow-400/8 shadow-[0_0_70px_rgba(245,197,24,0.09)]",
+    },
+  };
+
   return (
-    <main className="bg-[#030303] text-white">
-      <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-12 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_28%),linear-gradient(180deg,rgba(12,12,12,1),rgba(3,3,3,1))]" />
-        <div className="absolute inset-0 -z-10 opacity-[0.14] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px]" />
+    <main className="relative overflow-x-hidden bg-[#111111] pb-16 pt-6 text-white sm:pb-20 sm:pt-8 md:pb-24 md:pt-10">
+      <h1 className="sr-only">Services</h1>
 
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/3 px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
-          <motion.div
-            className="mx-auto max-w-4xl text-center"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.45 }}
-          >
-            <motion.div
-              variants={itemVariants}
-              className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#d4af37]/20 bg-black/35 px-4 py-2 text-sm text-zinc-300"
-            >
-              <BadgeCheck className="h-4 w-4 text-[#d4af37]" />
-              The JulTech Visibility System™
-            </motion.div>
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0, x: 48 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.06, duration: 0.5, ease: "easeOut" }}
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      >
+        <video
+          src="/right%20services.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover object-right opacity-[0.14]"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-[#111111] via-[#111111]/78 to-[#111111]/38" />
+      </motion.div>
 
-            <motion.h1
-              variants={itemVariants}
-              className="mx-auto mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-[#d4af37] sm:text-5xl lg:text-6xl"
-            >
-              Everything You Need to Get Found, Answered, and Chosen
-            </motion.h1>
+      <motion.div
+        aria-hidden
+        animate={{ opacity: [0.08, 0.15, 0.08], x: [0, 156, 0], y: [0, 36, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-[81%] top-0 w-7xl -translate-x-1/2 rounded-full bg-yellow-400/6 blur-3xl lg:-bottom-80 xl:-bottom-96 2xl:-bottom-112"
+      />
 
-            <motion.p
-              variants={itemVariants}
-              className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-300"
-            >
-              We build premium websites and visibility systems that help businesses rank on Google, appear in AI answers, and expand across languages and markets.
-            </motion.p>
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.32, ease: "easeOut" }}
+          className="max-w-3xl space-y-4"
+        >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-yellow-400/80">
+            Services
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+            How we move you forward
+          </h2>
+          <p className="text-sm leading-7 text-zinc-300 sm:text-base md:text-lg">
+            We focus on what&apos;s holding you back and move you forward with clarity and precision.
+          </p>
+        </motion.div>
 
-            <motion.p
-              variants={itemVariants}
-              className="mx-auto mt-4 max-w-3xl text-sm text-zinc-400"
-            >
-              Based in the U.S., serving clients across the U.S., Latin America, and Europe in multiple languages.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+        <div className="flex flex-col gap-8 lg:gap-10">
+          {SERVICE_PACKAGES.map((panel, index) => {
+            const layout = stairLayout[panel.slug];
 
-      <section className="px-4 pb-16 sm:px-6 lg:px-12 lg:pb-20">
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-linear-to-b from-white/5 to-white/3 px-6 py-10 shadow-[0_24px_90px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
-              What we offer
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              A system built for modern search and AI
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              Each service works as part of one larger framework: design, search visibility, AI answers, recommendations, and multilingual expansion.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
-                <motion.article
-                  key={service.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
-                  className={[
-                    "group relative overflow-hidden rounded-[1.75rem] border p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] transition-all duration-300",
-                    service.accent
-                      ? "border-[#d4af37]/20 bg-white/4.5"
-                      : "border-white/10 bg-black/25",
-                  ].join(" ")}
+            return (
+              <Link
+                key={panel.slug}
+                href={`/services/${panel.slug}`}
+                className={`block w-full ${layout.wrapperClass}`}
+                onMouseEnter={() => setActive(panel.slug)}
+                onMouseLeave={() => setActive(null)}
+                onFocus={() => setActive(panel.slug)}
+                onBlur={() => setActive(null)}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.32, ease: "easeOut" }}
+                  className={`group relative flex h-full cursor-pointer overflow-hidden rounded-4xl p-6 backdrop-blur-sm transition-all duration-300 ease-out sm:p-8 ${layout.cardClass} ${layout.toneClass} ${panel.slug === "starter" ? "hover:-translate-y-1" : "hover:-translate-y-2"} ${active === panel.slug ? `${panel.selectedCardClass} scale-[1.02]` : ""} ${active && active !== panel.slug ? "scale-[0.985] opacity-60" : ""}`}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/4">
-                      <Icon className="h-5 w-5 text-[#d4af37]" />
-                    </div>
-                    <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500">
-                      {service.eyebrow}
-                    </p>
-                  </div>
+                  <div
+                    className={`pointer-events-none absolute blur-2xl transition-opacity duration-300 ${panel.glowClass} ${panel.slug === "starter" ? "left-[40%] top-1/2 h-64 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full" : "inset-0 rounded-4xl"} ${active === panel.slug ? "opacity-100" : "opacity-45"}`}
+                  />
+                  <div className="absolute inset-0 bg-linear-to-r from-white/2 via-transparent to-transparent" />
 
-                  <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white">
-                    {service.title}
-                  </h3>
+                  <div className="relative flex min-h-36 flex-1 flex-col gap-6 sm:min-h-40">
+                    <div className="flex flex-col gap-5 md:gap-6">
+                      <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between md:gap-6">
+                        <div className="flex items-center gap-4">
+                          <span className={`h-10 w-3 rounded-full ${panel.accentClass}`} />
+                          <div className="space-y-2">
+                            <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/55">
+                              {panel.label}
+                            </p>
+                            <h2
+                              className={`text-2xl font-semibold tracking-tight transition-all duration-300 sm:text-3xl ${active === panel.slug ? "text-white" : "text-white/80"}`}
+                            >
+                              {panel.title}
+                            </h2>
+                          </div>
+                        </div>
 
-                  <p className="mt-3 text-sm leading-7 text-zinc-300">
-                    {service.description}
-                  </p>
-
-                  <div className="mt-6 space-y-3 border-t border-white/10 pt-5">
-                    {service.points.map((point) => (
-                      <div key={point} className="flex items-start gap-3 text-sm text-zinc-300">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
-                        <span>{point}</span>
+                        <div className="flex flex-wrap items-center gap-4 md:justify-end">
+                          <span
+                            className={`rounded-full px-6 py-3 text-sm font-semibold ${panel.pillTextClass ?? "text-white"} ${panel.primaryPillClass}`}
+                          >
+                            {panel.timeline}
+                          </span>
+                        </div>
                       </div>
-                    ))}
+
+                      <p className="max-w-3xl text-sm leading-7 text-zinc-300 sm:text-base">
+                        {panel.overviewDescription}
+                      </p>
+                    </div>
+
+                    <ul className="grid gap-2.5 text-sm text-zinc-200 sm:grid-cols-2 sm:text-[0.95rem]">
+                      {panel.bullets.map((item) => (
+                        <li
+                          key={item}
+                          className="w-full whitespace-nowrap rounded-xl border border-white/8 bg-black/45 px-2.5 py-2 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  <div className="mt-6 flex items-center gap-3">
-                    <Link
-                      href={service.href}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#d4af37] px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-                    >
-                      Learn more <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 pb-20 sm:px-6 lg:px-12 lg:pb-24">
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-[#d4af37]/20 bg-[#0a0a0a] px-6 py-12 shadow-[0_35px_140px_rgba(0,0,0,0.55)] sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
-              Next step
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
-              Ready to build the right system for your brand?
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              Start with a project or request a free audit, and we will map the best path for your goals, market, and language needs.
-            </p>
-
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-              >
-                Start a Project
+                </motion.div>
               </Link>
-              <Link
-                href="/free-audit"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
-              >
-                Get Free Audit
-              </Link>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      </section>
+
+      </div>
     </main>
   );
 }

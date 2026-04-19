@@ -5,72 +5,108 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    q: "Is the audit really free?",
-    a: "Yes. The AI Visibility Audit is completely free and designed to show how your website performs across search engines and AI systems like ChatGPT. It highlights where your business may be missing visibility and how to improve it.",
+    question: "Is the audit really free?",
+    answer:
+      "Yes. The AI Visibility Audit is completely free and designed to show where your business is missing visibility across search and AI.",
   },
   {
-    q: "What happens after I submit my website?",
-    a: "After you submit your website, we analyze your visibility across Google (SEO), AI answers (AEO), and AI recommendations (GEO). Within 24–48 hours, you receive a breakdown of your current performance and key opportunities to improve.",
+    question: "What happens after I submit my website?",
+    answer:
+      "You’ll receive a breakdown of your visibility and key opportunities within 24–48 hours.",
   },
   {
-    q: "Do I need technical knowledge?",
-    a: "No. You don't need any technical or SEO experience. All insights are explained clearly, including how your website appears in search engines and AI tools, with simple next steps you can follow.",
+    question: "Do I need technical knowledge?",
+    answer:
+      "No. Everything is explained clearly, with actionable steps you can understand and apply.",
   },
   {
-    q: "What if I want help implementing this?",
-    a: "If you want help improving your SEO, AEO, or GEO visibility, you can book a strategy call. We'll walk through how to apply these improvements and turn your website into a consistent client acquisition system.",
+    question: "What if I want help implementing this?",
+    answer:
+      "You can book a strategy call and we’ll walk through how to apply these improvements to your business.",
   },
   {
-    q: "How long does the call take?",
-    a: "The AI Visibility Strategy Call takes about 15 minutes. It's focused on reviewing your visibility across search and AI systems and outlining clear next steps.",
+    question: "How long does the call take?",
+    answer:
+      "About 15 minutes — focused, practical, and tailored to your business.",
   },
   {
-    q: "Do I need SEO, AEO, and GEO together?",
-    a: "Yes. SEO helps your business get found on Google, AEO helps your content become the answer in AI systems, and GEO helps your business get recommended in AI-generated results. Together, they form a complete visibility system.",
+    question: "Do I need SEO, AEO, and GEO together?",
+    answer:
+      "Yes. SEO helps you get found, AEO helps you become the answer, and GEO helps you get chosen by AI systems.",
   },
   {
-    q: "Can my website appear in AI answers like ChatGPT?",
-    a: "Yes. With the right structure, content, and optimization, your website can appear in AI-generated answers. This is part of Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), which help AI systems understand and recommend your business.",
+    question: "Can my website appear in AI answers like ChatGPT?",
+    answer:
+      "Yes. With the right structure, content, and optimization, your website can appear in AI-generated answers.",
   },
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-black px-6 py-24 text-white">
-      <div className="mx-auto max-w-4xl text-center">
-        <h2 className="text-4xl font-semibold md:text-5xl">
-          Frequently Asked Questions
-        </h2>
-        <p className="mt-4 text-zinc-400">
-          Clear answers to help you move forward with confidence.
-        </p>
+    <section className="bg-[#1b1d22] px-6 py-24 text-white md:px-10 lg:px-16">
+      <div className="mx-auto max-w-5xl">
+        <div className="text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-white">
+            Frequently Asked Questions (FAQ)
+          </p>
+        </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-3xl space-y-4">
-        {faqs.map((faq, i) => (
-          <div
-            key={i}
-            className="rounded-2xl border border-white/10 bg-white/3 transition-all"
-          >
-            <button
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="flex w-full items-center justify-between px-6 py-5 text-left"
-            >
-              <span className="font-medium">{faq.q}</span>
-              <ChevronDown
-                className={`shrink-0 transition-transform ${openIndex === i ? "rotate-180" : ""}`}
-              />
-            </button>
+      <div className="mx-auto mt-14 max-w-4xl space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
 
-            {openIndex === i && (
-              <div className="px-6 pb-6 text-zinc-400">
-                {faq.a}
+          return (
+            <button
+              key={faq.question}
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className={[
+                "group w-full rounded-3xl border p-0 text-left transition-all duration-300",
+                "bg-white/3 hover:border-blue-400/30",
+                isOpen
+                  ? "border-blue-400/40 shadow-[0_0_28px_rgba(59,130,246,0.16)]"
+                  : "border-white/10",
+              ].join(" ")}
+            >
+              <div className="px-6 py-5 md:px-7">
+                <div className="flex items-center gap-4">
+                  <span
+                    className={[
+                      "h-2.5 w-2.5 rounded-full transition-all duration-300",
+                      isOpen
+                        ? "bg-blue-400 shadow-[0_0_14px_rgba(59,130,246,0.55)]"
+                        : "bg-zinc-500",
+                    ].join(" ")}
+                  />
+                  <span className="flex-1 text-sm font-medium uppercase tracking-[0.22em] text-[#d4af37] md:text-[0.95rem]">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={[
+                      "h-5 w-5 text-[#d4af37] transition-transform duration-300",
+                      isOpen ? "rotate-180" : "",
+                    ].join(" ")}
+                  />
+                </div>
+
+                <div
+                  className={[
+                    "grid transition-all duration-300",
+                    isOpen ? "grid-rows-[1fr] pt-5" : "grid-rows-[0fr]",
+                  ].join(" ")}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pl-6 text-base leading-8 text-zinc-300 md:text-lg">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
-        ))}
+            </button>
+          );
+        })}
       </div>
     </section>
   );

@@ -8,6 +8,8 @@ import { siteUrl } from "../lib/site";
 
 import type { ReactNode } from "react";
 
+const shouldIndexSite = process.env.VERCEL_ENV !== "preview";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -46,8 +48,8 @@ export const metadata: Metadata = {
       "Premium websites, multilingual visibility, and AI-forward digital strategy for ambitious brands.",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: shouldIndexSite,
+    follow: shouldIndexSite,
   },
   category: "technology",
   verification: {

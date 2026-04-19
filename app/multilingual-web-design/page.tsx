@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Globe2, MessageSquareText, Sparkles, Languages, ChevronDown } from "lucide-react";
 
-const languages = ["English", "Spanish", "Portuguese", "Russian"];
+const languages = ["English", "Spanish"];
 
 const faqItems = [
   {
@@ -55,7 +55,7 @@ const serviceSchema = {
   areaServed: ["United States", "Latin America", "Europe"],
   serviceType: "Bilingual Web Design, SEO, AEO, GEO",
   description:
-    "Bilingual web design services built to help businesses reach English, Spanish, Portuguese, and Russian-speaking audiences across search and AI platforms.",
+    "Bilingual web design services built to help businesses reach English and Spanish-speaking audiences across search and AI platforms.",
 };
 
 const services = [
@@ -104,7 +104,7 @@ const services = [
     subtitle: "Expansion",
     desc: "Reach new markets across languages and increase global visibility.",
     points: [
-      "Spanish, Portuguese, Russian support",
+      "English and Spanish support",
       "International SEO",
       "Cross-market strategy",
     ],
@@ -124,7 +124,7 @@ export default function BilingualWebDesignPage() {
       />
 
       <div className="mx-auto max-w-7xl">
-        <div className="rounded-[2.25rem] border border-white/10 bg-white/[0.03] px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
+        <div className="rounded-[2.25rem] border border-white/10 bg-white/3 px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -194,7 +194,7 @@ export default function BilingualWebDesignPage() {
           </div>
         </div>
 
-        <section className="mt-16 rounded-[2.25rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-8 lg:p-12">
+        <section className="mt-16 rounded-[2.25rem] border border-white/10 bg-white/3 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-8 lg:p-12">
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-400">
               FAQ
@@ -238,22 +238,16 @@ export default function BilingualWebDesignPage() {
               Ready to expand into new markets?
             </h3>
             <p className="mt-3 text-sm text-zinc-300">
-              Start a project or request a free audit to see how multilingual
-              web design can help your brand grow across languages and markets.
+              Start a project to see how multilingual web design can help your
+              brand grow across languages and markets.
             </p>
 
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-6 flex items-center justify-center">
               <Link
                 href="/contact"
                 className="rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
               >
                 Start a Project
-              </Link>
-              <Link
-                href="/free-audit"
-                className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
-              >
-                Get Free Audit
               </Link>
             </div>
           </div>

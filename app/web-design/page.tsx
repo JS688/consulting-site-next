@@ -1,3 +1,5 @@
+import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
+
 export default function WebDesignPage() {
   return (
     <main className="min-h-screen bg-[#030303] text-white px-4 py-16 sm:px-6 lg:px-12">
@@ -37,6 +39,16 @@ export default function WebDesignPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto mt-16 max-w-7xl">
+        <ProjectBookingFlow
+          contextLabel="Web design project"
+          title="Tell us about your web design project"
+          description="Share what you want to build, then continue through payment and choose the best consultation time for your project."
+          sessionType="full"
+          interestLabel="Web Design"
+        />
       </section>
     </main>
   );

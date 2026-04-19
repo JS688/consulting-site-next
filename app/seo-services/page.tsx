@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
 
 const faqItems = [
   {
@@ -162,25 +163,14 @@ export default function SeoServicesPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-[2rem] border border-[#d4af37]/20 bg-[#0a0a0a] px-6 py-12 shadow-[0_35px_140px_rgba(0,0,0,0.45)] sm:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
-              Ready to Improve Your Search Visibility?
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              Start a project to see how your business can grow through stronger rankings, AI visibility, and multilingual strategy.
-            </p>
-
-            <div className="mt-8 flex items-center justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-              >
-                Start a Project
-              </a>
-            </div>
-          </div>
+        <section className="mt-16">
+          <ProjectBookingFlow
+            contextLabel="SEO project"
+            title="Tell us about your SEO project"
+            description="Share your goals, visibility challenges, and current site situation, then continue through payment and choose your consultation time."
+            sessionType="full"
+            interestLabel="SEO Services"
+          />
         </section>
       </div>
     </main>

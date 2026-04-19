@@ -83,13 +83,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
 
-        {/* SSL notice shown on every page above the footer */}
-        <section className="bg-zinc-900 px-6 py-6 text-center text-sm text-gray-400">
-          <p className="opacity-80">
-            🔒 Your data is safe and secure. This website is protected with industry-standard SSL encryption.
-          </p>
-        </section>
-
         {/* Footer stays at the bottom */}
         <Footer />
         {/* Calendly popup widget */}

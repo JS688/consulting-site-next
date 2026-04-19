@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
 
 const faqItems = [
   {
@@ -134,24 +135,15 @@ export default function GeoServicesPage() {
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold text-white">
-            Ready to Get Chosen by AI?
-          </h2>
-
-          <p className="mt-4 text-zinc-300">
-            Start a project to see how GEO can improve your visibility in AI-driven discovery.
-          </p>
-
-          <div className="mt-6 flex items-center justify-center">
-            <a
-              href="/contact"
-              className="rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-            >
-              Start a Project
-            </a>
-          </div>
-        </div>
+        <section className="mt-16">
+          <ProjectBookingFlow
+            contextLabel="GEO project"
+            title="Tell us about your GEO project"
+            description="Share where your brand needs stronger AI visibility, then continue through payment and choose your consultation time."
+            sessionType="full"
+            interestLabel="GEO Services"
+          />
+        </section>
       </div>
     </main>
   );

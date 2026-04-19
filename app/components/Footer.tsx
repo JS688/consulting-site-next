@@ -19,17 +19,6 @@ export default function Footer() {
               <i className="ri-mail-line text-lg"></i>
             </a>
 
-            {/* Phone */}
-            <a
-              href="tel:+18033861672"
-              title="Call JulTech at plus 1 803 386 1672"
-              aria-label="Call JulTech at plus 1 803 386 1672"
-              className="inline-flex items-center gap-2 hover:text-yellow-400 transition"
-            >
-              <i className="ri-phone-line text-lg"></i>
-              <span className="text-sm">+1 803 386 1672</span>
-            </a>
-
             {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/julia-sokolsky/"

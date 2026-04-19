@@ -4,10 +4,8 @@ import { ReactNode, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ChevronDown,
   Code2,
   Globe2,
-  Phone,
   Smartphone,
   Sparkles,
 } from "lucide-react";
@@ -21,20 +19,6 @@ const PROJECT_TYPE_OPTIONS = [
   { value: "Web App", label: "Web App", icon: Globe2 },
   { value: "Software Development", label: "Software Development", icon: Code2 },
   { value: "Other", label: "Other", icon: Sparkles },
-] as const;
-
-const TIMELINE_OPTIONS = [
-  "ASAP",
-  "1-3 months",
-  "3-6 months",
-  "6+ months",
-] as const;
-
-const BUDGET_OPTIONS = [
-  "Less than $5k",
-  "$5k - $10k",
-  "$10k - $25k",
-  "$25k+",
 ] as const;
 
 type ProjectBookingFlowProps = {
@@ -60,8 +44,6 @@ export default function ProjectBookingFlow({
   const [company, setCompany] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [details, setDetails] = useState("");
-  const [timeline, setTimeline] = useState("");
-  const [budget, setBudget] = useState("");
 
   const canContinue =
     businessName.trim().length > 0 &&
@@ -213,24 +195,6 @@ export default function ProjectBookingFlow({
               />
             </FloatingField>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <SelectField
-                id="timeline"
-                label="Estimated Timeline"
-                value={timeline}
-                onChange={setTimeline}
-                options={TIMELINE_OPTIONS}
-              />
-
-              <SelectField
-                id="budget"
-                label="Budget Range"
-                value={budget}
-                onChange={setBudget}
-                options={BUDGET_OPTIONS}
-              />
-            </div>
-
             <FloatingField label="Website URL (optional)" htmlFor="website-url">
               <input
                 id="website-url"
@@ -242,15 +206,7 @@ export default function ProjectBookingFlow({
             </FloatingField>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-            <a
-              href="tel:+18033861672"
-              className="inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/85 transition hover:border-white/20 hover:bg-white/8"
-            >
-              <Phone className="h-4 w-4 text-blue-300" />
-              +1 803 386 1672
-            </a>
-
+          <div className="mt-6 flex justify-end">
             <button
               type="submit"
               disabled={!canContinue}
@@ -296,44 +252,6 @@ function FloatingField({
           {helperText}
         </p>
       ) : null}
-    </div>
-  );
-}
-
-function SelectField({
-  id,
-  label,
-  value,
-  onChange,
-  options,
-}: {
-  id: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  options: readonly string[];
-}) {
-  return (
-    <div className="relative">
-      <select
-        id={id}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-      >
-        <option value="" className="bg-slate-950 text-white/40">
-          
-        </option>
-        {options.map((option) => (
-          <option key={option} value={option} className="bg-slate-950">
-            {option}
-          </option>
-        ))}
-      </select>
-      <label htmlFor={id} className="pointer-events-none absolute left-5 top-3 text-sm text-white/70">
-        {label}
-      </label>
-      <ChevronDown className="pointer-events-none absolute right-5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/45" />
     </div>
   );
 }

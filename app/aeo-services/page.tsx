@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
 
 const faqItems = [
   {
@@ -121,24 +121,15 @@ export default function AeoServicesPage() {
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold text-white">
-            Ready to Become the Answer?
-          </h2>
-
-          <p className="mt-4 text-zinc-300">
-            Start with a project to see how AEO can improve your visibility across AI platforms.
-          </p>
-
-          <div className="mt-6 flex items-center justify-center">
-            <a
-              href="/contact"
-              className="rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-            >
-              Start a Project
-            </a>
-          </div>
-        </div>
+        <section className="mt-16">
+          <ProjectBookingFlow
+            contextLabel="AEO project"
+            title="Tell us about your AEO project"
+            description="Share how you want your business to appear in AI answers, then continue through payment and choose the right consultation time."
+            sessionType="full"
+            interestLabel="AEO Services"
+          />
+        </section>
       </div>
     </main>
   );

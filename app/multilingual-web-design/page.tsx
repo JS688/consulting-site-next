@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Globe2, MessageSquareText, Sparkles, Languages, ChevronDown } from "lucide-react";
+import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
 
 const languages = ["English", "Spanish"];
 
@@ -233,24 +234,16 @@ export default function BilingualWebDesignPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 max-w-4xl text-center">
-            <h3 className="text-lg font-semibold text-white">
-              Ready to expand into new markets?
-            </h3>
-            <p className="mt-3 text-sm text-zinc-300">
-              Start a project to see how multilingual web design can help your
-              brand grow across languages and markets.
-            </p>
+        </section>
 
-            <div className="mt-6 flex items-center justify-center">
-              <Link
-                href="/contact"
-                className="rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e3c15f]"
-              >
-                Start a Project
-              </Link>
-            </div>
-          </div>
+        <section className="mt-16">
+          <ProjectBookingFlow
+            contextLabel="Multilingual web design project"
+            title="Tell us about your multilingual web design project"
+            description="Share the languages, markets, and goals you want to support, then continue through payment and choose the best consultation time."
+            sessionType="full"
+            interestLabel="Multilingual Web Design"
+          />
         </section>
       </div>
     </main>

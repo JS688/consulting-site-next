@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
-  ChevronDown,
   Globe,
   Layers3,
   Laptop,
   Mail,
   Phone,
+  ShieldCheck,
   Sparkles,
   Smartphone,
 } from "lucide-react";
@@ -27,9 +27,6 @@ const PROJECT_TYPES = [
   { label: "SEO / Google", icon: Layers3 },
   { label: "AI Solutions", icon: Laptop },
 ] as const;
-
-const TIMELINE_OPTIONS = ["ASAP", "1-2 weeks", "2-4 weeks", "1-2 months", "2+ months"] as const;
-const BUDGET_OPTIONS = ["Under $5k", "$5k - $10k", "$10k - $25k", "$25k - $50k", "$50k+"] as const;
 
 type FormState = {
   name: string;
@@ -108,8 +105,6 @@ function FloatingField({
 
 export default function ContactForm() {
   const [selectedType, setSelectedType] = useState<ProjectTypeLabel>(PROJECT_TYPES[0].label);
-  const [timeline, setTimeline] = useState("");
-  const [budget, setBudget] = useState("");
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
@@ -162,8 +157,6 @@ export default function ContactForm() {
         company: "",
         details: "",
       });
-      setTimeline("");
-      setBudget("");
       setSelectedType(PROJECT_TYPES[0].label);
       setStatus("sent");
     } catch (error) {
@@ -196,7 +189,7 @@ export default function ContactForm() {
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 shadow-[0_0_40px_rgba(59,130,246,0.08)] backdrop-blur-xl"
           >
             <Sparkles className="h-4 w-4 text-blue-300" />
-            Premium contact experience
+            Private consultation request
           </motion.div>
 
           <motion.h1
@@ -292,56 +285,6 @@ export default function ContactForm() {
                 required
               />
 
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="relative">
-                  <select
-                    aria-label="Estimated Timeline"
-                    name="timeline"
-                    value={timeline}
-                    onChange={(event) => {
-                      setTimeline(event.target.value);
-                      resetStatusIfNeeded();
-                    }}
-                    className="peer w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                  >
-                    <option value="">Select a timeline</option>
-                    {TIMELINE_OPTIONS.map((option) => (
-                      <option key={option} value={option} className="bg-slate-950">
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <label className="pointer-events-none absolute left-5 top-3 text-sm text-white/70">
-                    Estimated Timeline
-                  </label>
-                  <ChevronDown className="pointer-events-none absolute right-5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/45" />
-                </div>
-
-                <div className="relative">
-                  <select
-                    aria-label="Budget Range"
-                    name="budget"
-                    value={budget}
-                    onChange={(event) => {
-                      setBudget(event.target.value);
-                      resetStatusIfNeeded();
-                    }}
-                    className="peer w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                  >
-                    <option value="">Select a budget</option>
-                    {BUDGET_OPTIONS.map((option) => (
-                      <option key={option} value={option} className="bg-slate-950">
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <label className="pointer-events-none absolute left-5 top-3 text-sm text-white/70">
-                    Budget Range
-                  </label>
-                  <ChevronDown className="pointer-events-none absolute right-5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/45" />
-                </div>
-              </div>
-
               <div className="grid gap-4 pt-1 sm:grid-cols-2">
                 <a
                   href="tel:+18033861672"
@@ -354,16 +297,21 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={!canSubmit || status === "sending"}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(59,130,246,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(59,130,246,0.45)] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(59,130,246,0.35)] ring-1 ring-blue-200/20 transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(59,130,246,0.45)] hover:ring-blue-200/35 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {status === "sending" ? "Sending Request..." : "Request Private Consultation"}
+                  {status === "sending" ? "Sending Request..." : "Request Consultation"}
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </button>
               </div>
 
+              <div className="flex items-center justify-center gap-2 text-center text-xs uppercase tracking-[0.2em] text-white/52 sm:text-sm sm:tracking-[0.16em]">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-blue-300" />
+                <span>JulTech is fully insured, ensuring a secure and professional engagement.</span>
+              </div>
+
               <div className="flex items-center gap-2 pt-1 text-sm text-white/45">
                 <Mail className="h-4 w-4 text-white/35" />
-                Our team will respond within hours to discuss a tailored strategy for your growth.
+                We reply within a few hours with the clearest next step for your project.
               </div>
 
               {status === "sent" ? (

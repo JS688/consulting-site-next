@@ -1,0 +1,8 @@
+# Query: The framework explains how customers find you
+# ContextLines: 1
+
+1 result - 1 file
+
+app/components/homepage/SectionSeoAeoGeo.tsx:
+  47                <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-200 sm:text-lg">
+  48:             

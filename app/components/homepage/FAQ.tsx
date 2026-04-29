@@ -1,51 +1,38 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-const businessName = "JulTech™ AI Consulting Group LLC";
-
 const faqItems = [
   {
-    question: "What services do you offer?",
+    question: "How do I get my business to show up in ChatGPT or AI tools?",
     answer:
-      "We offer premium web design, SEO, AEO, GEO, and multilingual website strategy for businesses that want to grow across search and AI platforms.",
+      "To appear in AI tools like ChatGPT, your website needs to be clearly structured, contain relevant content, and provide accurate information about your services. We optimize your site so AI systems can understand and recommend your business.",
   },
   {
-    question: "What is AEO and how does it help my business?",
+    question: "What is SEO and why does it matter for my business?",
     answer:
-      "AEO (Answer Engine Optimization) structures your content so AI systems and voice assistants can deliver your website as a direct answer to user questions.",
+      "SEO (Search Engine Optimization) helps your website appear in Google search results when customers search for your services. Better SEO means more visibility, traffic, and leads.",
   },
   {
-    question: "What is GEO and why is it important?",
+    question: "Can my business appear in both Google and AI search results?",
     answer:
-      "GEO (Generative Engine Optimization) helps your business get recommended by AI systems like ChatGPT and Gemini, increasing visibility beyond traditional search results.",
+      "Yes. By improving your website structure, content, and data, your business can rank in Google search and be recommended in AI tools like ChatGPT and Perplexity.",
   },
   {
-    question: "Do you work with businesses outside the U.S.?",
+    question: "Do I need a new website or can you improve my current one?",
     answer:
-      "Yes. We work with businesses across the U.S., Latin America, and Europe in multiple languages.",
+      "We can do both. Whether you need a new website or want to improve your existing one, we optimize it so it performs better in search and attracts more customers.",
   },
   {
-    question: "Can my website appear in AI answers?",
+    question: "How long does it take to see results from SEO and AI optimization?",
     answer:
-      "Yes. Clear structure, strong content, and schema markup help AI systems understand and use your content as a direct answer.",
+      "Most businesses start seeing improvements within a few weeks, with stronger results developing over a few months depending on competition and website condition.",
   },
   {
-    question: "Do you build multilingual websites?",
+    question: "What types of businesses do you work with?",
     answer:
-      "Yes. We build multilingual websites that help brands communicate clearly across different markets and expand their reach.",
-  },
-  {
-    question: "Do I need SEO, AEO, and GEO together?",
-    answer:
-      "Yes. SEO helps you get found, AEO helps you become the answer, and GEO helps you get chosen by AI systems.",
-  },
-  {
-    question: "How long does SEO take?",
-    answer:
-      "SEO usually builds over time, but early improvements in structure, clarity, and visibility can start sooner.",
+      "We work with local businesses such as restaurants, contractors, realtors, and service providers who want to improve their visibility on Google and in AI search tools.",
   },
 ];
 
@@ -62,24 +49,6 @@ const faqSchema = {
   })),
 };
 
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: businessName,
-  areaServed: ["United States", "Latin America", "Europe"],
-  serviceType: "Web Design, SEO, AEO, GEO, Bilingual Strategy",
-  description:
-    "Premium websites designed to rank on Google, surface in AI answers, and convert attention into qualified leads across multilingual markets.",
-};
-
-const serviceLinks = [
-  { href: "/web-design", label: "Web Design" },
-  { href: "/seo-services", label: "SEO" },
-  { href: "/aeo-services", label: "AEO" },
-  { href: "/geo-services", label: "GEO" },
-  { href: "/multilingual-web-design", label: "Bilingual Web Design" },
-];
-
 export default function GlobalServicesFaqSection() {
   return (
     <section className="relative overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 md:px-8 lg:px-12">
@@ -87,24 +56,23 @@ export default function GlobalServicesFaqSection() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
 
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.05),transparent_24%),linear-gradient(180deg,rgba(17,17,18,1),rgba(3,3,3,1))]" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] opacity-[0.16]" />
+      <div className="absolute inset-0 -z-10 opacity-[0.16] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px]" />
 
       <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/3 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-8 lg:p-12">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-400">
             FAQ
           </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
-            Common Questions About SEO, AEO, and GEO
+          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-white/70 sm:text-base">
+            Still have questions? Here are some of the most common ones:
+          </p>
+          <h2 className="mt-4 text-xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
+            Frequently Asked Questions
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-            Clear answers help both people and AI systems understand what you do.
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            Clear answers about SEO, AI visibility, and how your website can turn search into customers.
           </p>
         </div>
 
@@ -120,7 +88,7 @@ export default function GlobalServicesFaqSection() {
                 className="group rounded-[1.25rem] border border-white/10 bg-black/25 p-5"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <span className="text-base font-medium text-white">
+                  <span className="text-sm font-medium text-white sm:text-base">
                     {item.question}
                   </span>
                   <ChevronDown className="h-5 w-5 shrink-0 text-[#d4af37] transition-transform duration-300 group-open:rotate-180" />
@@ -132,19 +100,7 @@ export default function GlobalServicesFaqSection() {
             ))}
           </div>
         </div>
-
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-            {serviceLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-full border border-white/10 bg-white/3 px-5 py-3 text-sm font-medium text-[#d4af37] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-[#d4af37]/40 hover:bg-white/6 hover:shadow-[0_14px_36px_rgba(212,175,55,0.1)]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
+      </div>
     </section>
   );
 }

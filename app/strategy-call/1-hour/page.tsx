@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Clock3, ShieldCheck, Sparkles } from "lucide-react";
 
+import { STRIPE_PAYMENT_LINKS } from "@/lib/sessionLinks";
+
 export default function OneHourStrategyPage() {
   return (
     <main className="min-h-screen bg-[#04060c] text-white">
@@ -47,13 +49,13 @@ export default function OneHourStrategyPage() {
           </div>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/strategy-call/1-hour/checkout"
+            <a
+              href={STRIPE_PAYMENT_LINKS.full}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-6 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5"
             >
               Continue to payment
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
 
             <Link
               href="/"
@@ -62,6 +64,10 @@ export default function OneHourStrategyPage() {
               Back to website
             </Link>
           </div>
+
+          <p className="mt-4 text-sm text-white/45">
+            Secure payment is handled off-site. After payment, you&apos;ll return to schedule your session.
+          </p>
         </div>
       </section>
     </main>

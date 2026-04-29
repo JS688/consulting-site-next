@@ -44,11 +44,11 @@ export default function PrivacyPage() {
           {
             title: "3. Payment Terms",
             text: [
-              "Client agrees to pay all fees as listed at checkout.",
-              "A non-refundable 40% deposit is required before any work begins.",
-              "The remaining 60% balance is due prior to final delivery of services, deliverables, or completion of the engagement.",
-              "Consultant reserves the right to pause, delay, or withhold work until payments are received in full.",
-              "Final deliverables will not be released until full payment has been received."
+              "Client agrees to pay all fees as outlined in the agreed proposal or invoice.",
+              "Phase 1 — Foundation: A non-refundable 50% deposit is required before work begins.",
+              "Phase 1 — Foundation: The remaining 50% balance is due prior to final delivery, launch, or transfer of the website.",
+              "Phase 2 — Optimization: 100% payment is required upfront before work begins.",
+              "Phase 3 — Authority: 100% payment is required upfront before work begins."
             ]
           },
           {

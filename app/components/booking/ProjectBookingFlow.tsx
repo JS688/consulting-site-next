@@ -1,24 +1,26 @@
 "use client";
 
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Code2,
-  Globe2,
-  Smartphone,
+  Bot,
+  Compass,
+  MonitorSmartphone,
+  Search,
   Sparkles,
+  Workflow,
 } from "lucide-react";
 
-import { STRIPE_PAYMENT_LINKS, type SessionType } from "@/lib/sessionLinks";
-
-const SESSION_PAYMENT_LINKS = STRIPE_PAYMENT_LINKS;
+import { getAppraisalRangeLabel, getSpecificAppraisalPriceLabel } from "@/lib/appraisalPricing";
+import type { SessionType } from "@/lib/sessionLinks";
 
 const PROJECT_TYPE_OPTIONS = [
-  { value: "Mobile App", label: "Mobile App", icon: Smartphone },
-  { value: "Web App", label: "Web App", icon: Globe2 },
-  { value: "Software Development", label: "Software Development", icon: Code2 },
-  { value: "Other", label: "Other", icon: Sparkles },
+  { value: "Website", label: "Website", icon: MonitorSmartphone },
+  { value: "Google visibility", label: "Google visibility", icon: Search },
+  { value: "AI visibility", label: "AI visibility", icon: Bot },
+  { value: "Automation", label: "Automation", icon: Workflow },
+  { value: "Not sure", label: "Not sure", icon: Compass },
 ] as const;
 
 type ProjectBookingFlowProps = {
@@ -27,47 +29,43 @@ type ProjectBookingFlowProps = {
   description: string;
   sessionType?: SessionType;
   interestLabel?: string;
+  locale?: "en" | "es";
 };
+
+const APPRAISAL_EMAIL = "ai@jul-tech.com";
 
 export default function ProjectBookingFlow({
   contextLabel,
   title,
   description,
-  sessionType = "full",
   interestLabel,
+  locale = "en",
 }: ProjectBookingFlowProps) {
-  const paymentLink = SESSION_PAYMENT_LINKS[sessionType];
+  const copy = getCopy(locale);
+  const specificAppraisalPriceLabel = getSpecificAppraisalPriceLabel(interestLabel);
+  const appraisalPriceLabel = specificAppraisalPriceLabel ?? getAppraisalRangeLabel(locale);
+  const formDescription = copy.description || description;
+  const projectTypeOptions =
+    locale === "es"
+      ? [
+          { value: "Sitio web", label: "Sitio web", icon: MonitorSmartphone },
+          { value: "Visibilidad en Google", label: "Visibilidad en Google", icon: Search },
+          { value: "Visibilidad en IA", label: "Visibilidad en IA", icon: Bot },
+          { value: "Automatizacion", label: "Automatizacion", icon: Workflow },
+          { value: "No estoy seguro", label: "No estoy seguro", icon: Compass },
+        ]
+      : PROJECT_TYPE_OPTIONS;
 
   const [projectType, setProjectType] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
-  const [websiteUrl, setWebsiteUrl] = useState("");
   const [details, setDetails] = useState("");
 
   const canContinue =
     businessName.trim().length > 0 &&
     email.trim().length > 0 &&
     details.trim().length > 0;
-
-  const paymentUrl = useMemo(() => {
-    const params = new URLSearchParams();
-
-    if (email.trim()) {
-      params.set("prefilled_email", email.trim());
-    }
-
-    if (businessName.trim()) {
-      const referenceParts = [interestLabel, projectType, businessName.trim()].filter(Boolean);
-      params.set(
-        "client_reference_id",
-        referenceParts.join(" - "),
-      );
-    }
-
-    const query = params.toString();
-    return query ? `${paymentLink}?${query}` : paymentLink;
-  }, [businessName, email, interestLabel, paymentLink, projectType]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -76,7 +74,30 @@ export default function ProjectBookingFlow({
       return;
     }
 
-    window.location.href = paymentUrl;
+    const subjectParts = [interestLabel, copy.emailSubjectLabel, businessName.trim()].filter(Boolean);
+    const bodyLines = [
+      copy.emailGreeting,
+      "",
+      specificAppraisalPriceLabel ? copy.emailIntro(appraisalPriceLabel) : copy.emailIntroGeneric,
+      "",
+      interestLabel ? `${copy.serviceLabel}: ${interestLabel}` : null,
+      projectType ? `${copy.projectTypeLabel}: ${projectType}` : null,
+      `${copy.fullNameLabel}: ${businessName.trim()}`,
+      `${copy.emailLabel}: ${email.trim()}`,
+      company.trim() ? `${copy.companyLabel}: ${company.trim()}` : null,
+      "",
+      `${copy.projectDetailsLabel}:`,
+      details.trim(),
+      "",
+      specificAppraisalPriceLabel ? copy.creditLine(appraisalPriceLabel) : copy.creditLineGeneric(appraisalPriceLabel),
+    ].filter(Boolean);
+
+    const params = new URLSearchParams({
+      subject: subjectParts.join(" - "),
+      body: bodyLines.join("\n"),
+    });
+
+    window.location.assign(`mailto:${APPRAISAL_EMAIL}?${params.toString()}`);
   };
 
   return (
@@ -101,7 +122,7 @@ export default function ProjectBookingFlow({
             {title}
           </h2>
           <p className="mt-5 text-base leading-8 text-white/60 sm:text-lg">
-            {description}
+            {formDescription}
           </p>
         </motion.div>
 
@@ -114,18 +135,18 @@ export default function ProjectBookingFlow({
           aria-label="Project intake form"
         >
           {interestLabel ? (
-            <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white/60">
-              Package selected: {interestLabel}
+            <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/72">
+              {interestLabel} {copy.selectedPackageLabel}
             </div>
           ) : null}
 
           <fieldset>
             <legend className="text-sm font-semibold text-white/90">
-              What are you looking to build?
+              {copy.legend}
             </legend>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {PROJECT_TYPE_OPTIONS.map((option) => {
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {projectTypeOptions.map((option) => {
                 const Icon = option.icon;
                 const isActive = projectType === option.value;
 
@@ -135,14 +156,14 @@ export default function ProjectBookingFlow({
                     type="button"
                     onClick={() => setProjectType(option.value)}
                     className={[
-                      "inline-flex items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-medium transition-all duration-300",
+                      "inline-flex min-h-18 w-full items-center justify-center gap-2 rounded-3xl border px-4 py-3 text-center text-sm font-medium leading-snug text-white transition-all duration-300 sm:text-[0.95rem]",
                       isActive
                         ? "border-blue-300/45 bg-blue-500/20 text-white shadow-[0_16px_40px_rgba(59,130,246,0.22)]"
-                        : "border-white/10 bg-white/5 text-white/75 hover:border-white/20 hover:bg-white/8 hover:text-white",
+                        : "border-white/10 bg-white/5 text-white hover:border-white/20 hover:bg-white/8",
                     ].join(" ")}
                   >
-                    <Icon className={`h-4 w-4 ${isActive ? "text-blue-200" : "text-white/55"}`} />
-                    <span className="whitespace-nowrap">{option.label}</span>
+                    <Icon className={`h-4 w-4 shrink-0 ${isActive ? "text-blue-200" : "text-white/75"}`} />
+                    <span className="whitespace-normal wrap-break-word">{option.label}</span>
                   </button>
                 );
               })}
@@ -150,58 +171,48 @@ export default function ProjectBookingFlow({
           </fieldset>
 
           <div className="mt-6 grid gap-4">
-            <FloatingField label="Full Name" htmlFor="business-name">
+            <FloatingField label={copy.fullNameLabel} htmlFor="business-name">
               <input
                 id="business-name"
                 value={businessName}
                 onChange={(event) => setBusinessName(event.target.value)}
                 className="peer w-full rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                placeholder="Full Name"
+                placeholder={copy.fullNameLabel}
               />
             </FloatingField>
 
-            <FloatingField label="Email Address" htmlFor="email-address">
+            <FloatingField label={copy.emailLabel} htmlFor="email-address">
               <input
                 id="email-address"
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 className="peer w-full rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                placeholder="Email Address"
+                placeholder={copy.emailLabel}
               />
             </FloatingField>
 
-            <FloatingField label="Company (optional)" htmlFor="company-name">
+            <FloatingField label={copy.companyOptionalLabel} htmlFor="company-name">
               <input
                 id="company-name"
                 value={company}
                 onChange={(event) => setCompany(event.target.value)}
                 className="peer w-full rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                placeholder="Company"
+                placeholder={copy.companyOptionalLabel}
               />
             </FloatingField>
 
             <FloatingField
-              label="Project Details"
+              label={copy.projectDetailsLabel}
               htmlFor="project-details"
-              helperText="Briefly describe your project and goals."
+              helperText={copy.helperText}
             >
               <textarea
                 id="project-details"
                 value={details}
                 onChange={(event) => setDetails(event.target.value)}
                 className="peer min-h-44 w-full rounded-3xl border border-white/10 bg-white/5 px-5 pt-7 pb-4 text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                placeholder="Project Details"
-              />
-            </FloatingField>
-
-            <FloatingField label="Website URL (optional)" htmlFor="website-url">
-              <input
-                id="website-url"
-                value={websiteUrl}
-                onChange={(event) => setWebsiteUrl(event.target.value)}
-                className="peer w-full rounded-2xl border border-white/10 bg-white/5 px-5 pt-6 pb-3 text-white outline-none transition-all duration-300 placeholder:text-transparent focus:border-white/25 focus:bg-white/8 focus:shadow-[0_0_0_4px_rgba(96,165,250,0.10)]"
-                placeholder="Website URL"
+                placeholder={copy.projectDetailsLabel}
               />
             </FloatingField>
           </div>
@@ -212,19 +223,71 @@ export default function ProjectBookingFlow({
               disabled={!canContinue}
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(59,130,246,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(59,130,246,0.45)] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Continue to Payment
+              {specificAppraisalPriceLabel ? copy.cta() : copy.ctaGeneric}
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </button>
           </div>
 
           <div className="mt-4 flex items-center gap-2 text-sm text-white/45">
             <Sparkles className="h-4 w-4 text-white/35" />
-            We typically reply within a few hours.
+            {copy.replyLine}
           </div>
         </motion.form>
       </div>
     </section>
   );
+}
+
+function getCopy(locale: "en" | "es") {
+  if (locale === "es") {
+    return {
+      description: "Cuentanos sobre tu proyecto y lo que quieres lograr. Lo revisaremos y te enviaremos los siguientes pasos.",
+      emailSubjectLabel: "Solicitud de valoracion",
+      emailGreeting: "Hola JulTech,",
+      emailIntro: (priceLabel: string) => `Quiero solicitar la valoracion de ${priceLabel} para mi proyecto.`,
+      emailIntroGeneric: "Quiero solicitar una valoracion para mi proyecto segun el alcance.",
+      serviceLabel: "Servicio",
+      projectTypeLabel: "Tipo de proyecto",
+      fullNameLabel: "Nombre completo",
+      emailLabel: "Correo electronico",
+      companyLabel: "Empresa",
+      companyOptionalLabel: "Empresa (opcional)",
+      projectDetailsLabel: "Detalles del proyecto",
+      selectedPackageLabel: "paquete seleccionado",
+      legend: "Que quieres mejorar?",
+      helperText: "Describe brevemente tu negocio, tu objetivo y lo que quieres mejorar.",
+      cta: () => "Recibe tus siguientes pasos",
+      ctaGeneric: "Recibe tus siguientes pasos",
+      creditLine: (priceLabel: string) => `La valoracion de ${priceLabel} se acredita al costo del proyecto si avanzas con nosotros.`,
+      creditLineGeneric: (priceLabel: string) => `La valoracion pagada se define segun el alcance (${priceLabel}) y se acredita al costo del proyecto si avanzas con nosotros.`,
+      emailDraftLine: "Esto abre un borrador de correo prellenado para que podamos revisar el alcance y enviarte el enlace de pago correcto.",
+      replyLine: "Revisaremos tu solicitud y responderemos dentro de 24 horas.",
+    };
+  }
+
+  return {
+    description: "Tell us about your project and what you're trying to achieve. We'll review it and send you the next steps.",
+    emailSubjectLabel: "Appraisal Request",
+    emailGreeting: "Hello JulTech,",
+    emailIntro: (priceLabel: string) => `I would like to request the ${priceLabel} appraisal for my project.`,
+    emailIntroGeneric: "I would like to request an appraisal for my project based on scope.",
+    serviceLabel: "Service",
+    projectTypeLabel: "Project Type",
+    fullNameLabel: "Full name",
+    emailLabel: "Email",
+    companyLabel: "Company",
+    companyOptionalLabel: "Company (optional)",
+    projectDetailsLabel: "Project details",
+    selectedPackageLabel: "package selected",
+    legend: "What are you looking to improve?",
+    helperText: "Briefly describe your business, your goal, and what you want to improve.",
+    cta: () => "Get Your Next Steps",
+    ctaGeneric: "Get Your Next Steps",
+    creditLine: (priceLabel: string) => `The ${priceLabel} appraisal is credited toward the project cost if you move forward.`,
+    creditLineGeneric: (priceLabel: string) => `Paid appraisal pricing is based on scope (${priceLabel}) and is credited toward the project cost if you move forward.`,
+    emailDraftLine: "This opens a prefilled email draft so we can review the scope and send the right payment link.",
+    replyLine: "We'll review your request and reply within 24 hours.",
+  };
 }
 
 function FloatingField({

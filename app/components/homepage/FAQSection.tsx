@@ -9,74 +9,78 @@ type FAQItem = {
   bullets?: string[];
 };
 
-const faqs = [
+const faqs: FAQItem[] = [
   {
-    question: "What is AI consulting and how can it help my business?",
+    question: "What is AI Visibility Optimization?",
     answer:
-      "AI consulting helps businesses use artificial intelligence to improve efficiency, automate processes, and increase revenue. This can include automation, data analysis, and AI-driven tools tailored to your operations.",
+      "AI Visibility Optimization is the process of structuring and optimizing your website so it can be found in Google search results and recommended by AI tools like ChatGPT.",
   },
   {
-    question: "How can my business show up in Google and AI search results?",
+    question: "How can my business show up in Google search results and AI tools like ChatGPT?",
     answer:
-      "To appear in Google and AI-generated answers, your website needs strong content, clear structure, and authority. We optimize your site for SEO and AI visibility (AEO/GEO) so it can be discovered by both search engines and AI tools.",
+      "Your website must be properly structured, optimized for search queries, and easy for AI systems to understand. This includes strong SEO, clear content, and alignment with real customer searches.",
+  },
+  {
+    question: "How does ChatGPT decide which businesses to recommend?",
+    answer:
+      "ChatGPT recommends businesses based on how clearly a website is structured, how well it matches user queries, and how easy the content is to understand. Websites optimized for SEO and AI have a higher chance of being recommended.",
   },
   {
     question: "What is the difference between SEO and AI SEO (AEO)?",
     answer:
-      "SEO focuses on ranking in Google search results. AI SEO (AEO - Answer Engine Optimization) focuses on getting your business mentioned in AI-generated answers like ChatGPT, Perplexity, and Google AI Overviews.",
+      "SEO focuses on ranking in Google search results, while AI SEO (AEO) focuses on making your content understandable and recommendable by AI tools like ChatGPT. Both work together to improve visibility.",
   },
   {
-    question: "How long does it take to see results from SEO or AI optimization?",
+    question: "How long does it take to see results from SEO and AI optimization?",
     answer:
-      "Most websites see initial improvements within 2-8 weeks, while strong rankings typically take 2-3 months or more, depending on competition and your starting point.",
+      "Results typically take a few weeks to months depending on your website and competition. Improvements to structure and content can begin affecting visibility relatively quickly.",
   },
   {
-    question: "Do I need a new website to rank on Google?",
+    question: "Do I need a new website to rank in Google and AI search?",
     answer:
-      "No. In most cases, your existing website can be optimized with better structure, content, and targeting without rebuilding it from scratch.",
+      "Not always. Many websites can be optimized without a full rebuild. However, in some cases, redesigning can improve performance and long-term visibility.",
   },
   {
-    question: "What industries do you work with?",
+    question: "What industries benefit from AI visibility optimization?",
     answer:
-      "We work with businesses across multiple industries, especially those looking to implement AI, automation, or digital growth strategies.",
+      "Local businesses, restaurants, service providers, real estate professionals, and small businesses benefit the most. Any business that relies on being found online can improve visibility with SEO and AI optimization.",
   },
   {
-    question: "What happens during a consultation?",
+    question: "What happens during an AI visibility consultation?",
     answer:
-      "During the consultation, we analyze your business, website, and goals, then provide clear recommendations and a strategy you can implement immediately.",
+      "During a consultation, we review your website, identify gaps in SEO and AI visibility, and explain how your business can improve its presence in search results and AI recommendations.",
   },
   {
-    question: "Can you implement the strategy for me?",
+    question: "Do you implement SEO and AI optimization strategies?",
     answer:
-      "Yes. In addition to consulting, we offer done-for-you implementation and ongoing support if needed.",
+      "Yes. We provide both strategy and implementation, including website optimization, content improvements, and SEO enhancements for better Google and AI visibility.",
   },
   {
-    question: "What are the most important factors for ranking on Google?",
-    answer: "The key factors include:",
-    bullets: [
-      "high-quality content",
-      "relevant keywords",
-      "website structure",
-      "backlinks and authority",
-      "We focus on all of these to improve your visibility.",
-    ],
-  },
-  {
-    question: "Can my business appear in ChatGPT or AI tools?",
+    question: "What are the most important factors for ranking on Google and AI search?",
     answer:
-      "Yes. By structuring your content properly and building authority, your business can be referenced in AI-generated answers, not just traditional search results.",
+      "Key factors include website structure, content clarity, keyword alignment, user experience, and how easily your business information can be understood by search engines and AI systems.",
   },
   {
-    question: "How much does AI consulting cost?",
+    question: "Can my business appear in ChatGPT or AI-generated recommendations?",
     answer:
-      "Pricing depends on the scope of the project and level of support. Consultations and custom packages are available based on your needs.",
+      "Yes. Businesses can appear in AI-generated results if their websites are properly structured, optimized for search, and aligned with how AI systems interpret and recommend content.",
   },
   {
-    question: "Why choose JulTech for AI consulting?",
+    question: "Do you work with businesses in Columbia, SC?",
     answer:
-      "JulTech focuses on practical AI implementation, real business results, and long-term visibility, combining SEO, AI optimization, and strategy into one approach.",
+      "Yes, we work with businesses in Columbia, South Carolina and help local companies improve their visibility in Google search results and AI platforms like ChatGPT.",
   },
-] satisfies FAQItem[];
+  {
+    question: "How much does AI consulting cost for small businesses?",
+    answer:
+      "Costs vary depending on your needs and website condition. Most services are tailored based on your goals, competition, and visibility requirements.",
+  },
+  {
+    question: "Why choose JulTech for AI visibility optimization?",
+    answer:
+      "JulTech focuses on practical SEO and AI optimization strategies that improve real business outcomes. We help businesses become more visible in Google search results and AI platforms like ChatGPT through structured, results-driven approaches.",
+  },
+];
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -95,7 +99,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#1b1d22] px-6 py-24 text-white md:px-10 lg:px-16">
+    <section id="faq" className="bg-[#1b1d22] px-6 py-24 text-white md:px-10 lg:px-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

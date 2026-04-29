@@ -167,7 +167,7 @@ export default function SeoServicesPage() {
           <ProjectBookingFlow
             contextLabel="SEO project"
             title="Tell us about your SEO project"
-            description="Share your goals, visibility challenges, and current site situation, then continue through payment and choose your consultation time."
+            description="Share your goals, visibility challenges, and current site situation. We review the scope first, then email the right appraisal tier based on scope and a secure payment link."
             sessionType="full"
             interestLabel="SEO Services"
           />

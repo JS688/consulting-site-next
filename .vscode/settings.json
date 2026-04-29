@@ -1,0 +1,9 @@
+{
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.tsserver.useSeparateSyntaxServer": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents"
+  }
+}

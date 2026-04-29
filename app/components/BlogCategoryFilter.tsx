@@ -1,29 +1,24 @@
-"use client";
-
-import { useState } from "react";
-
-const categories = ["SEO", "AI", "Bilingual", "GEO"];
-
 export default function BlogCategoryFilter({
+  categories,
+  activeCategory,
   onSelect,
 }: {
+  categories: string[];
+  activeCategory: string;
   onSelect: (category: string) => void;
 }) {
-  const [active, setActive] = useState("All");
-
   return (
-    <div className="flex flex-wrap gap-4 mt-10">
-      {["All", ...categories].map((cat) => (
+    <div className="flex flex-wrap gap-3">
+      {categories.map((cat) => (
         <button
           key={cat}
           onClick={() => {
-            setActive(cat);
             onSelect(cat);
           }}
-          className={`px-5 py-2 rounded-full border transition ${
-            active === cat
-              ? "border-[#d4af37] text-[#d4af37]"
-              : "border-gray-600 text-gray-300 hover:border-[#d4af37]/40"
+          className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+            activeCategory === cat
+              ? "border-[#d4af37]/60 bg-[#d4af37]/12 text-[#f2d77b]"
+              : "border-white/10 bg-white/[0.03] text-white/70 hover:border-[#d4af37]/30 hover:text-white"
           }`}
         >
           {cat}

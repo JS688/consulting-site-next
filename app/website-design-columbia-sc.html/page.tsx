@@ -12,6 +12,12 @@ const pageConfig: ColumbiaLandingConfig = {
   locationLine:
     "Built for businesses in Columbia, SC that need a website that looks refined, performs well, and supports long-term visibility.",
   serviceType: "Website Design",
+  schemaServiceTypes: [
+    "Website Design",
+    "Website Development",
+    "SEO Services",
+    "Local SEO",
+  ],
   benefits: [
     "Create a website that clearly explains your services and makes your business easier to trust.",
     "Improve performance on mobile so customers can navigate, call, and inquire without friction.",

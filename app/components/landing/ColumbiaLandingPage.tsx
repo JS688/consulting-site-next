@@ -23,6 +23,8 @@ export type ColumbiaLandingConfig = {
   description: string;
   locationLine: string;
   serviceType: string;
+  schemaServiceTypes?: string[];
+  schemaDescription?: string;
   benefits: string[];
   process: ProcessItem[];
   audience: string[];
@@ -45,11 +47,18 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
 
   const serviceSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Service",
     name: config.title,
-    areaServed: ["Columbia, SC", "South Carolina"],
-    serviceType: config.serviceType,
-    description: config.description,
+    serviceType: config.schemaServiceTypes ?? [config.serviceType],
+    provider: {
+      "@type": "ProfessionalService",
+      name: "JulTech AI Consulting Group LLC",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Columbia, SC",
+    },
+    description: config.schemaDescription ?? config.description,
   };
 
   return (

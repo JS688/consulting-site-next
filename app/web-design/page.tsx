@@ -45,7 +45,7 @@ export default function WebDesignPage() {
         <ProjectBookingFlow
           contextLabel="Web design project"
           title="Tell us about your web design project"
-          description="Share what you want to build, then continue through payment and choose the best consultation time for your project."
+          description="Share what you want to build. We review the scope first, then email the right appraisal tier based on scope and a secure payment link."
           sessionType="full"
           interestLabel="Web Design"
         />

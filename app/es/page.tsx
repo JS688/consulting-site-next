@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "JulTech AI — Visibilidad Digital para Negocios | SEO, AEO, GEO",
   description:
-    "Ayudamos a negocios a ser encontrados en Google y recomendados por sistemas de inteligencia artificial. Auditoría gratuita de visibilidad AI disponible.",
+    "Ayudamos a negocios a ser encontrados en Google y recomendados por sistemas de inteligencia artificial. Valoraciones estrategicas y servicios de visibilidad digital disponibles.",
 };
 
 export default function EsHomePage() {
@@ -18,24 +18,24 @@ export default function EsHomePage() {
             SISTEMA DE VISIBILIDAD AI
           </p>
           <h1 className="mt-6 text-5xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            Tu visibilidad ya está siendo decidida.
+            Tu visibilidad ya se esta decidiendo.
           </h1>
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-400 md:text-xl">
-            Cada día, los clientes encuentran, confían y eligen negocios basándose en lo que ven en Google y sistemas de IA. Asegúrate de que tu negocio sea parte de esa decisión.
+            Cada dia, los clientes encuentran, confian y eligen negocios segun lo que ven en Google y en sistemas de IA. Asegurate de que tu negocio forme parte de esa decision.
           </p>
           <div className="mt-10 flex items-center justify-center">
             <Link
-              href="/15-min-strategy-call"
+              href="/es/strategy-call/15-min"
               className="inline-flex items-center justify-center rounded-full border border-white/40 bg-[rgba(30,40,60,0.45)] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-[rgba(36,48,72,0.58)]"
             >
-              Agenda una llamada estratégica
+              Agenda una llamada estrategica
             </Link>
           </div>
         </div>
       </section>
 
       {/* Gold divider */}
-      <div className="w-full" style={{ borderTop: "1px solid rgba(212,175,55,0.25)", background: "linear-gradient(to bottom, rgba(212,175,55,0.06), transparent)", height: "60px" }} />
+      <div className="h-[60px] w-full border-t border-[#d4af37]/25 bg-[linear-gradient(to_bottom,rgba(212,175,55,0.06),transparent)]" />
 
       {/* Services */}
       <section className="px-6 py-20 md:px-10 lg:px-16">
@@ -50,23 +50,23 @@ export default function EsHomePage() {
             {[
               {
                 label: "SEO",
-                title: "Inteligencia de Búsqueda",
+                title: "Inteligencia de busqueda",
                 desc: "Tu negocio aparece en Google cuando los clientes buscan activamente tus servicios.",
               },
               {
                 label: "AEO",
-                title: "Inteligencia de Respuestas",
-                desc: "Tu negocio se convierte en la respuesta confiable en herramientas de IA y asistentes de voz.",
+                title: "Inteligencia de respuestas",
+                desc: "Tu negocio se convierte en una respuesta confiable en herramientas de IA y asistentes de voz.",
               },
               {
                 label: "GEO",
-                title: "Inteligencia de Recomendación",
+                title: "Inteligencia de recomendacion",
                 desc: "Tu negocio es recomendado en resultados generados por IA como ChatGPT y Gemini.",
               },
               {
                 label: "Bilingüe",
-                title: "Expansión Multilingüe",
-                desc: "Conecta con clientes hispanohablantes en plataformas de búsqueda e IA.",
+                title: "Expansion multilingue",
+                desc: "Conecta con clientes hispanohablantes en plataformas de busqueda e IA.",
               },
             ].map((s) => (
               <div
@@ -85,7 +85,7 @@ export default function EsHomePage() {
       </section>
 
       {/* Gold divider */}
-      <div className="w-full" style={{ borderTop: "1px solid rgba(212,175,55,0.25)", background: "linear-gradient(to bottom, rgba(212,175,55,0.06), transparent)", height: "60px" }} />
+      <div className="h-[60px] w-full border-t border-[#d4af37]/25 bg-[linear-gradient(to_bottom,rgba(212,175,55,0.06),transparent)]" />
 
       {/* CTA */}
       <section className="px-6 py-24 md:px-10 lg:px-16">
@@ -95,21 +95,21 @@ export default function EsHomePage() {
               Paso Final
             </p>
             <h2 className="mx-auto mt-6 max-w-3xl text-4xl font-semibold leading-tight md:text-5xl">
-              ¿Dónde aparece tu negocio hoy en Google y en IA?
+              Donde aparece tu negocio hoy en Google y en IA?
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-              En 24–48 horas recibes un análisis claro de tu visibilidad actual y los pasos para mejorarla. Sin compromiso.
+              En 24 a 48 horas puedes obtener una direccion clara sobre tu visibilidad actual y los pasos para mejorarla.
             </p>
             <div className="mt-10 flex items-center justify-center">
               <Link
-                href="/15-min-strategy-call"
+                href="/es/strategy-call/15-min"
                 className="inline-flex items-center justify-center rounded-full border border-white/40 bg-[rgba(30,40,60,0.45)] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-[rgba(36,48,72,0.58)]"
               >
-                Agenda una llamada estratégica
+                Agenda una llamada estrategica
               </Link>
             </div>
             <p className="mt-6 text-sm text-zinc-500">
-              Sin obligación. Cada llamada es revisada personalmente.
+              Sin obligacion. Cada llamada es revisada personalmente.
             </p>
           </div>
         </div>

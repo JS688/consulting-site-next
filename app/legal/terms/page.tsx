@@ -25,42 +25,55 @@ export default function TermsPage() {
             title: "2. Scope of Services",
             text: [
               "Consultant agrees to provide consulting services as described on the website, proposal, or service page selected at the time of purchase.",
-              "Any services not expressly listed are outside the scope and may require a separate agreement or additional fees.",
-              "This includes both live and asynchronous consulting delivered by email, written reports, or digital communication."
+              "Any services not expressly listed are outside the scope and may require a separate agreement, timeline adjustment, and additional fees.",
+              "Services may include both live and asynchronous consulting delivered via email, written reports, or digital communication."
             ]
           },
           {
             title: "3. Payment Terms",
             text: [
-              "Client agrees to pay all fees as listed at checkout.",
-              "A non-refundable 40% deposit is required before any work begins.",
-              "The remaining 60% balance is due prior to final delivery of services, deliverables, or completion of the engagement.",
-              "Consultant reserves the right to pause, delay, or withhold work until payments are received in full.",
-              "Final deliverables will not be released until full payment has been received."
+              "Client agrees to pay all fees as outlined in the selected service, proposal, or invoice.",
+              "Phase-Based Services (if applicable):",
+              "Phase 1 — Foundation:",
+              "50% non-refundable deposit required before work begins.",
+              "Remaining 50% due prior to final delivery, launch, or transfer.",
+              "Phase 2 — Optimization:",
+              "100% payment required upfront before work begins.",
+              "Phase 3 — Authority & Visibility Growth:",
+              "100% payment required upfront before work begins.",
+              "General Payment Terms:",
+              "All payments are non-refundable once the corresponding phase has begun.",
+              "Consultant reserves the right to pause, delay, or suspend services in the event of non-payment.",
+              "Final deliverables, access, or transfers will not be provided until full payment is received.",
+              "Any delays in payment may result in project timeline adjustments."
             ]
           },
           {
             title: "4. Refund Policy",
             text: [
-              "All deposits are non-refundable.",
-              "Due to the nature of consulting services, no refunds will be issued once work has commenced.",
+              "All payments are non-refundable.",
+              "Due to the nature of consulting and digital services, no refunds will be issued once work has commenced.",
               "Any exceptions are at the sole discretion of the Consultant."
             ]
           },
           {
             title: "5. Client Responsibilities",
             text: [
-              "Client agrees to provide accurate and timely information.",
-              "Client agrees to respond to communications within a reasonable timeframe.",
-              "Client agrees to deliver all required materials necessary for project completion.",
+              "Client agrees to:",
+              "Provide accurate and timely information.",
+              "Respond to communications within a reasonable timeframe.",
+              "Deliver all required materials necessary for project completion.",
               "Delays caused by the Client may impact timelines and do not relieve payment obligations."
             ]
           },
           {
             title: "6. Revisions and Changes",
             text: [
-              "Services include a reasonable number of revisions unless otherwise specified.",
-              "Additional revisions, scope changes, or new requests may incur additional fees and may require a separate agreement."
+              "Services include a reasonable number of revisions as determined by the Consultant or as specified in the service agreement.",
+              "Additional revisions, scope changes, or new requests may:",
+              "Incur additional fees.",
+              "Extend project timelines.",
+              "Require a separate agreement."
             ]
           },
           {
@@ -74,6 +87,7 @@ export default function TermsPage() {
             title: "8. Intellectual Property",
             text: [
               "Consultant retains ownership of all underlying processes, frameworks, templates, methodologies, and proprietary tools used to deliver the services.",
+              "Final deliverables become the Client’s property only after full payment has been received.",
               "Consultant reserves the right to use non-confidential aspects of the work for portfolio, case studies, and marketing purposes."
             ]
           },
@@ -95,7 +109,9 @@ export default function TermsPage() {
             text: [
               "Consultant reserves the right to terminate services at any time if the Client breaches these Terms and Conditions.",
               "Payments made are non-refundable and any outstanding balances remain due.",
-              "Client may terminate services; however, all payments made are non-refundable and any completed or in-progress work will be billed accordingly."
+              "Client may terminate services; however:",
+              "All payments made are non-refundable.",
+              "Any completed or in-progress work will be billed accordingly."
             ]
           },
           {
@@ -109,15 +125,34 @@ export default function TermsPage() {
             title: "13. Electronic Acceptance",
             text: [
               "By checking the acceptance box at checkout, entering payment details, and completing the transaction, Client acknowledges and agrees that:",
-              "- They have read and understood these Terms and Conditions.",
-              "- This action constitutes an electronic signature.",
-              "- This agreement is legally binding and enforceable."
+              "They have read and understood these Terms and Conditions.",
+              "This action constitutes an electronic signature.",
+              "This agreement is legally binding and enforceable."
             ]
           },
           {
             title: "14. Entire Agreement",
             text: [
               "These Terms and Conditions constitute the entire agreement between the Client and Consultant and supersede all prior discussions, communications, or agreements."
+            ]
+          },
+          {
+            title: "15. No Guarantee of Results",
+            text: [
+              "Consultant provides services related to website development, optimization, and digital visibility.",
+              "Client acknowledges that Consultant does not guarantee:",
+              "Search engine rankings.",
+              "Website traffic.",
+              "AI platform visibility (including but not limited to ChatGPT, Google AI, or similar systems).",
+              "Leads, conversions, or revenue outcomes.",
+              "Results depend on external factors outside Consultant’s control, including but not limited to market conditions, competition, and third-party algorithms."
+            ]
+          },
+          {
+            title: "16. Access and Control",
+            text: [
+              "Consultant may retain control over website hosting, content, systems, or deliverables until full payment is received.",
+              "In the event of non-payment, Consultant reserves the right to restrict access to any managed assets."
             ]
           }
         ].map((section, i) => (
@@ -132,6 +167,10 @@ export default function TermsPage() {
             ))}
           </section>
         ))}
+        <div className="border-t border-white/10 pt-6 text-sm text-white/60">
+          <p>© 2026 JulTech. All rights reserved.</p>
+          <p>JulTech™ • Columbia, South Carolina, USA • Serving clients globally</p>
+        </div>
       </div>
     </div>
   );

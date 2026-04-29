@@ -60,9 +60,9 @@ export default function ServicesPage() {
     <main className="bg-[#030303] text-white">
       <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-12 lg:py-20">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_28%),linear-gradient(180deg,rgba(12,12,12,1),rgba(3,3,3,1))]" />
-        <div className="absolute inset-0 -z-10 opacity-[0.14] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] opacity-[0.14]" />
 
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/[0.03] px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-white/3 px-6 py-10 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
           <motion.div
             className="mx-auto max-w-4xl text-center"
             variants={containerVariants}
@@ -103,7 +103,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="px-4 pb-16 sm:px-6 lg:px-12 lg:pb-20">
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.03] px-6 py-10 shadow-[0_24px_90px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-linear-to-b from-white/5 to-white/3 px-6 py-10 shadow-[0_24px_90px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:px-8 sm:py-12 lg:px-12">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.45em] text-zinc-500">
               What we offer
@@ -130,12 +130,12 @@ export default function ServicesPage() {
                   className={[
                     "group relative overflow-hidden rounded-[1.75rem] border p-6 shadow-[0_18px_60px_rgba(0,0,0,0.28)] transition-all duration-300",
                     service.accent
-                      ? "border-[#d4af37]/20 bg-white/[0.045]"
+                      ? "border-[#d4af37]/20 bg-white/4.5"
                       : "border-white/10 bg-black/25",
                   ].join(" ")}
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/4">
                       <Icon className="h-5 w-5 text-[#d4af37]" />
                     </div>
                     <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500">

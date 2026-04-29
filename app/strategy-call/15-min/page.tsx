@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Clock3, ShieldCheck, Sparkles } from "lucide-react";
 
+import { CALENDLY_LINKS } from "@/lib/sessionLinks";
+
 export default function FifteenMinStrategyPage() {
   return (
     <main className="min-h-screen bg-[#04060c] text-white">
       <section className="mx-auto flex min-h-screen max-w-5xl items-center px-6 py-20">
         <div className="w-full">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-            <Sparkles className="h-4 w-4 text-blue-300" />
-            Premium 15-minute strategy call
-          </div>
-
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             A focused call to clarify your next move
           </h1>
@@ -47,13 +44,13 @@ export default function FifteenMinStrategyPage() {
           </div>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/strategy-call/15-min/checkout"
+            <a
+              href={CALENDLY_LINKS.short}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-6 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5"
             >
-              Continue to payment
+              Book a Consultation
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
 
             <Link
               href="/"

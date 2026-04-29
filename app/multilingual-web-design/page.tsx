@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Globe2, MessageSquareText, Sparkles, Languages, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import ProjectBookingFlow from "@/components/booking/ProjectBookingFlow";
 
 const languages = ["English", "Spanish"];
@@ -240,7 +239,7 @@ export default function BilingualWebDesignPage() {
           <ProjectBookingFlow
             contextLabel="Multilingual web design project"
             title="Tell us about your multilingual web design project"
-            description="Share the languages, markets, and goals you want to support, then continue through payment and choose the best consultation time."
+            description="Share the languages, markets, and goals you want to support. We review the scope first, then email the right appraisal tier based on scope and a secure payment link."
             sessionType="full"
             interestLabel="Multilingual Web Design"
           />

@@ -1,82 +1,317 @@
 "use client";
 
+import type { MouseEvent, ReactNode } from "react";
 import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+
+import BrandLogo from "./BrandLogo";
+
+const LOCALIZED_PATHS: Record<string, string> = {
+  "/": "/es",
+  "/about": "/es/about",
+  "/services": "/es/services",
+  "/contact": "/es/contact",
+  "/case-studies": "/es/case-studies",
+  "/blog": "/es/blog",
+  "/strategy-call/15-min": "/es/strategy-call/15-min",
+  "/strategy-call/1-hour": "/es/strategy-call/1-hour",
+  "/strategy-call/1-hour/checkout": "/es/strategy-call/1-hour/checkout",
+  "/one-hour-consultation": "/es/one-hour-consultation",
+  "/free-appraisal": "/es/free-appraisal",
+  "/book": "/es/book",
+  "/payment-complete": "/es/payment-complete",
+  "/booking-complete": "/es/booking-complete",
+  "/web-design": "/es/web-design",
+  "/seo-services": "/es/seo-services",
+  "/aeo-services": "/es/aeo-services",
+  "/geo-services": "/es/geo-services",
+  "/multilingual-web-design": "/es/multilingual-web-design",
+  "/ai-visibility": "/es/ai-visibility",
+  "/es": "/",
+  "/es/about": "/about",
+  "/es/services": "/services",
+  "/es/contact": "/contact",
+  "/es/case-studies": "/case-studies",
+  "/es/blog": "/blog",
+  "/es/strategy-call/15-min": "/strategy-call/15-min",
+  "/es/strategy-call/1-hour": "/strategy-call/1-hour",
+  "/es/strategy-call/1-hour/checkout": "/strategy-call/1-hour/checkout",
+  "/es/one-hour-consultation": "/one-hour-consultation",
+  "/es/free-appraisal": "/free-appraisal",
+  "/es/book": "/book",
+  "/es/payment-complete": "/payment-complete",
+  "/es/booking-complete": "/booking-complete",
+  "/es/web-design": "/web-design",
+  "/es/seo-services": "/seo-services",
+  "/es/aeo-services": "/aeo-services",
+  "/es/geo-services": "/geo-services",
+  "/es/multilingual-web-design": "/multilingual-web-design",
+  "/es/ai-visibility": "/ai-visibility",
+};
+
+function getAlternatePath(pathname: string | null) {
+  if (!pathname) {
+    return { en: "/", es: "/es" };
+  }
+
+  if (LOCALIZED_PATHS[pathname]) {
+    return pathname.startsWith("/es")
+      ? { en: LOCALIZED_PATHS[pathname], es: pathname }
+      : { en: pathname, es: LOCALIZED_PATHS[pathname] };
+  }
+
+  if (pathname.startsWith("/es/")) {
+    return { en: pathname.slice(3) || "/", es: pathname };
+  }
+
+  return { en: pathname, es: `/es${pathname === "/" ? "" : pathname}` };
+}
 
 export default function Header() {
-
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isSpanish = pathname === "/es" || pathname?.startsWith("/es/");
+  const alternatePaths = getAlternatePath(pathname);
+  const homeHref = isSpanish ? "/es" : "/";
+  const homeAnchorHref = isSpanish ? "/es" : "#home";
+  const strategyCallHref = isSpanish ? "/es/strategy-call/15-min" : "/strategy-call/15-min";
+  const navItems = isSpanish
+    ? [
+        { href: "/es", label: "Enfoque" },
+        { href: "/es/about", label: "Nosotros" },
+        { href: "/es/services", label: "Servicios" },
+        { href: "/es/case-studies", label: "Casos" },
+        { href: "/es/ai-visibility", label: "Visibilidad AI" },
+        { href: "/es/blog", label: "Blog" },
+        { href: "/es/contact", label: "Contacto" },
+      ]
+    : [
+        { href: "#services", label: "Services" },
+        { href: "#ai-explanation", label: "How It Works" },
+        { href: "/ai-visibility", label: "AI Visibility" },
+        { href: "/about", label: "About" },
+        { href: "/blog", label: "Blog" },
+        { href: "#contact", label: "Contact" },
+      ];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) {
+      return;
+    }
+
+    const sectionOffsets: Record<string, number> = {
+      services: -96,
+    };
+    const yOffset = sectionOffsets[id] ?? -120;
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const handleNavClick =
+    (href: string, afterClick?: () => void) =>
+    (event: MouseEvent<HTMLAnchorElement>) => {
+      if (!href.startsWith("#")) {
+        afterClick?.();
+        return;
+      }
+
+      event.preventDefault();
+      afterClick?.();
+
+      if (pathname !== "/") {
+        window.location.href = `/${href}`;
+        return;
+      }
+
+      scrollToSection(href.slice(1));
+    };
 
   return (
     <>
-      {/* HEADER */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-zinc-900 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          {/* logo + brand */}
-          <Link
-            href="/"
-            className="group flex -translate-y-1 items-center gap-2.5 no-underline text-current transition-transform duration-200 hover:scale-[1.02]"
-            aria-label="Homepage"
-          >
-            <div className="flex flex-col justify-center leading-tight">
-              <div className="flex items-center gap-1">
-                <span className="text-[rgb(245,197,24)] font-semibold text-[1.45rem] tracking-wider drop-shadow-[0_0_10px_rgba(245,197,24,0.42)]">
-                  Jul
-                </span>
-                <span className="text-white font-bold text-[1.45rem] tracking-wider">
-                  Tech™
-                </span>
-              </div>
-              <p className="mt-0.5 text-[12px] font-semibold uppercase tracking-[0.26em] text-[rgb(245,197,24)]/85">
-                AI-READY ENGINE
-              </p>
-            </div>
-          </Link>
-          {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-8 text-[0.98rem]">
-            <Link href="/" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Our Approach</Link>
-            <Link href="/about" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">About</Link>
-            <Link href="/services" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Services</Link>
-            <Link href="/case-studies" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Case Studies</Link>
-            <Link href="/blog" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Blog</Link>
-            <Link href="/contact" className="relative text-white transition-colors duration-200 hover:text-[rgb(245,197,24)] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[rgb(245,197,24)]/70 after:transition-all after:duration-300 hover:after:w-full">Contact</Link>
-            <div className="flex items-center gap-2 ml-6">
-              <Link
-                href="/15-min-strategy-call"
-                className="rounded-lg border border-slate-600/40 bg-slate-800/55 px-4 py-2 text-[0.95rem] font-semibold text-white shadow-[0_10px_24px_rgba(15,23,42,0.16)] transition hover:border-slate-500/55 hover:bg-slate-700/65"
-              >
-                Strategy Call
-              </Link>
-              <div className="flex items-center gap-1 ml-3 border-l border-white/10 pl-3">
-                <Link href="/" className="rounded border border-[rgb(245,197,24)] px-2 py-1 text-sm font-semibold text-[rgb(245,197,24)] transition hover:bg-[rgb(245,197,24)] hover:text-black">EN</Link>
-                <Link href="/es" className="rounded border border-white/20 px-2 py-1 text-sm font-semibold text-white/60 transition hover:border-[rgb(245,197,24)] hover:text-[rgb(245,197,24)]">ES</Link>
-              </div>
-            </div>
-          </nav>
-          {/* MOBILE BUTTON */}
-          <button onClick={() => setOpen(!open)} className="md:hidden text-white text-2xl ml-4">{open ? "✕" : "☰"}</button>
-        </div>
-      </header>
-      {/* MOBILE MENU */}
-      {open && (
-        <div className="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center space-y-8 text-2xl md:hidden">
-          <Link href="/" onClick={() => setOpen(false)}>Our Approach</Link>
-          <Link href="/about" onClick={() => setOpen(false)}>About</Link>
-          <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
-          <Link href="/case-studies" onClick={() => setOpen(false)}>Case Studies</Link>
-          <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
-          <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
-          <div className="flex flex-col gap-3 w-full px-8">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#111111]/95 backdrop-blur-md">
+          <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 lg:px-10">
+          <div className="flex items-center gap-4">
             <Link
-              href="/15-min-strategy-call"
-              onClick={() => setOpen(false)}
-              className="rounded-lg border border-slate-600/40 bg-slate-800/55 px-4 py-2 text-center font-semibold text-white shadow-[0_10px_24px_rgba(15,23,42,0.16)] transition hover:border-slate-500/55 hover:bg-slate-700/65"
+              href={homeHref}
+              className="flex items-center"
+              aria-label="JulTech homepage"
             >
-              Strategy Call
+              <BrandLogo priority />
+            </Link>
+            <Link
+              href={homeAnchorHref}
+              onClick={handleNavClick(homeAnchorHref)}
+              className="hidden text-sm font-medium text-white/82 transition hover:text-white sm:inline-flex"
+            >
+              {isSpanish ? "Inicio" : "Home"}
             </Link>
           </div>
+
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={handleNavClick(item.href)}
+                className="text-sm font-normal text-white/78 transition hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-2 border-l border-white/10 pl-3 sm:flex lg:order-2">
+              <Link
+                href={alternatePaths.en}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${!isSpanish ? "border border-yellow-400/35 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white/70"}`}
+              >
+                EN
+              </Link>
+              <Link
+                href={alternatePaths.es}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${isSpanish ? "border border-yellow-400/35 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white/70"}`}
+              >
+                ES
+              </Link>
+            </div>
+
+            <div className="hidden lg:block lg:order-1">
+              <Link
+                href={strategyCallHref}
+                className="rounded-full border border-yellow-400/35 bg-yellow-400 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-yellow-300"
+              >
+                {isSpanish ? "Llamada estrategica" : "Book a Call"}
+              </Link>
+            </div>
+
+            <button
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center justify-center rounded-full border border-white/10 p-2 text-white/80 transition hover:border-white/20 hover:text-white lg:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </div>
-      )}
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-50 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="absolute inset-0 bg-black/70"
+            />
+
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.32, ease: "easeOut" }}
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={0.12}
+              onDragEnd={(_, info) => {
+                if (info.offset.y > 120) {
+                  setOpen(false);
+                }
+              }}
+              className="absolute inset-0 flex flex-col bg-[#111111] px-5 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-[calc(env(safe-area-inset-top)+0.75rem)] shadow-2xl"
+            >
+              <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-white/15" />
+
+              <div className="flex items-center justify-between">
+                <Link href={homeHref} onClick={() => setOpen(false)} aria-label="JulTech homepage" className="flex items-center">
+                  <BrandLogo />
+                </Link>
+
+                <button
+                  onClick={() => setOpen(false)}
+                  className="rounded-full border border-white/10 p-2 text-white/80 transition hover:border-white/20 hover:text-white"
+                  aria-label="Close menu"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <nav className="mt-4 grid gap-1.5 pb-2">
+                {navItems.map((item) => (
+                  <MobileLink
+                    key={item.href}
+                    href={item.href}
+                    onClick={handleNavClick(item.href, () => setOpen(false))}
+                  >
+                    {item.label}
+                  </MobileLink>
+                ))}
+              </nav>
+
+              <div className="mt-4 shrink-0">
+              <div className="flex gap-2">
+                <Link
+                  href={alternatePaths.en}
+                  onClick={() => setOpen(false)}
+                  className={`flex-1 rounded-md px-3 py-2 text-center text-xs font-semibold transition sm:text-sm ${!isSpanish ? "border border-yellow-400/40 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white"}`}
+                >
+                  EN
+                </Link>
+                <Link
+                  href={alternatePaths.es}
+                  onClick={() => setOpen(false)}
+                  className={`flex-1 rounded-md px-3 py-2 text-center text-xs font-semibold transition sm:text-sm ${isSpanish ? "border border-yellow-400/40 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white"}`}
+                >
+                  ES
+                </Link>
+              </div>
+
+              <Link
+                href={strategyCallHref}
+                onClick={() => setOpen(false)}
+                className="mt-4 flex items-center justify-center rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-black transition hover:bg-yellow-300"
+              >
+                {isSpanish ? "Llamada estrategica" : "Book a Call"}
+              </Link>
+
+              <p className="mt-3 text-xs leading-5 text-white/40 sm:text-sm sm:leading-6">
+                {isSpanish ? "Estructura clara. Ejecucion premium." : "Clear structure. Premium execution."}
+              </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
+  );
+}
+
+function MobileLink({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  children: ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/3 px-4 py-3 text-sm text-white/80 transition hover:border-white/20 hover:bg-white/6 hover:text-white"
+    >
+      <span>{children}</span>
+    </Link>
   );
 }

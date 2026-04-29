@@ -1,66 +1,81 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Layers3, MonitorSmartphone, Sparkles } from "lucide-react";
-
-const pillars = [
+const services = [
   {
-    icon: Layers3,
-    title: "Brand Identity",
-    text: "Logos, visual systems, and design language that make your brand recognizable and consistent across every touchpoint.",
+    number: 1,
+    position: "lg:col-start-1 lg:row-start-1",
+    title: "Build the Right Foundation",
+    description: "We design and structure your website so search engines and AI tools can clearly understand your services.",
+    featured: false,
   },
   {
-    icon: MonitorSmartphone,
-    title: "Web Experiences",
-    text: "High-performance websites designed to communicate clearly, convert effectively, and scale globally.",
+    number: 2,
+    position: "lg:col-start-1 lg:row-start-2",
+    title: "Align With Real Searches",
+    description: "We optimize your content based on how customers actually search for your services.",
+    featured: false,
   },
   {
-    icon: Sparkles,
-    title: "Motion & Interaction",
-    text: "Subtle animations and interactions that bring your brand to life and create a refined user experience.",
+    number: 3,
+    position: "lg:col-start-2 lg:row-start-1",
+    title: "Improve Visibility & Rankings",
+    description: "We refine your website and content to improve rankings and increase discoverability.",
+    featured: true,
+  },
+  {
+    number: 4,
+    position: "lg:col-start-2 lg:row-start-2",
+    title: "Grow Traffic & Customer Inquiries",
+    description: "We continue improving your visibility so your business attracts more traffic, leads, and customers over time.",
+    featured: false,
   },
 ];
 
 export default function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 px-6 py-24 text-white sm:px-8 lg:px-12">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_30%),linear-gradient(180deg,#050505,#020202)]" />
+    <section id="ai-explanation" className="relative overflow-hidden bg-[#050814] px-6 py-20 text-white sm:px-8 lg:px-12">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
-        >
-          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">What We Do</p>
-          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl text-center">
-             Built to perform, scale, and stand out.
-          </h2>
-        </motion.div>
+        <div className="mb-12 text-left">
+          <p className="mb-4 inline-flex items-center rounded-full border border-[#f5c84c]/70 bg-[#f5c84c]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#f5c84c] sm:text-sm">
+            Solutions
+          </p>
+          <h2 className="text-lg font-semibold tracking-tight text-[#f5c84c] sm:text-4xl">How We Help You Get Found</h2>
+          <p className="mt-4 text-xs leading-relaxed text-white/60 sm:text-base">
+            We follow a structured process to improve your visibility in Google search and help your business be clearly understood across modern search platforms.
+          </p>
+        </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {pillars.map((pillar, index) => {
-            const Icon = pillar.icon;
-
+        <div className="grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2 lg:gap-8">
+          {services.map((service) => {
             return (
-              <motion.article
-                key={pillar.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-4xl border border-white/10 bg-white/5 p-8 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur"
+              <div
+                key={service.title}
+                className={`relative flex flex-col ${service.position}`}
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-yellow-400/20 bg-yellow-400/10">
-                  <Icon className="h-6 w-6 text-yellow-300" />
-                </div>
-                <h3 className="mt-6 text-2xl font-semibold text-white">{pillar.title}</h3>
-                <p className="mt-4 text-base leading-7 text-zinc-300">{pillar.text}</p>
-              </motion.article>
+                <article
+                  className={`relative h-full rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 ${
+                    service.featured
+                      ? "border-[#f5c84c]/50 bg-[#f5c84c]/5 shadow-[0_0_30px_rgba(245,200,76,0.08)]"
+                      : "border-white/10 bg-white/5"
+                  }`}
+                >
+                  <div className="absolute -top-5 left-6 flex h-9 w-9 items-center justify-center rounded-full border border-[#f5c84c]/40 bg-black text-xs font-semibold text-[#f5c84c] sm:h-10 sm:w-10 sm:text-sm">
+                    {service.number}
+                  </div>
+
+                  {service.featured && (
+                    <span className="absolute -top-4 right-6 inline-flex items-center gap-1.5 rounded-full border border-[#f5c84c]/30 bg-black px-2.5 py-1 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">
+                      ✅ Core System
+                    </span>
+                  )}
+                  <h3 className={`text-sm font-semibold sm:text-xl ${service.featured ? "text-[#f5c84c]" : "text-white"}`}>
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{service.description}</p>
+                </article>
+              </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

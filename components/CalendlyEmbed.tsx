@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import CalendlyInlineEmbed from "@/book/CalendlyInlineEmbed";
+import CalendlyInlineEmbed from "@/app/book/CalendlyInlineEmbed";
 
 export default function CalendlyEmbed() {
   return (

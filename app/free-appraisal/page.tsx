@@ -4,6 +4,8 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
+import { getAppraisalRangeLabel } from "@/lib/appraisalPricing";
+
 const benefits = [
   "Your website performance and structure",
   "Your visibility on Google (SEO)",
@@ -19,8 +21,7 @@ const outcomes = [
 ];
 
 export default function FreeAppraisalPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const appraisalRangeLabel = getAppraisalRangeLabel("en");
   const [businessName, setBusinessName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [email, setEmail] = useState("");
@@ -33,52 +34,33 @@ export default function FreeAppraisalPage() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!canSubmit || isSubmitting) return;
-    setIsSubmitting(true);
+    if (!canSubmit) return;
 
-    try {
-      const res = await fetch("/api/free-appraisal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mode: "review",
-          websiteUrl,
-          businessName,
-          businessDescription,
-          email,
-          signature: businessName,
-        }),
-      });
-      if (!res.ok) throw new Error("Failed to submit");
-      setSubmitted(true);
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
-      setIsSubmitting(false);
-    }
+    const subject = `AI Visibility Appraisal Request - ${businessName.trim()}`;
+    const body = [
+      "Hello JulTech,",
+      "",
+      "I would like to request an AI visibility appraisal based on scope.",
+      "",
+      `Business Name: ${businessName.trim()}`,
+      `Email: ${email.trim()}`,
+      websiteUrl.trim() ? `Website URL: ${websiteUrl.trim()}` : null,
+      "",
+      "Business Description:",
+      businessDescription.trim(),
+      "",
+      `I understand appraisal pricing ranges from ${appraisalRangeLabel} based on scope, and the paid appraisal is credited toward the full project if we move forward.`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const params = new URLSearchParams({
+      subject,
+      body,
+    });
+
+    window.location.assign(`mailto:ai@jul-tech.com?${params.toString()}`);
   };
-
-  if (submitted) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-black px-6 py-20 text-white">
-        <div className="mx-auto max-w-md text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#d4af37]/30 bg-[#d4af37]/10">
-            <CheckCircle2 className="h-8 w-8 text-[#d4af37]" />
-          </div>
-          <h1 className="text-3xl font-bold text-white">You're all set.</h1>
-          <p className="mt-4 text-base text-zinc-400">
-            We received your details. Expect your free audit in your inbox within 1–2 business days.
-          </p>
-          <Link
-            href="/"
-            className="mt-8 inline-block rounded-full border border-white/15 px-6 py-3 text-sm text-white/70 transition hover:border-white/30 hover:text-white"
-          >
-            ← Back to home
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-black px-6 py-8 text-white">
@@ -92,18 +74,18 @@ export default function FreeAppraisalPage() {
       <div className="mx-auto max-w-2xl">
         {/* Headline */}
         <div className="mb-10">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">Get Your Free Audit</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">Request Your Appraisal</p>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
-            Get Your AI Visibility Audit
+            Get Your AI Visibility Appraisal
           </h1>
           <p className="mt-4 text-base text-zinc-400">
-            See how your business performs across Google and AI — and where you're losing customers.
+            Appraisal pricing is based on project scope. Starter projects are $100, growth and mid-tier projects are $200, and advanced or custom projects are $300. The paid appraisal is credited toward your project cost if you move forward.
           </p>
         </div>
 
         {/* What you get */}
         <div className="mb-4">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">In this free audit, we analyze:</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">In this appraisal, we analyze:</p>
           <ul className="mb-10 space-y-3">
             {benefits.map((b) => (
               <li key={b} className="flex items-start gap-3 text-sm text-zinc-300">
@@ -185,17 +167,11 @@ export default function FreeAppraisalPage() {
           <div className="pt-2">
             <button
               type="submit"
-              disabled={!canSubmit || isSubmitting}
+              disabled={!canSubmit}
               className="w-full rounded-full bg-[#d4af37] py-3.5 text-sm font-semibold text-black shadow-[0_0_24px_rgba(212,175,55,0.2)] transition hover:bg-[#c9a832] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              {isSubmitting ? "Submitting…" : "Get My AI Visibility Audit →"}
+              Request My Appraisal →
             </button>
-            <p className="mt-3 text-center text-xs text-zinc-500">
-              No obligation. Just actionable insights.
-            </p>
-            <p className="mt-1 text-center text-xs text-zinc-600">
-              Limited availability — each audit is reviewed manually.
-            </p>
           </div>
         </form>
 
@@ -209,11 +185,14 @@ export default function FreeAppraisalPage() {
             Book a 15-min Strategy Call
           </h2>
           <p className="mt-2 text-sm text-zinc-400">
-            Prefer to talk? Pick a time and we'll review your visibility together.
+            Prefer to talk? Pick a time and we&apos;ll review your visibility together.
           </p>
-          <Link href="/15-min-strategy-call" className="jultech-calendly-btn mt-6 inline-block">
+          <a
+            href="https://calendly.com/jultech-ai/new-meeting-1?month=2026-04"
+            className="jultech-calendly-btn mt-6 inline-block"
+          >
             Book a Strategy Call →
-          </Link>
+          </a>
         </div>
 
       </div>

@@ -9,6 +9,7 @@ export interface BlogMeta {
   category?: string;
   excerpt?: string;
   mostRead?: boolean;
+  readingTimeMinutes: number;
 }
 
 const postsDir = path.join(process.cwd(), "content/blog");
@@ -20,7 +21,9 @@ export function getAllPostsMeta(): BlogMeta[] {
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
       const source = fs.readFileSync(path.join(postsDir, file), "utf8");
-      const { data } = matter(source);
+      const { content, data } = matter(source);
+      const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+
       return {
         title: data.title,
         date: data.date,
@@ -28,6 +31,7 @@ export function getAllPostsMeta(): BlogMeta[] {
         category: data.category,
         excerpt: data.excerpt,
         mostRead: data.mostRead ?? false,
+        readingTimeMinutes: Math.max(1, Math.ceil(wordCount / 220)),
       };
     })
     .sort(

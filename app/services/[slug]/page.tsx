@@ -32,17 +32,12 @@ export default async function ServicePackageDetailPage({
 
         <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/45">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/75">
               {servicePackage.label}
             </p>
-            <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
               {servicePackage.title}
             </h1>
-
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/65">
-              <Clock3 className="h-3.5 w-3.5" />
-              <span>{servicePackage.timeline}</span>
-            </div>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72">
               {servicePackage.detailTagline}
@@ -56,7 +51,19 @@ export default async function ServicePackageDetailPage({
           </div>
 
           <div className="rounded-4xl border border-white/10 bg-white/4 p-7 shadow-[0_0_80px_rgba(0,0,0,0.28)] backdrop-blur-sm md:p-8">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+            <div className="border-b border-white/10 pb-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+                Timeline
+              </p>
+              <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-white/60">
+                  <Clock3 className="h-3.5 w-3.5" />
+                  <span>{servicePackage.timeline}</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/40">
               What&apos;s included
             </p>
 
@@ -74,6 +81,29 @@ export default async function ServicePackageDetailPage({
             </ul>
           </div>
         </section>
+
+        {servicePackage.spotlightTitle ? (
+          <section className="mt-14 rounded-4xl border border-white/10 bg-white/4 p-7 shadow-[0_0_80px_rgba(0,0,0,0.28)] md:p-8">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/40">Modern search</p>
+            <h2 className="mt-4 text-2xl font-semibold text-white">{servicePackage.spotlightTitle}</h2>
+            {servicePackage.spotlightDescription ? (
+              <p className="mt-4 max-w-3xl text-base leading-8 text-white/70">
+                {servicePackage.spotlightDescription}
+              </p>
+            ) : null}
+
+            {servicePackage.spotlightBullets?.length ? (
+              <ul className="mt-6 space-y-4">
+                {servicePackage.spotlightBullets.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-white/70">
+                    <Check className="mt-1 h-4 w-4 text-yellow-400" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        ) : null}
 
         <section className="mt-14 grid gap-6 lg:grid-cols-2">
           <div className="rounded-4xl border border-white/10 bg-white/4 p-7 shadow-[0_0_80px_rgba(0,0,0,0.28)]">

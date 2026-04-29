@@ -125,7 +125,7 @@ export default function AeoServicesPage() {
           <ProjectBookingFlow
             contextLabel="AEO project"
             title="Tell us about your AEO project"
-            description="Share how you want your business to appear in AI answers, then continue through payment and choose the right consultation time."
+            description="Share how you want your business to appear in AI answers. We review the scope first, then email the right appraisal tier based on scope and a secure payment link."
             sessionType="full"
             interestLabel="AEO Services"
           />

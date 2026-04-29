@@ -1,186 +1,139 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Search,
-  MessageSquareText,
-  Sparkles,
-  Languages,
-} from "lucide-react";
+import { useState } from "react";
+import { BarChart3, Search, Sparkles, Workflow } from "lucide-react";
+import FlowDiagram from "./FlowDiagram";
+import FlowHorizontal from "./FlowHorizontal";
+import Reveal from "./Reveal";
 
-const cards = [
-  {
-    step: "01",
-    label: "Search Intelligence",
-    abbr: "SEO",
-    title: "Get discovered when customers are actively searching.",
-    description:
-      "Your business appears on Google when people actively look for your services.",
-    icon: Search,
-    gradient: "radial-gradient(circle at top left, rgba(212,175,55,0.08), transparent 40%)",
-    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
-  },
-  {
-    step: "02",
-    label: "Answer Intelligence",
-    abbr: "AEO",
-    title: "Become the answer AI systems rely on.",
-    description:
-      "Your business is positioned as the trusted response in AI tools and voice assistants.",
-    icon: MessageSquareText,
-    gradient: "radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 40%)",
-    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
-  },
-  {
-    step: "03",
-    label: "Recommendation Intelligence",
-    abbr: "GEO",
-    title: "Get recommended by AI systems.",
-    description:
-      "Your business gets recommended in AI-generated results across platforms like ChatGPT and Gemini.",
-    icon: Sparkles,
-    gradient: "radial-gradient(circle at bottom left, rgba(212,175,55,0.08), transparent 40%)",
-    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
-  },
-  {
-    step: "04",
-    label: "Multilingual Expansion",
-    abbr: "Spanish Market",
-    title: "Reach Spanish-speaking customers more effectively.",
-    description:
-      "Connect with Spanish-speaking customers across search and AI platforms.",
-    icon: Languages,
-    gradient: "radial-gradient(circle at bottom right, rgba(212,175,55,0.08), transparent 40%)",
-    hoverShadow: "0 0 0 1px rgba(212,175,55,0.14),0 0 40px rgba(212,175,55,0.10)",
-  },
+const visibilityItems = [
+  { icon: Workflow, text: "Website structure for search clarity" },
+  { icon: Search, text: "Content aligned with real search intent" },
+  { icon: BarChart3, text: "Visibility in Google search results" },
+  { icon: Sparkles, text: "Signals that help your business get discovered" },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 export default function VisibilitySystemSection() {
+  const [showHowFoundMore, setShowHowFoundMore] = useState(false);
+
   return (
-    <section className="bg-[#111113] text-white">
-      {/* Heading — solid background */}
-      <div className="relative px-6 pb-12 pt-24 md:px-10 lg:px-16">
+    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#050507_0%,#08101d_48%,#0f172a_100%)] text-white">
+      <div className="aio-works-background-motion absolute inset-y-0 right-0 w-[72%] bg-[url('/aio-network-background.svg')] bg-[length:140%_100%] bg-right-bottom bg-no-repeat opacity-28" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,7,0.98)_0%,rgba(5,5,7,0.96)_28%,rgba(5,5,7,0.74)_58%,rgba(5,5,7,0.2)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(212,175,55,0.07),transparent_24%),radial-gradient(circle_at_78%_62%,rgba(56,84,134,0.18),transparent_30%)]" />
 
-        <div className="relative mx-auto max-w-6xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={container}
-            className="text-center"
-          >
-            <motion.h2
-              variants={item}
-              className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl"
-            >
-              Ranking alone doesn’t win
-            </motion.h2>
+      <div className="relative">
+        <section id="ai-explanation" className="relative mx-auto max-w-6xl px-6 pb-24 pt-12 md:px-12 md:pb-24 md:pt-16">
+          <div className="relative z-10 grid items-start gap-16 lg:grid-cols-[minmax(0,0.88fr)_minmax(420px,1.12fr)] lg:gap-20">
+            <div className="relative">
+              <div className="pointer-events-none absolute -left-10 -top-12 h-112 w-md rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.04)_0%,rgba(75,106,171,0.04)_34%,transparent_70%)] blur-3xl" />
 
-            <motion.p
-              variants={item}
-              className="mx-auto mt-4 text-lg leading-8 text-zinc-400 md:whitespace-nowrap md:text-xl"
-            >
-              Customers don’t just search — they ask, compare, and follow AI recommendations
-            </motion.p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Cards — solid grey background, no video */}
-      <div className="bg-[#111113] px-6 pb-16 pt-10 md:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            className="grid gap-10 md:grid-cols-2 md:gap-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.18 } },
-            }}
-          >
-          {cards.map((card) => {
-            const Icon = card.icon;
-
-            return (
-              <motion.article
-                key={card.step}
-                variants={{
-                  hidden: { opacity: 0, y: 28, scale: 0.97 },
-                  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: "easeOut" } },
-                }}
-                whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-3xl border border-[#d4af37]/25 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/50 md:p-10"
-                style={{ background: card.gradient }}
-              >
-                <div className="pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100" style={{ background: card.gradient, filter: "brightness(1.6)" }} />
-
-                <div className="relative flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#d4af37]/30 bg-black/40 text-[#d4af37] transition-all duration-300 group-hover:border-[#d4af37]/50 group-hover:shadow-[0_0_24px_rgba(212,175,55,0.18)]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-
-                  <div className="text-xs font-medium uppercase tracking-[0.35em] text-zinc-500">
-                    {card.step}
-                  </div>
+              <Reveal>
+                <div className="relative max-w-md">
+                  <h2 className="text-4xl font-semibold leading-[1.06] tracking-tight text-white md:text-[3.05rem]">
+                    What We Improve
+                  </h2>
                 </div>
+              </Reveal>
 
-                <div className="relative mt-8">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xs font-bold uppercase tracking-[0.28em] text-white">
-                      {card.label}
-                    </span>
-                    {card.abbr && (
-                      <span className="text-[10px] font-normal uppercase tracking-widest text-zinc-500">
-                        ({card.abbr})
+              <Reveal>
+                <p className="relative mt-6 max-w-sm text-[15px] leading-8 text-gray-400 md:text-base">
+                  We improve the parts of your website that help search engines understand your services and help customers find you more easily.
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <button
+                  type="button"
+                  onClick={() => setShowHowFoundMore((current) => !current)}
+                  className="mt-3 text-sm text-[#d4af37] hover:underline"
+                >
+                  {showHowFoundMore ? "Show less" : "Learn how this works →"}
+                </button>
+              </Reveal>
+
+              {showHowFoundMore ? (
+                <>
+                  <Reveal>
+                    <p className="relative mt-6 max-w-md text-[15px] leading-8 text-gray-400 md:text-base">
+                      We align your site structure and content with how customers search and how modern search platforms interpret business information.
+                    </p>
+                  </Reveal>
+
+                  <Reveal>
+                    <p className="relative mt-6 max-w-md text-[15px] leading-8 text-gray-400 md:text-base">
+                      We focus on clarity, search intent, and stronger visibility rather than vague promises about recommendations.
+                    </p>
+                  </Reveal>
+                </>
+              ) : null}
+
+              <Reveal>
+                <p className="relative mt-10 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d4af37]/80">
+                  What we improve
+                </p>
+              </Reveal>
+
+              <div className="relative mt-6 space-y-6">
+                {visibilityItems.map(({ icon: Icon, text }) => (
+                  <Reveal key={text}>
+                    <div className="flex items-center gap-3 text-gray-300">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#d4af37]/18 bg-[#d4af37]/6 text-[#d4af37]/88">
+                        <Icon className="h-3.5 w-3.5" />
                       </span>
-                    )}
-                  </div>
+                      <p className="text-[15px] leading-7 text-gray-300 md:text-base">{text}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
 
-                  <h3 className="mt-3 text-base font-medium leading-snug text-zinc-300">
-                    {card.title}
-                  </h3>
+            <div className="flex flex-col items-center justify-center lg:pt-28">
+              <div className="hidden md:flex md:w-full md:justify-center lg:justify-start">
+                <FlowHorizontal />
+              </div>
+              <div className="md:hidden">
+                <FlowDiagram />
+              </div>
 
-                  <p className="mt-3 max-w-md text-sm leading-6 text-zinc-500">
-                    {card.description}
-                  </p>
+              <Reveal>
+                <p className="mx-auto mt-8 max-w-xl text-center text-gray-400">
+                  This is how stronger structure and clearer content lead to better visibility across modern search.
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <div className="mt-12 flex justify-center">
+                  <div className="h-0.5 w-40 bg-linear-to-r from-transparent via-[#d4af37]/60 to-transparent blur-[1px]" />
                 </div>
-              </motion.article>
-            );
-          })}
-          </motion.div>
+              </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-            className="mx-auto mt-14 max-w-4xl text-center text-base font-semibold text-[#d4af37] md:mt-16 md:text-lg"
-            style={{ textShadow: "0 0 24px rgba(212,175,55,0.6), 0 0 48px rgba(212,175,55,0.25)" }}
-          >
-Become a part of the decision in the new AI era of customer choice
-          </motion.p>
-        </div>
+              <Reveal>
+                <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d4af37]/80">
+                  Outcome
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <p className="mx-auto mt-6 max-w-xl text-center text-gray-400">
+                  Your business becomes easier to understand, easier to find, and more likely to attract customers through search.
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <div className="mt-8 flex justify-center">
+                  <div className="relative h-8 w-56">
+                    <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.34)_0%,rgba(212,175,55,0.14)_45%,transparent_78%)] blur-md" />
+                    <div className="absolute inset-x-10 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-[#d4af37]/45 to-transparent" />
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
       </div>
-    </section>
+    </div>
   );
 }

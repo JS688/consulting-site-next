@@ -139,7 +139,7 @@ export default function GeoServicesPage() {
           <ProjectBookingFlow
             contextLabel="GEO project"
             title="Tell us about your GEO project"
-            description="Share where your brand needs stronger AI visibility, then continue through payment and choose your consultation time."
+            description="Share where your brand needs stronger AI visibility. We review the scope first, then email the right appraisal tier based on scope and a secure payment link."
             sessionType="full"
             interestLabel="GEO Services"
           />

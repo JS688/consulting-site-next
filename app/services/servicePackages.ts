@@ -4,6 +4,7 @@ export type ServicePackage = {
   slug: ServiceSlug;
   label: string;
   title: string;
+  priceLabel: string;
   timeline: string;
   overviewDescription: string;
   bullets: string[];
@@ -14,8 +15,12 @@ export type ServicePackage = {
   glowClass: string;
   detailTagline: string;
   detailOverview: string[];
+  investmentNote: string;
   rightFor: string[];
   process: string[];
+  spotlightTitle?: string;
+  spotlightDescription?: string;
+  spotlightBullets?: string[];
   bookingTitle: string;
   bookingDescription: string;
   sessionType: "short" | "full";
@@ -24,18 +29,17 @@ export type ServicePackage = {
 export const SERVICE_PACKAGES: ServicePackage[] = [
   {
     slug: "starter",
-    label: "Starter - Foundation",
-    title: "Starter",
-    timeline: "2–4 weeks",
+    label: "Phase 1",
+    title: "Foundation",
+    priceLabel: "$3,000 - $6,000",
+    timeline: "2-4 weeks",
     overviewDescription:
-      "A clear, professional website built to establish your presence.",
+      "We design and build a website with the structure required for modern search and AI interpretation.",
     bullets: [
-      "Custom-built website",
-      "Mobile-first give felt performance",
-      "Prepared to be found online",
-      "Content structure",
-      "Clean, focused design",
-      "Lightweight interactions",
+      "Custom-built or fully restructured website",
+      "Clear messaging and positioning",
+      "Structured page hierarchy and navigation",
+      "Technical SEO foundation",
     ],
     accentClass: "bg-zinc-200",
     primaryPillClass: "bg-zinc-300/70 shadow-[0_8px_20px_rgba(255,255,255,0.08)]",
@@ -44,40 +48,50 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
       "border-white/20 bg-zinc-100/10 shadow-[0_0_80px_rgba(255,255,255,0.1)]",
     glowClass: "bg-white/12",
     detailTagline:
-      "A focused, professionally built foundation for businesses that need credibility fast.",
+      "We design and build a website with the structure required for modern search and AI interpretation.",
     detailOverview: [
-      "Starter is built for businesses that need a strong first impression without unnecessary complexity. It gives you a custom website that looks credible, feels intentional, and makes it easier for people to trust what you do.",
-      "The focus is clarity: clean structure, faster performance, stronger messaging, and a professional presence that is ready to support your next stage of growth.",
+      "Foundation creates the structure required for modern search and AI interpretation. We design and build a website that is clearly organized, easy to navigate, and aligned with how people and platforms evaluate a business online.",
+      "This phase connects messaging, structure, and technical setup so your website is easier to understand across users, search engines, and AI systems.",
     ],
+    investmentNote:
+      "Every project is scoped based on your current website, market, and growth goals.",
     rightFor: [
       "Launching a new business or offer",
-      "Replacing an outdated or inconsistent website",
-      "Creating a more credible online presence quickly",
+      "Replacing an outdated website",
+      "Building a more credible online presence",
+      "Creating a foundation for Google and AI visibility",
     ],
     process: [
-      "Clarify the pages, goals, and core message",
-      "Design and build a custom website with a focused structure",
-      "Launch with the essentials in place for speed and visibility",
+      "Clarify your pages, messaging, and structural gaps",
+      "Design and build the website around search-ready architecture",
+      "Launch with a strong foundation for search and AI visibility",
     ],
-    bookingTitle: "Tell us about your Starter project",
+    spotlightTitle: "Built for Search and AI Visibility",
+    spotlightDescription:
+      "A clear structure improves how your business is interpreted across users, search engines, and AI systems.",
+    spotlightBullets: [
+      "Organized page hierarchy and navigation",
+      "Messaging designed for clarity",
+      "Technical foundations that support discoverability",
+    ],
+    bookingTitle: "Start Your Project",
     bookingDescription:
-      "Fill out the short form first so the consultation stays focused. Then complete payment and choose your time in Calendly.",
+      "Tell us about your project and what you're trying to achieve. We'll review it and send you the next steps.",
     sessionType: "full",
   },
   {
     slug: "growth",
-    label: "Growth - Visibility",
-    title: "Growth",
-    timeline: "4–8 weeks",
+    label: "Phase 2",
+    title: "Search & AI Optimization",
+    priceLabel: "$2,000 - $5,000",
+    timeline: "4-6 weeks",
     overviewDescription:
-      "A stronger presence designed to help you get discovered and stand out.",
+      "We improve how your content is interpreted across search engines and AI systems.",
     bullets: [
-      "Everything in Starter",
-      "Brand identity & design system",
-      "Optimized to be found on Google",
-      "Conversion-focused structure",
-      "Bilingual support (EN/ES)",
-      "Enhanced interactions & animations",
+      "Search optimization (SEO)",
+      "AI-readable content structuring (AEO-style)",
+      "Targeted content aligned with real search behavior",
+      "Internal linking and topic alignment",
     ],
     accentClass: "bg-blue-400",
     primaryPillClass: "bg-blue-500/85 shadow-[0_10px_24px_rgba(59,130,246,0.18)]",
@@ -86,40 +100,41 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
       "border-blue-300/35 bg-blue-500/10 shadow-[0_0_80px_rgba(59,130,246,0.16)]",
     glowClass: "bg-blue-300/14",
     detailTagline:
-      "A stronger visibility layer for businesses ready to look sharper and get found more consistently.",
+      "We improve how your content is interpreted across search engines and AI systems.",
     detailOverview: [
-      "Growth builds on the Starter foundation and adds the systems that help your business stand out. This is where your website starts becoming a clearer brand asset instead of just a digital placeholder.",
-      "The package adds design consistency, better search positioning, bilingual support, and stronger interactions so the whole experience feels more refined and more competitive.",
+      "Search and AI Optimization focuses on how clearly your content is interpreted. We refine your content structure, internal alignment, and search intent coverage so your site becomes easier to understand across both traditional search and AI-driven discovery.",
+      "This phase improves clarity, consistency, and relevance without treating SEO and AI visibility as separate systems.",
     ],
+    investmentNote:
+      "Scope depends on the content depth, market complexity, and the amount of optimization required.",
     rightFor: [
-      "Businesses ready to improve discoverability and trust",
-      "Teams that need a stronger brand identity online",
-      "Companies serving both English and Spanish-speaking audiences",
+      "Businesses with an existing site that needs better content alignment",
+      "Brands that need clearer messaging and stronger topical structure",
+      "Teams investing in SEO or AI visibility without a connected system",
     ],
     process: [
-      "Refine brand direction and digital structure",
-      "Build a clearer, stronger presence with visibility in mind",
-      "Launch a site experience designed to support growth and conversion",
+      "Review search intent, content structure, and visibility gaps",
+      "Refine key pages for search and AI interpretation",
+      "Strengthen internal alignment so the site is easier to understand and trust",
     ],
-    bookingTitle: "Tell us about your Growth project",
+    bookingTitle: "Start Your Project",
     bookingDescription:
-      "Share what is holding the business back right now, then continue through payment and choose the right meeting time.",
+      "Tell us about your project and what you're trying to achieve. We'll review it and send you the next steps.",
     sessionType: "full",
   },
   {
     slug: "premium",
-    label: "Premium - Growth",
-    title: "Premium",
-    timeline: "3+ months",
+    label: "Phase 3",
+    title: "Authority & Signal Strength",
+    priceLabel: "$2,000 - $6,000",
+    timeline: "6-8 weeks",
     overviewDescription:
-      "A fully refined system built to grow your visibility, authority, and results.",
+      "We strengthen how your business is referenced, validated, and connected across the web.",
     bullets: [
-      "Everything in Growth",
-      "Advanced interactions & motion design",
-      "Messaging & content refinement",
-      "Conversion strategy & optimization",
-      "Visibility across AI platforms",
-      "Ongoing support & iteration",
+      "Content expansion across key topics",
+      "Backlinks, citations, and external signals",
+      "Optimization of high-performing pages",
+      "Cross-platform consistency",
     ],
     accentClass: "bg-yellow-400",
     primaryPillClass: "bg-yellow-400 shadow-[0_12px_30px_rgba(245,197,24,0.24)]",
@@ -128,24 +143,26 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
       "border-yellow-300/35 bg-yellow-400/10 shadow-[0_0_80px_rgba(245,197,24,0.18)]",
     glowClass: "bg-yellow-300/14",
     detailTagline:
-      "A complete digital system built for businesses that want visibility, authority, and ongoing refinement.",
+      "We strengthen how your business is referenced, validated, and connected across the web.",
     detailOverview: [
-      "Premium is for businesses that need more than a website. It combines stronger design, sharper messaging, visibility strategy, and continuous iteration into one higher-level system.",
-      "This tier is built for brands that want to scale with more precision, appear stronger across search and AI, and keep improving after launch instead of treating the site as a one-time project.",
+      "Authority and Signal Strength expands beyond your website to improve how your business is referenced and reinforced across the web. This includes the signals that help search engines and AI systems judge consistency, trust, and relevance.",
+      "The goal is not just more content, but stronger validation around the business so your visibility system becomes more durable over time.",
     ],
+    investmentNote:
+      "Scope depends on content expansion needs, authority-building work, and the broader growth strategy.",
     rightFor: [
-      "Businesses ready for a higher-authority digital presence",
-      "Teams that need stronger messaging and conversion performance",
-      "Brands that want ongoing support instead of a one-time build",
+      "Businesses ready to strengthen trust and validation signals",
+      "Brands that want broader consistency across the web",
+      "Teams building a long-term visibility system instead of isolated tactics",
     ],
     process: [
-      "Refine the offer, messaging, and conversion path",
-      "Build a more advanced presence with motion, content, and visibility strategy",
-      "Continue improving through support, feedback, and iteration",
+      "Identify the strongest opportunities to improve trust and consistency signals",
+      "Expand content and supporting references across priority topics and platforms",
+      "Strengthen the wider signal system around your business over time",
     ],
-    bookingTitle: "Tell us about your Premium project",
+    bookingTitle: "Start Your Project",
     bookingDescription:
-      "Start with the intake form so we understand the scope properly, then continue through payment and choose a time on Calendly.",
+      "Tell us about your project and what you're trying to achieve. We'll review it and send you the next steps.",
     sessionType: "full",
   },
 ];

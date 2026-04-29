@@ -12,6 +12,12 @@ const pageConfig: ColumbiaLandingConfig = {
   locationLine:
     "Built for businesses that need to show up when people in Columbia search for nearby services, trusted providers, and local solutions.",
   serviceType: "Local SEO Services",
+  schemaServiceTypes: [
+    "Local SEO",
+    "SEO Services",
+    "Google Business Profile Optimization",
+    "Website Development",
+  ],
   benefits: [
     "Improve local visibility when customers search for services in Columbia, SC.",
     "Strengthen the connection between your website, service pages, and Google Business Profile.",

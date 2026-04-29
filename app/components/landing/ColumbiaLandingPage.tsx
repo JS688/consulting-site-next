@@ -11,10 +11,10 @@ type ProcessItem = {
 };
 
 const relatedColumbiaPages = [
-  { href: "/seo-services-columbia-sc.html", label: "SEO Services in Columbia" },
-  { href: "/website-design-columbia-sc.html", label: "Website Design in Columbia" },
-  { href: "/local-seo-columbia-sc.html", label: "Local SEO in Columbia" },
-  { href: "/seo-for-realtors-columbia-sc.html", label: "SEO for Realtors in Columbia" },
+  { href: "/seo-services-columbia-sc", label: "SEO Services in Columbia" },
+  { href: "/website-design-columbia-sc", label: "Website Design in Columbia" },
+  { href: "/local-seo-columbia-sc", label: "Local SEO in Columbia" },
+  { href: "/seo-for-realtors-columbia-sc", label: "SEO for Realtors in Columbia" },
 ];
 
 export type ColumbiaLandingConfig = {

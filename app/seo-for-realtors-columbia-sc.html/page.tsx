@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   title: "SEO for Realtors Columbia SC | JulTech AI",
   description: pageConfig.description,
   alternates: {
-    canonical: "/seo-for-realtors-columbia-sc.html",
+    canonical: "/seo-for-realtors-columbia-sc",
   },
 };
 

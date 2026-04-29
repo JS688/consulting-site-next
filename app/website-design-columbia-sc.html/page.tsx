@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   title: "Website Design Columbia SC | JulTech AI",
   description: pageConfig.description,
   alternates: {
-    canonical: "/website-design-columbia-sc.html",
+    canonical: "/website-design-columbia-sc",
   },
 };
 

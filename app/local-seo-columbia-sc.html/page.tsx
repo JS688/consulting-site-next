@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   title: "Local SEO Columbia SC | JulTech AI",
   description: pageConfig.description,
   alternates: {
-    canonical: "/local-seo-columbia-sc.html",
+    canonical: "/local-seo-columbia-sc",
   },
 };
 

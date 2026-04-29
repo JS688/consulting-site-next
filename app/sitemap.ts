@@ -39,10 +39,10 @@ const staticRoutes = [
   "/payment-complete",
   "/privacy",
   "/services",
-  "/seo-services-columbia-sc.html",
-  "/website-design-columbia-sc.html",
-  "/local-seo-columbia-sc.html",
-  "/seo-for-realtors-columbia-sc.html",
+  "/seo-services-columbia-sc",
+  "/website-design-columbia-sc",
+  "/local-seo-columbia-sc",
+  "/seo-for-realtors-columbia-sc",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

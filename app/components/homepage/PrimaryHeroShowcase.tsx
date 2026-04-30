@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AlertCircle, MapPin, TrendingUp } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const sideDots = [
@@ -17,7 +17,7 @@ const sideDots = [
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -30,7 +30,43 @@ function trackCallClick() {
   }
 }
 
-export default function PrimaryHeroShowcase() {
+type Locale = "en" | "es";
+
+const heroCopy = {
+  en: {
+    alert: "Stay visible as search evolves — or risk being overlooked",
+    title: "We build websites that rank on Google and get found by customers",
+    description:
+      "Modern, high-performing websites designed to bring in customers, rank in Google search, and be clearly understood by modern search systems.",
+    location:
+      "Based in Columbia, SC - helping local businesses improve visibility and attract more customers",
+    primaryCta: "Get Your Free Visibility Report →",
+    primaryHref: "/free-appraisal",
+    callLabel: "Call (803) 386-1672",
+    trustPoints: ["No commitment", "Takes 2 minutes", "Clear next steps"],
+    footer:
+      "Built for real-world search behavior - helping your business get found, attract customers, and grow.",
+    mobileCallLabel: "Call Now",
+    mobilePrimaryLabel: "Get Report",
+  },
+  es: {
+    alert: "Construimos paginas web que aparecen en Google y ayudan a que sus clientes se encuentren.",
+    title: "Páginas modernas y de alto rendimiento, diseñadas para atraer clientes, posicionarse en Google y ser entendidas claramente por los sistemas de búsqueda actuales.",
+    description: " Desde Columbia, SC — trabajamos con usted para que su negocio se vea más, atraiga clientes y crezca",
+    location: "Desde Columbia, SC — trabajamos con usted para que su negocio se vea más, atraiga clientes y crezca..",
+    primaryCta: "Reciba su reporte de visibilidad gratis →",
+    primaryHref: "/es/free-appraisal",
+    callLabel: "Llame al (803) 386-1672",
+    trustPoints: ["✔ Sin compromiso", "✔ Le toma 2 minutos", "✔ Pasos claros a seguir"],
+    footer: "Diseñado para cómo las personas buscan hoy. Para que su negocio sea encontrado, atraiga clientes y crezca.",
+    mobileCallLabel: "Llamar",
+    mobilePrimaryLabel: "Ver reporte",
+  },
+} as const;
+
+export default function PrimaryHeroShowcase({ locale = "en" }: { locale?: Locale }) {
+  const copy = heroCopy[locale];
+
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(135deg,#031227_0%,#071a35_52%,#0a2342_100%)] px-0 pb-32 pt-8 text-white sm:pb-28 sm:pt-10 md:pb-20">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_52%,rgba(245,200,76,0.11),transparent_26%),radial-gradient(circle_at_88%_48%,rgba(245,200,76,0.10),transparent_26%),linear-gradient(180deg,rgba(3,9,18,0.52)_0%,rgba(3,9,18,0.64)_100%)]" />
@@ -61,49 +97,54 @@ export default function PrimaryHeroShowcase() {
           <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:max-w-3xl lg:text-left">
             <div className="animate-fadeUp delay-1 mb-6 mx-auto flex max-w-md flex-wrap items-center justify-center gap-2 rounded-[28px] border border-[#f5c84c] bg-[#f5c84c]/10 px-4 py-3 text-center text-xs font-semibold text-white sm:text-sm lg:mx-0 lg:max-w-xl lg:justify-start">
               <AlertCircle className="h-4 w-4 shrink-0 text-[#f5c84c]" />
-              <span className="leading-snug uppercase">Stay visible as search evolves — or risk being overlooked</span>
+              <span className="leading-snug uppercase">{copy.alert}</span>
             </div>
 
             <h1 className="animate-fadeUp delay-1 mt-4 text-2xl font-medium leading-tight tracking-tight text-[#f5c84c] sm:text-5xl lg:text-6xl">
-              We build websites that rank on Google and perform in modern search
+                {locale === "en" ? (
+                  <>
+                    We build websites that rank on <span className="text-[#f5c84c]">Google</span> and get found by customers
+                  </>
+                ) : (
+                  <>
+                    Construimos las páginas web que aparecen en <span className="text-[#f5c84c]">Google</span> y ayudan a que sus clientes se encuentren
+                  </>
+                )}
             </h1>
 
             <p className="animate-fadeUp delay-2 mt-5 text-sm text-white/75 sm:mt-8 sm:text-xl lg:max-w-2xl">
-              Modern, high-performing websites designed to bring in customers, rank in Google search, and be clearly understood by AI tools like ChatGPT.
+                {copy.description}
             </p>
 
-            <div className="animate-fadeUp delay-4 mt-10 text-sm font-medium tracking-[0.08em] text-white/50 sm:text-base lg:text-left">
-              <span className="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-                <MapPin className="h-4 w-4" />
-                <span>Based in Columbia, SC · Working with clients worldwide</span>
-              </span>
-            </div>
+              <p className="animate-fadeUp delay-3 mt-4 text-xs text-white/45 sm:text-sm lg:max-w-none lg:whitespace-nowrap">
+                {copy.location}
+              </p>
 
             <div className="animate-fadeUp delay-5 mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:flex-wrap sm:items-center lg:justify-start">
               <Link
-                href="/free-appraisal"
+                href={copy.primaryHref}
                 className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#f5c84c] px-6 py-3 text-base font-semibold text-black no-underline transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/30 sm:w-auto sm:px-7 sm:py-4 sm:text-lg"
               >
-                <span>Get Your Free SEO &amp; AI Audit →</span>
+                  <span>{copy.primaryCta}</span>
               </Link>
 
               <a
                 href="tel:+18033861672"
                 onClick={trackCallClick}
-                className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white no-underline transition-all duration-300 hover:border-yellow-400 hover:text-yellow-400 sm:w-auto sm:py-4 sm:text-lg"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-[#f5c84c] px-6 py-3 text-base font-semibold text-[#f5c84c] no-underline transition-all duration-300 hover:bg-[#f5c84c]/8 sm:w-auto sm:py-4 sm:text-lg"
               >
-                <span>📞 Call an Expert: (803)386-1672</span>
+                  <span>{copy.callLabel}</span>
               </a>
             </div>
 
-            <p className="mt-5 text-sm text-white/45">Limited availability · No commitment</p>
+              <div className="mt-6 space-y-1 text-sm text-white/55 lg:max-w-xs">
+                {copy.trustPoints.map((item) => (
+                  <p key={item}>✔ {item}</p>
+                ))}
+              </div>
 
-            <p className="mt-4 text-[11px] leading-relaxed tracking-tight text-white/80 sm:text-lg sm:tracking-normal lg:text-xl">
-              <span className="block sm:inline">Local SEO, Google Business Profile optimization, and AI visibility - </span>
-              <span className="mt-1 flex items-center justify-center gap-2 sm:mt-0 sm:inline-flex lg:justify-start">
-                <span>built to help your business get found and grow</span>
-                <TrendingUp className="h-5 w-5 text-[#f5c84c]" />
-              </span>
+              <p className="mt-8 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-lg">
+                {copy.footer}
             </p>
           </div>
 
@@ -139,13 +180,13 @@ export default function PrimaryHeroShowcase() {
           onClick={trackCallClick}
           className="flex-1 bg-black px-3 py-3 text-center font-semibold text-white no-underline"
         >
-          📞 Call Now
+          📞 {copy.mobileCallLabel}
         </a>
         <Link
-          href="/free-appraisal"
+          href={copy.primaryHref}
           className="flex-1 bg-[#f5c84c] px-3 py-3 text-center font-semibold text-black no-underline"
         >
-          Get Free Audit
+          {copy.mobilePrimaryLabel}
         </Link>
       </div>
     </section>

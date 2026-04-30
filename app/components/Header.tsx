@@ -80,10 +80,9 @@ export default function Header() {
   const strategyCallHref = isSpanish ? "/es/strategy-call/15-min" : "/strategy-call/15-min";
   const navItems = isSpanish
     ? [
-        { href: "/es", label: "Enfoque" },
+        // { href: "/es", label: "Enfoque" }, // Removed as requested
         { href: "/es/about", label: "Nosotros" },
         { href: "/es/services", label: "Servicios" },
-        { href: "/es/case-studies", label: "Casos" },
         { href: "/es/ai-visibility", label: "Visibilidad AI" },
         { href: "/es/blog", label: "Blog" },
         { href: "/es/contact", label: "Contacto" },

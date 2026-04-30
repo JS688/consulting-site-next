@@ -6,15 +6,58 @@ import FlowDiagram from "./FlowDiagram";
 import FlowHorizontal from "./FlowHorizontal";
 import Reveal from "./Reveal";
 
-const visibilityItems = [
-  { icon: Workflow, text: "Website structure for search clarity" },
-  { icon: Search, text: "Content aligned with real search intent" },
-  { icon: BarChart3, text: "Visibility in Google search results" },
-  { icon: Sparkles, text: "Signals that help your business get discovered" },
-];
+const copy = {
+  en: {
+    title: "What We Improve",
+    intro:
+      "We improve the parts of your website that help search engines understand your services and help customers find you more easily.",
+    learnMore: "Learn how this works →",
+    showLess: "Show less",
+    extra: [
+      "We align your site structure and content with how customers search and how modern search platforms interpret business information.",
+      "We focus on clarity, search intent, and stronger visibility rather than vague promises about recommendations.",
+    ],
+    itemsEyebrow: "What we improve",
+    items: [
+      { icon: Workflow, text: "Website structure for search clarity" },
+      { icon: Search, text: "Content aligned with real search intent" },
+      { icon: BarChart3, text: "Visibility in Google search results" },
+      { icon: Sparkles, text: "Signals that help your business get discovered" },
+    ],
+    diagramCaption:
+      "This is how stronger structure and clearer content lead to better visibility across modern search.",
+    outcomeEyebrow: "Outcome",
+    outcome:
+      "Your business becomes easier to understand, easier to find, and more likely to attract customers through search.",
+  },
+  es: {
+    title: "Lo que mejoramos",
+    intro:
+      "Mejoramos las partes de tu sitio web que ayudan a los buscadores a entender tus servicios y ayudan a que los clientes te encuentren mas facilmente.",
+    learnMore: "Aprende como funciona →",
+    showLess: "Mostrar menos",
+    extra: [
+      "Alineamos la estructura y el contenido de tu sitio con la forma en que los clientes buscan y con como las plataformas modernas interpretan la informacion de negocios.",
+      "Nos enfocamos en claridad, intencion de busqueda y visibilidad mas fuerte en lugar de promesas vagas sobre recomendaciones.",
+    ],
+    itemsEyebrow: "Lo que mejoramos",
+    items: [
+      { icon: Workflow, text: "Estructura web para claridad en busqueda" },
+      { icon: Search, text: "Contenido alineado con la intencion real de busqueda" },
+      { icon: BarChart3, text: "Visibilidad en resultados de Google" },
+      { icon: Sparkles, text: "Senales que ayudan a descubrir tu negocio" },
+    ],
+    diagramCaption:
+      "Asi es como una mejor estructura y un contenido mas claro generan mejor visibilidad en la busqueda moderna.",
+    outcomeEyebrow: "Resultado",
+    outcome:
+      "Tu negocio se vuelve mas facil de entender, mas facil de encontrar y con mayores posibilidades de atraer clientes a traves de la busqueda.",
+  },
+};
 
-export default function VisibilitySystemSection() {
+export default function VisibilitySystemSection({ locale = "en" }) {
   const [showHowFoundMore, setShowHowFoundMore] = useState(false);
+  const localized = copy[locale] ?? copy.en;
 
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#050507_0%,#08101d_48%,#0f172a_100%)] text-white">
@@ -31,14 +74,14 @@ export default function VisibilitySystemSection() {
               <Reveal>
                 <div className="relative max-w-md">
                   <h2 className="text-4xl font-semibold leading-[1.06] tracking-tight text-white md:text-[3.05rem]">
-                    What We Improve
+                    {localized.title}
                   </h2>
                 </div>
               </Reveal>
 
               <Reveal>
                 <p className="relative mt-6 max-w-sm text-[15px] leading-8 text-gray-400 md:text-base">
-                  We improve the parts of your website that help search engines understand your services and help customers find you more easily.
+                  {localized.intro}
                 </p>
               </Reveal>
 
@@ -48,34 +91,30 @@ export default function VisibilitySystemSection() {
                   onClick={() => setShowHowFoundMore((current) => !current)}
                   className="mt-3 text-sm text-[#d4af37] hover:underline"
                 >
-                  {showHowFoundMore ? "Show less" : "Learn how this works →"}
+                  {showHowFoundMore ? localized.showLess : localized.learnMore}
                 </button>
               </Reveal>
 
               {showHowFoundMore ? (
                 <>
-                  <Reveal>
-                    <p className="relative mt-6 max-w-md text-[15px] leading-8 text-gray-400 md:text-base">
-                      We align your site structure and content with how customers search and how modern search platforms interpret business information.
-                    </p>
-                  </Reveal>
-
-                  <Reveal>
-                    <p className="relative mt-6 max-w-md text-[15px] leading-8 text-gray-400 md:text-base">
-                      We focus on clarity, search intent, and stronger visibility rather than vague promises about recommendations.
-                    </p>
-                  </Reveal>
+                  {localized.extra.map((paragraph) => (
+                    <Reveal key={paragraph}>
+                      <p className="relative mt-6 max-w-md text-[15px] leading-8 text-gray-400 md:text-base">
+                        {paragraph}
+                      </p>
+                    </Reveal>
+                  ))}
                 </>
               ) : null}
 
               <Reveal>
                 <p className="relative mt-10 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d4af37]/80">
-                  What we improve
+                  {localized.itemsEyebrow}
                 </p>
               </Reveal>
 
               <div className="relative mt-6 space-y-6">
-                {visibilityItems.map(({ icon: Icon, text }) => (
+                {localized.items.map(({ icon: Icon, text }) => (
                   <Reveal key={text}>
                     <div className="flex items-center gap-3 text-gray-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
@@ -99,7 +138,7 @@ export default function VisibilitySystemSection() {
 
               <Reveal>
                 <p className="mx-auto mt-8 max-w-xl text-center text-gray-400">
-                  This is how stronger structure and clearer content lead to better visibility across modern search.
+                  {localized.diagramCaption}
                 </p>
               </Reveal>
 
@@ -111,13 +150,13 @@ export default function VisibilitySystemSection() {
 
               <Reveal>
                 <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d4af37]/80">
-                  Outcome
+                  {localized.outcomeEyebrow}
                 </p>
               </Reveal>
 
               <Reveal>
                 <p className="mx-auto mt-6 max-w-xl text-center text-gray-400">
-                  Your business becomes easier to understand, easier to find, and more likely to attract customers through search.
+                  {localized.outcome}
                 </p>
               </Reveal>
 

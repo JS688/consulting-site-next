@@ -24,6 +24,27 @@ const cards = [
   },
 ];
 
+const cardsEs = [
+  {
+    title: "Restaurantes y cafes",
+    description:
+      "Buscan mejorar su visibilidad local en buscadores y en recomendaciones de IA.",
+    icon: UtensilsCrossed,
+  },
+  {
+    title: "Negocios y servicios locales",
+    description:
+      "No estan apareciendo en Google ni en resultados de IA.",
+    icon: Wrench,
+  },
+  {
+    title: "Sitios web desactualizados o poco claros",
+    description:
+      "Negocios que necesitan mejor mensajeria y una visibilidad mas fuerte.",
+    icon: ChartColumnIncreasing,
+  },
+];
+
 const container: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -41,7 +62,9 @@ const fadeUp: Variants = {
   },
 };
 
-export default function WhoWeHelpSection() {
+export default function WhoWeHelpSection({ locale = "en" }: { locale?: "en" | "es" }) {
+  const localizedCards = locale === "en" ? cards : cardsEs;
+
   return (
     <section id="who" className="relative overflow-hidden bg-[linear-gradient(180deg,#050506_0%,#07090e_60%,#0a0c12_100%)] px-6 pb-24 pt-20 text-white md:px-10 lg:px-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(97,111,139,0.12),transparent_28%),radial-gradient(circle_at_8%_16%,rgba(255,194,71,0.06),transparent_20%),linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0)_24%,rgba(0,0,0,0.22)_100%)]" />
@@ -55,13 +78,15 @@ export default function WhoWeHelpSection() {
           className="mx-auto max-w-4xl text-center"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-[#d4af37]/70">
-            Who We Help
+            {locale === "en" ? "Who We Help" : "A quien ayudamos"}
           </p>
           <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#f4cf43] md:text-4xl lg:text-[3.1rem]">
-            Built for Local Businesses
+            {locale === "en" ? "Built for Local Businesses" : "Construido para negocios locales"}
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-[1.18rem]">
-            We help local businesses show up more clearly in Google search and AI recommendations.
+            {locale === "en"
+              ? "We help local businesses show up more clearly in Google search and AI recommendations."
+              : "Ayudamos a negocios locales a aparecer con mas claridad en Google y en recomendaciones de IA."}
           </p>
         </motion.div>
 
@@ -72,7 +97,7 @@ export default function WhoWeHelpSection() {
           variants={container}
           className="mt-16 grid gap-7 lg:grid-cols-3 lg:gap-8"
         >
-          {cards.map((card) => {
+          {localizedCards.map((card) => {
             const Icon = card.icon;
 
             return (

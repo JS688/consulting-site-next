@@ -16,7 +16,27 @@ const processSteps = [
   },
 ];
 
-export default function ProcessSection() {
+const processStepsEs = [
+  {
+    number: "1",
+    title: "Construye la base",
+    accent: false,
+  },
+  {
+    number: "2",
+    title: "Optimiza para busqueda",
+    accent: true,
+  },
+  {
+    number: "3",
+    title: "Haz crecer tu visibilidad",
+    accent: false,
+  },
+];
+
+export default function ProcessSection({ locale = "en" }: { locale?: "en" | "es" }) {
+  const steps = locale === "en" ? processSteps : processStepsEs;
+
   return (
     <section id="process" className="relative overflow-hidden bg-black px-6 pb-28 pt-20 text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -24,16 +44,16 @@ export default function ProcessSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl text-center">
-        <p className="mb-4 text-sm tracking-wide text-[#d4af37]">HOW IT WORKS</p>
+        <p className="mb-4 text-sm tracking-wide text-[#d4af37]">{locale === "en" ? "HOW IT WORKS" : "COMO FUNCIONA"}</p>
 
         <h2 className="mb-6 text-3xl font-semibold md:text-5xl">
-          A simple visibility process
+          {locale === "en" ? "A simple visibility process" : "Un proceso simple de visibilidad"}
         </h2>
 
         <div className="relative mt-12 grid gap-8 text-left md:grid-cols-3">
           <div className="absolute left-0 top-1/2 -z-10 hidden h-px w-full -translate-y-1/2 bg-linear-to-r from-transparent via-yellow-400/20 to-transparent md:block" />
 
-          {processSteps.map((step) => (
+          {steps.map((step) => (
             <div
               key={step.title}
               className={[

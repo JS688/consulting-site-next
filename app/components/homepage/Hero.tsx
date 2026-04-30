@@ -11,7 +11,46 @@ const motionDots = [
   { top: "74%", left: "12%", delay: 1.6, duration: 6.8, size: 5 },
 ];
 
-export default function Hero() {
+type Locale = "en" | "es";
+
+const copy = {
+  en: {
+    eyebrow: "WHY IT MATTERS",
+    heading: "Search is changing - and most businesses aren't keeping up",
+    description:
+      "Potential customers do not just search anymore - they ask Google and AI who to trust, hire, and buy from.",
+    bullets: [
+      "Your website won't rank on Google",
+      "It won't show up in AI results",
+      "Customers won't find you when they're ready to buy",
+      "Your competitors will capture that reach",
+    ],
+    primaryCta: "See Where You Stand →",
+    primaryHref: "/free-appraisal",
+    secondaryCta: "Talk to an Expert",
+    footer: "No commitment. Takes 2 minutes.",
+  },
+  es: {
+    eyebrow: "POR QUE IMPORTA",
+    heading: "La busqueda esta cambiando - y la mayoria de los negocios no se esta adaptando",
+    description:
+      "Los clientes potenciales ya no solo buscan - le preguntan a Google y a la IA en quien confiar, a quien contratar y a quien comprar.",
+    bullets: [
+      "Tu sitio web no va a posicionarse en Google",
+      "No va a aparecer en resultados de IA",
+      "Los clientes no te van a encontrar cuando esten listos para comprar",
+      "Tus competidores van a quedarse con ese alcance",
+    ],
+    primaryCta: "Ve donde estas hoy →",
+    primaryHref: "/es/free-appraisal",
+    secondaryCta: "Habla con un experto",
+    footer: "Sin compromiso. Toma 2 minutos.",
+  },
+} as const;
+
+export default function Hero({ locale = "en" }: { locale?: Locale }) {
+  const localized = copy[locale];
+
   return (
     <section id="why" className="relative overflow-hidden bg-black px-6 py-24 text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -21,56 +60,56 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         <div>
           <p className="mb-4 inline-flex items-center rounded-full border border-yellow-400/70 bg-yellow-400/10 px-4 py-2 text-sm uppercase tracking-[0.18em] text-yellow-300">
-            WHY IT MATTERS
+            {localized.eyebrow}
           </p>
 
           <h2 className="mb-6 text-xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl">
-            Search is changing - and most businesses aren&apos;t keeping up
+            {localized.heading}
           </h2>
 
           <p className="mb-8 text-sm text-white/70 sm:text-base">
-            Potential customers do not just search anymore - they ask Google and AI who to trust, hire, and buy from.
+            {localized.description}
           </p>
 
           <div className="mb-8 grid gap-3 text-white/60">
             <div className="flex items-start gap-3">
               <CircleX className="mt-0.5 h-4 w-4 shrink-0 text-yellow-400" />
-              <p className="text-yellow-300">Your website won&apos;t rank on Google</p>
+              <p className="text-yellow-300">{localized.bullets[0]}</p>
             </div>
 
             <div className="flex items-start gap-3">
               <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-sky-400" />
-              <p className="text-sky-300">It won&apos;t show up in AI results</p>
+              <p className="text-sky-300">{localized.bullets[1]}</p>
             </div>
 
             <div className="flex items-start gap-3">
               <User className="mt-0.5 h-4 w-4 shrink-0 text-green-400" />
-              <p className="text-green-300">Customers won&apos;t find you when they&apos;re ready to buy</p>
+              <p className="text-green-300">{localized.bullets[2]}</p>
             </div>
 
             <div className="flex items-start gap-3">
               <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-purple-400" />
-              <p className="text-purple-300">Your competitors will capture that reach</p>
+              <p className="text-purple-300">{localized.bullets[3]}</p>
             </div>
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/free-appraisal"
+              href={localized.primaryHref}
               className="inline-flex w-full items-center justify-center rounded-full bg-yellow-400 px-6 py-3 font-medium text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/30 sm:w-auto"
             >
-              See Where You Stand →
+              {localized.primaryCta}
             </Link>
 
             <a
               href="tel:+18033861672"
               className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-6 py-3 text-white transition-all duration-300 hover:border-yellow-400 hover:text-yellow-400 sm:w-auto"
             >
-              Talk to an Expert
+              {localized.secondaryCta}
             </a>
           </div>
 
-          <p className="mt-4 text-[11px] text-white/50 sm:text-xs">No commitment. Takes 2 minutes.</p>
+          <p className="mt-4 text-[11px] text-white/50 sm:text-xs">{localized.footer}</p>
         </div>
 
         <div className="relative flex justify-center md:justify-end">

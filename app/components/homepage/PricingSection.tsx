@@ -1,11 +1,10 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  BadgeCheck,
-  BarChart3,
   BriefcaseBusiness,
   CircleCheck,
   Leaf,
+  MapPin,
   Search,
   Shield,
   Sparkles,
@@ -16,68 +15,66 @@ import {
 
 const pricingPackages = [
   {
-    label: "Foundation",
-    title: "Website Design + SEO Structure",
+    eyebrow: "Foundation",
+    title: "Get Found in Columbia",
+    subtitle: "Website design + search-ready structure",
     icon: BriefcaseBusiness,
-    price: "$2,000",
+    price: "$1,500",
     timeline: "4-8 weeks",
+    bestFor: "Businesses launching or rebuilding locally",
     bullets: [
       "Custom website design",
-      "Mobile-optimized",
+      "Mobile optimization",
       "SEO-ready structure",
       "Clear messaging",
-      "Fast, scalable setup",
     ],
-    description: "Built with the foundation needed to rank and grow.",
-    ctaLabel: "Get Started",
+    description: "Built to help your business show up in local search from day one.",
+    ctaLabel: "Start Your Project",
     href: "#contact",
-    iconPanelText:
-      "Built with the foundation needed to rank, grow, and be understood by search engines and AI tools.",
+    offsetClass: "md:translate-y-6",
   },
   {
-    label: "Optimization",
-    title: "SEO & Visibility Optimization",
+    eyebrow: "Most Chosen",
+    title: "Compete in Local Search",
+    subtitle: "SEO & visibility optimization",
     icon: TrendingUp,
     price: "$500",
     timeline: "3-6 weeks",
     featured: true,
+    bestFor: "Businesses not ranking in Google",
     bullets: [
       "SEO improvements",
-      "Keyword alignment",
+      "Keyword alignment (real searches)",
       "Content structuring",
       "Internal linking",
-      "On-page optimization",
     ],
-    description: "Improve your rankings and visibility in search.",
+    description: "Improve how your business appears in Google search results in Columbia.",
     ctaLabel: "Start Optimization",
     href: "#contact",
-    iconPanelText:
-      "Improve your rankings and increase your visibility in Google search results and AI-driven platforms.",
   },
   {
-    label: "Growth",
-    title: "Ongoing SEO Growth",
+    eyebrow: "Growth",
+    title: "Own Your Local Visibility",
+    subtitle: "Ongoing SEO growth",
     icon: Leaf,
     price: "$500",
     priceSuffix: "/ month",
+    bestFor: "Businesses ready to grow consistently",
     bullets: [
-      "Blog content updates",
+      "Content updates",
       "Ongoing SEO improvements",
-      "Content structuring",
       "Internal linking",
       "Performance tracking",
-      "Google Business optimization",
     ],
-    description: "Continuously grow traffic and customer inquiries.",
-    ctaLabel: "Grow My Visibility",
+    description: "Turn search into a steady flow of local customers.",
+    ctaLabel: "Grow With Us",
     href: "#contact",
-    iconPanelText:
-      "Continuously grow your traffic, rankings, and customer inquiries over time.",
+    offsetClass: "md:translate-y-10",
   },
 ];
 
 const sectionHighlights = [
-  { icon: BadgeCheck, label: "SEO & AI Friendly" },
+  { icon: Search, label: "SEO-Ready" },
   { icon: Zap, label: "Built for Performance" },
   { icon: Target, label: "Designed to Convert" },
 ];
@@ -111,121 +108,272 @@ const whyItWorks = [
 ];
 
 const trustPoints = [
-  "Trusted by local businesses",
-  "Transparent pricing",
+  "Built for local businesses in Columbia",
+  "Clear pricing - no surprises",
   "No long-term contracts",
 ];
 
-export default function PricingSection() {
+type Locale = "en" | "es";
+
+const pricingPackagesEs = [
+  {
+    eyebrow: "Base",
+    title: "Hazte visible en Columbia",
+    subtitle: "Diseno web + estructura lista para busqueda",
+    icon: BriefcaseBusiness,
+    price: "$1,500",
+    timeline: "4-8 semanas",
+    bestFor: "Negocios que estan lanzando o reconstruyendo su presencia local",
+    bullets: [
+      "Diseno web a medida",
+      "Optimizacion mobile",
+      "Estructura lista para SEO",
+      "Mensajeria clara",
+    ],
+    description: "Creado para ayudar a que tu negocio aparezca en busqueda local desde el primer dia.",
+    ctaLabel: "Inicia tu proyecto",
+    href: "#contact",
+    offsetClass: "md:translate-y-6",
+  },
+  {
+    eyebrow: "Mas elegido",
+    title: "Compite en busqueda local",
+    subtitle: "SEO y optimizacion de visibilidad",
+    icon: TrendingUp,
+    price: "$500",
+    timeline: "3-6 semanas",
+    featured: true,
+    bestFor: "Negocios que no estan posicionando en Google",
+    bullets: [
+      "Mejoras SEO",
+      "Alineacion de keywords con busquedas reales",
+      "Estructuracion de contenido",
+      "Enlaces internos",
+    ],
+    description: "Mejora como aparece tu negocio en Google en Columbia.",
+    ctaLabel: "Comienza la optimizacion",
+    href: "#contact",
+  },
+  {
+    eyebrow: "Crecimiento",
+    title: "Domina tu visibilidad local",
+    subtitle: "Crecimiento SEO continuo",
+    icon: Leaf,
+    price: "$500",
+    priceSuffix: "/ mes",
+    bestFor: "Negocios listos para crecer de forma constante",
+    bullets: [
+      "Actualizaciones de contenido",
+      "Mejoras SEO continuas",
+      "Enlaces internos",
+      "Seguimiento de rendimiento",
+    ],
+    description: "Convierte la busqueda en un flujo constante de clientes locales.",
+    ctaLabel: "Crece con nosotros",
+    href: "#contact",
+    offsetClass: "md:translate-y-10",
+  },
+];
+
+const sectionHighlightsEs = [
+  { icon: Search, label: "Listo para SEO" },
+  { icon: Zap, label: "Alto rendimiento" },
+  { icon: Target, label: "Disenado para convertir" },
+];
+
+const whyItWorksEs = [
+  {
+    icon: Search,
+    title: "Listo para buscadores",
+    description: "Codigo limpio, carga rapida y estructura preparada para mejores rankings.",
+  },
+  {
+    icon: Sparkles,
+    title: "Amigable con IA y LLM",
+    description: "Contenido claro y estructurado que las herramientas de IA pueden entender y confiar.",
+  },
+  {
+    icon: Target,
+    title: "SEO local optimizado",
+    description: "Optimizado para busquedas locales y visibilidad en Google Business.",
+  },
+  {
+    icon: Zap,
+    title: "Rapido y mobile first",
+    description: "Optimizado para rendimiento tanto para usuarios como para buscadores.",
+  },
+  {
+    icon: Shield,
+    title: "Hecho para convertir",
+    description: "Mensajeria estrategica que convierte visitas en clientes.",
+  },
+];
+
+const trustPointsEs = [
+  "Creado para negocios locales en Columbia",
+  "Precios claros - sin sorpresas",
+  "Sin contratos largos",
+];
+
+export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
+  const packages = locale === "en" ? pricingPackages : pricingPackagesEs;
+  const highlights = locale === "en" ? sectionHighlights : sectionHighlightsEs;
+  const benefitPoints = locale === "en" ? whyItWorks : whyItWorksEs;
+  const trustItems = locale === "en" ? trustPoints : trustPointsEs;
+
   return (
-    <section id="services" className="relative overflow-hidden bg-black px-6 py-24 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(245,200,76,0.06),transparent_26%),radial-gradient(circle_at_50%_100%,rgba(245,200,76,0.04),transparent_24%)]" />
-      <div className="pointer-events-none absolute left-0 top-0 h-64 w-28 bg-[linear-gradient(135deg,rgba(245,200,76,0.12),transparent_55%)] opacity-35" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-28 bg-[linear-gradient(315deg,rgba(245,200,76,0.12),transparent_55%)] opacity-35" />
+    <section id="services" className="relative overflow-hidden bg-black px-6 py-24 text-white sm:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.08),transparent_58%)]" />
+      <div className="pointer-events-none absolute -left-20 top-24 h-64 w-64 rounded-full border border-[#d4af37]/10 opacity-40 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-10 h-100 w-100 translate-x-1/4 rounded-full border border-[#d4af37]/12" />
+      <div className="pointer-events-none absolute right-10 top-20 h-80 w-80 rounded-full border border-[#d4af37]/10" />
+      <div className="pointer-events-none absolute right-20 top-32 h-60 w-60 rounded-full border border-[#d4af37]/10" />
 
-      <div className="relative z-10 mx-auto max-w-6xl text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/25 bg-black/55 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#f5c84c] shadow-[0_12px_28px_rgba(0,0,0,0.35)] sm:text-xs">
-          <ArrowRight className="h-3.5 w-3.5" />
-          SEO & AI-ready websites that rank and grow
-        </div>
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+          <div className="text-center lg:text-left">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-500 sm:text-xs">
+              {locale === "en" ? "Pricing" : "Precios"}
+            </p>
 
-        <h2 className="text-2xl font-semibold sm:text-4xl md:text-5xl">
-          <span className="text-white">Simple Plans.</span>{" "}
-          <span className="text-[#f5c84c]">Real Results.</span>
-        </h2>
+            <h2 className="mt-5 text-3xl font-light leading-tight text-white sm:text-5xl md:text-6xl">
+              {locale === "en" ? "Simple plans." : "Planes simples."}
+              <span className="block font-medium text-[#f5c84c] lg:inline lg:pl-3">
+                {locale === "en" ? "Built for Columbia businesses." : "Hechos para negocios de Columbia."}
+              </span>
+            </h2>
 
-        <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-gray-300 sm:text-xl">
-          Websites built for search engines, customers, and AI tools - so your business gets found now and grows over time.
-        </p>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base lg:mx-0">
+              {locale === "en"
+                ? "Websites built for how customers search locally - so your business gets found and grows over time."
+                : "Sitios web construidos para la forma en que los clientes buscan localmente - para que tu negocio sea encontrado y crezca con el tiempo."}
+            </p>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-200 sm:gap-6 sm:text-sm">
-          {sectionHighlights.map((item, index) => {
-            const Icon = item.icon;
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-[11px] uppercase tracking-[0.08em] text-zinc-200 sm:text-sm lg:justify-start lg:gap-6">
+              {highlights.map((item, index) => {
+                const Icon = item.icon;
 
-            return (
-              <div key={item.label} className="flex items-center gap-2">
-                <Icon className="h-4 w-4 text-[#f5c84c]" />
-                <span>{item.label}</span>
-                {index < sectionHighlights.length - 1 ? <span className="ml-2 hidden text-white/20 sm:inline">|</span> : null}
+                return (
+                  <div key={item.label} className="flex items-center gap-2.5">
+                    <Icon className="h-4 w-4 text-[#f5c84c]" />
+                    <span>{item.label}</span>
+                    {index < sectionHighlights.length - 1 ? <span className="ml-2 hidden h-5 w-px bg-white/15 sm:inline-block" /> : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="hidden justify-end lg:flex">
+            <div className="relative flex h-60 w-60 items-center justify-center rounded-full border border-[#d4af37]/15 bg-[radial-gradient(circle,rgba(245,200,76,0.08),rgba(0,0,0,0)_65%)]">
+              <div className="absolute inset-6 rounded-full border border-[#d4af37]/12" />
+              <div className="absolute inset-20 rounded-full border border-[#d4af37]/12" />
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#d4af37]/30 bg-[#f5c84c]/10 text-[#f5c84c]">
+                  <MapPin className="h-8 w-8" />
+                </div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f5c84c]">
+                  Columbia, SC
+                </p>
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-16 grid gap-8 text-left md:grid-cols-3">
-          {pricingPackages.map((pkg) => {
+        <div className="mt-14 grid items-start gap-8 text-left md:grid-cols-3 md:gap-6 lg:mt-16 lg:gap-10">
+          {packages.map((pkg) => {
             const Icon = pkg.icon;
 
             return (
               <article
-                key={pkg.label}
+                key={pkg.title}
                 className={[
-                  "relative rounded-2xl border p-4 shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-all duration-300 sm:p-5",
+                  "relative overflow-hidden rounded-[1.6rem] border p-6 shadow-[0_24px_60px_rgba(0,0,0,0.4)] transition-all duration-300 sm:p-8",
+                  pkg.offsetClass ?? "",
                   pkg.featured
-                    ? "border-2 border-[#d4af37] bg-[linear-gradient(180deg,rgba(245,200,76,0.08),rgba(0,0,0,0.78))] shadow-[0_0_30px_rgba(255,215,0,0.16)]"
-                    : "border-[#d4af37]/20 bg-[rgba(5,5,5,0.78)] hover:border-[#d4af37]/45",
+                    ? "scale-[1.02] border-[#d4af37]/45 bg-[linear-gradient(180deg,rgba(245,200,76,0.08),rgba(10,10,10,0.95))] shadow-[0_0_40px_rgba(245,200,76,0.16)]"
+                    : "border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(8,8,8,0.94))] hover:border-[#d4af37]/30",
                 ].join(" ")}
               >
-                {pkg.featured ? (
-                  <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d4af37] px-5 py-2 text-xs font-bold uppercase tracking-[0.08em] text-black shadow-[0_10px_25px_rgba(245,200,76,0.22)]">
-                    ★ Most Popular
-                  </div>
-                ) : null}
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.07),transparent_55%)] opacity-80" />
 
-                <div className="rounded-[1.4rem] border border-[#d4af37]/20 bg-[linear-gradient(180deg,rgba(255,210,90,0.08),rgba(255,210,90,0.02))] p-4">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#d4af37]/25 bg-[linear-gradient(180deg,rgba(255,210,90,0.14),rgba(255,210,90,0.04))] text-[#f5c84c] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                <div className="relative z-10">
+                  {pkg.featured ? (
+                    <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#f5c84c] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-black">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      {pkg.eyebrow}
+                    </div>
+                  ) : (
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                      {pkg.eyebrow}
+                    </p>
+                  )}
+
+                  <div className="flex items-center gap-4">
+                    <div className={[
+                      "flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-[#f5c84c]",
+                      pkg.featured ? "border-[#d4af37]/35 bg-[#f5c84c]/10" : "border-[#d4af37]/22 bg-black/40",
+                    ].join(" ")}>
                       <Icon className="h-6 w-6" />
                     </div>
 
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-[1.7rem] font-semibold leading-none text-white sm:text-[2.1rem]">
-                        {pkg.label}
-                      </h3>
-                      <p className="mt-2 text-base leading-tight text-[#f5c84c] sm:text-lg">
+                    <div>
+                      <h3 className="text-2xl font-medium leading-tight text-white sm:text-[2rem]">
                         {pkg.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-zinc-500 sm:text-[0.95rem]">
+                        {pkg.subtitle}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-5 flex items-end justify-between gap-4 border-t border-white/10 pt-5">
-                    <p className="text-[2.35rem] font-bold leading-none tracking-tight text-white sm:text-[3rem]">
-                      {pkg.price}
-                      {pkg.priceSuffix ? <span className="ml-1 text-lg font-medium text-[#f5c84c] sm:text-2xl">{pkg.priceSuffix}</span> : null}
-                    </p>
+                  <div className="mt-8 border-t border-white/10 pt-6">
+                    <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-5 md:block">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                          {locale === "en" ? "What it includes" : "Que incluye"}
+                        </p>
 
-                    {pkg.timeline ? (
-                      <div className="text-right">
-                        <p className="text-xs text-gray-400 sm:text-sm">Timeline:</p>
-                        <p className="text-base font-semibold text-[#f5c84c] sm:text-xl">{pkg.timeline}</p>
+                        <ul className="mt-4 space-y-3 text-sm text-zinc-300">
+                          {pkg.bullets.map((bullet) => (
+                            <li key={bullet} className="flex items-start gap-3">
+                              <CircleCheck className="mt-0.5 h-4.5 w-4.5 shrink-0 text-[#f5c84c]" />
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    ) : null}
-                  </div>
 
-                  <ul className="mt-6 space-y-3 text-sm text-zinc-200 sm:text-base">
-                    {pkg.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-3">
-                        <CircleCheck className="mt-0.5 h-5 w-5 shrink-0 fill-[#f5c84c] text-black" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 rounded-2xl border border-[#d4af37]/20 bg-[linear-gradient(180deg,rgba(255,210,90,0.08),rgba(255,210,90,0.02))] p-4 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:text-base">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 text-[#f5c84c]">
-                        {pkg.featured ? <BarChart3 className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
+                      <div className="min-w-28 text-right md:mt-6 md:text-left">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                          {locale === "en" ? "Price" : "Precio"}
+                        </p>
+                        <p className="mt-3 text-4xl font-semibold tracking-tight text-white">
+                          {pkg.price}
+                          {pkg.priceSuffix ? <span className="ml-1 text-lg font-normal text-zinc-400">{pkg.priceSuffix}</span> : null}
+                        </p>
+                        <p className="mt-1 text-xs text-zinc-500">{pkg.timeline}</p>
                       </div>
-                      <p>{pkg.iconPanelText}</p>
                     </div>
+
+                    <p className="mt-5 text-xs text-zinc-500">{locale === "en" ? "Best for" : "Ideal para"}: {pkg.bestFor}</p>
                   </div>
+
+                  <p className="mt-6 text-xs leading-relaxed text-zinc-400">
+                    {pkg.description}
+                  </p>
 
                   <Link
                     href={pkg.href}
-                    className="mt-6 flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(180deg,#f0c35a,#dca63a)] px-6 py-4 text-center text-base font-semibold text-black shadow-[0_16px_36px_rgba(220,166,58,0.22)] transition hover:brightness-105 sm:text-[1.15rem]"
+                    className={[
+                      "mt-10 flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium transition",
+                      pkg.featured
+                        ? "border-[#f5c84c] bg-[#f5c84c] text-black hover:bg-[#e3b83f]"
+                        : "border-white/20 text-white hover:border-[#f5c84c] hover:text-[#f5c84c]",
+                    ].join(" ")}
                   >
                     <span>{pkg.ctaLabel}</span>
-                    <ArrowRight className="h-5 w-5" />
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </article>
@@ -233,13 +381,13 @@ export default function PricingSection() {
           })}
         </div>
 
-        <div className="mt-8 rounded-[1.8rem] border border-[#d4af37]/20 bg-[rgba(10,10,10,0.86)] px-6 py-5 shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
+        <div className="mt-10 rounded-[1.8rem] border border-[#d4af37]/20 bg-[rgba(10,10,10,0.86)] px-6 py-5 shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
           <p className="text-center text-sm font-semibold uppercase tracking-[0.08em] text-[#f5c84c] sm:text-lg">
-            Why our websites are built for SEO & AI
+            {locale === "en" ? "Why our websites are built for SEO & AI" : "Por que nuestros sitios web estan hechos para SEO e IA"}
           </p>
 
           <div className="mt-5 grid gap-6 md:grid-cols-5 lg:gap-8">
-            {whyItWorks.map((item) => {
+            {benefitPoints.map((item) => {
               const Icon = item.icon;
 
               return (
@@ -257,9 +405,15 @@ export default function PricingSection() {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-zinc-300">
-          {trustPoints.map((item) => (
-            <div key={item} className="flex items-center gap-2">
+        <div className="mt-6 grid gap-3 rounded-[1.35rem] border border-[#d4af37]/18 bg-[rgba(10,10,10,0.88)] px-5 py-4 text-center text-xs text-zinc-400 sm:grid-cols-3 sm:gap-0 sm:text-sm">
+          {trustItems.map((item, index) => (
+            <div
+              key={item}
+              className={[
+                "flex items-center justify-center gap-2 px-4 py-2",
+                index < trustPoints.length - 1 ? "sm:border-r sm:border-white/10" : "",
+              ].join(" ")}
+            >
               <CircleCheck className="h-4 w-4 text-[#f5c84c]" />
               <span>{item}</span>
             </div>
@@ -268,7 +422,7 @@ export default function PricingSection() {
 
         <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-white/10 bg-white/3 p-5 text-left sm:p-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f5c84c]/80 sm:text-xs">
-            Columbia SEO Pages
+            {locale === "en" ? "Columbia SEO Pages" : "Paginas SEO de Columbia"}
           </p>
 
           <div className="mt-4 flex flex-wrap gap-3">

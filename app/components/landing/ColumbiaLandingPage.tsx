@@ -62,7 +62,7 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
   };
 
   return (
-    <main className="bg-[#030303] px-4 py-16 text-white sm:px-6 lg:px-12">
+    <main className="bg-[#030303] px-4 pb-16 pt-10 text-white sm:px-6 sm:py-16 lg:px-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -77,56 +77,56 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
           {config.label}
         </p>
 
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#d4af37] sm:text-5xl">
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#d4af37] sm:mt-4 sm:text-5xl">
           {config.title}
         </h1>
 
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">
+        <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-300 sm:mt-6 sm:text-lg sm:leading-8">
           {config.description}
         </p>
 
-        <p className="mt-3 text-sm text-zinc-400">
+        <p className="mt-3 text-xs leading-6 text-zinc-400 sm:text-sm">
           {config.locationLine}
         </p>
 
-        <section className="mt-12 rounded-4xl border border-white/10 bg-white/3 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:p-8">
-          <h2 className="text-2xl font-semibold text-white">
+        <section className="mt-10 rounded-4xl border border-white/10 bg-white/3 p-5 shadow-[0_20px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:mt-12 sm:p-8">
+          <h2 className="text-xl font-semibold text-white sm:text-2xl">
             What This Service Helps You Do
           </h2>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {config.benefits.map((item) => (
-              <div key={item} className="rounded-3xl border border-white/10 bg-black/25 p-5">
-                <p className="text-sm leading-7 text-zinc-300">{item}</p>
+              <div key={item} className="rounded-3xl border border-white/10 bg-black/25 p-4 sm:p-5">
+                <p className="text-xs leading-6 text-zinc-300 sm:text-sm sm:leading-7">{item}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-16">
-          <h2 className="text-2xl font-semibold text-[#d4af37]">How We Work</h2>
+        <section className="mt-12 sm:mt-16">
+          <h2 className="text-xl font-semibold text-[#d4af37] sm:text-2xl">How We Work</h2>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {config.process.map((item, index) => (
-              <div key={item.title} className="rounded-3xl border border-white/10 bg-black/25 p-5">
+              <div key={item.title} className="rounded-3xl border border-white/10 bg-black/25 p-4 sm:p-5">
                 <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-zinc-500">
                   Step {index + 1}
                 </p>
-                <h3 className="mt-3 text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-300">{item.description}</p>
+                <h3 className="mt-3 text-base font-semibold text-white sm:text-lg">{item.title}</h3>
+                <p className="mt-3 text-xs leading-6 text-zinc-300 sm:text-sm sm:leading-7">{item.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-16">
-          <h2 className="text-2xl font-semibold text-[#d4af37]">Built for Businesses Like</h2>
+        <section className="mt-12 sm:mt-16">
+          <h2 className="text-xl font-semibold text-[#d4af37] sm:text-2xl">Built for Businesses Like</h2>
 
           <div className="mt-6 flex flex-wrap gap-3">
             {config.audience.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-sm text-zinc-300"
+                className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-xs text-zinc-300 sm:text-sm"
               >
                 {item}
               </span>
@@ -134,22 +134,22 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
           </div>
         </section>
 
-        <section className="mt-16">
-          <h2 className="text-2xl font-semibold text-[#d4af37]">FAQ</h2>
+        <section className="mt-12 sm:mt-16">
+          <h2 className="text-xl font-semibold text-[#d4af37] sm:text-2xl">FAQ</h2>
 
           <div className="mt-6 space-y-4">
             {config.faqs.map((item) => (
               <div key={item.question} className="border-b border-white/10 pb-4">
-                <h3 className="text-lg font-medium text-white">{item.question}</h3>
-                <p className="mt-2 text-sm leading-7 text-zinc-300">{item.answer}</p>
+                <h3 className="text-base font-medium text-white sm:text-lg">{item.question}</h3>
+                <p className="mt-2 text-xs leading-6 text-zinc-300 sm:text-sm sm:leading-7">{item.answer}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-16 rounded-4xl border border-white/10 bg-white/3 p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-[#d4af37]">Related Columbia Service Pages</h2>
-          <p className="mt-4 text-sm leading-7 text-zinc-300">
+        <section className="mt-12 rounded-4xl border border-white/10 bg-white/3 p-5 sm:mt-16 sm:p-8">
+          <h2 className="text-xl font-semibold text-[#d4af37] sm:text-2xl">Related Columbia Service Pages</h2>
+          <p className="mt-4 text-xs leading-6 text-zinc-300 sm:text-sm sm:leading-7">
             Explore related pages that strengthen the local search structure around these Columbia services.
           </p>
 
@@ -158,7 +158,7 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-sm text-zinc-300 transition hover:border-[#d4af37]/50 hover:text-[#f5c84c]"
+                className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-xs text-zinc-300 transition hover:border-[#d4af37]/50 hover:text-[#f5c84c] sm:text-sm"
               >
                 {item.label}
               </Link>
@@ -166,7 +166,7 @@ export default function ColumbiaLandingPage({ config }: { config: ColumbiaLandin
           </div>
         </section>
 
-        <section className="mt-16 flex flex-col gap-4 sm:flex-row">
+        <section className="mt-12 flex flex-col gap-4 sm:mt-16 sm:flex-row">
           <Link
             href="/free-appraisal"
             className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#e7bf4f]"

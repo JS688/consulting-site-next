@@ -36,20 +36,56 @@ const faqItems = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
+const faqItemsEs = [
+  {
+    question: "Como hago para que mi negocio aparezca en ChatGPT o en herramientas de IA?",
+    answer:
+      "Para aparecer en herramientas de IA como ChatGPT, tu sitio web necesita tener estructura clara, contenido relevante e informacion precisa sobre tus servicios. Nosotros optimizamos tu sitio para que los sistemas de IA puedan entenderlo y recomendar tu negocio.",
+  },
+  {
+    question: "Que es SEO y por que importa para mi negocio?",
+    answer:
+      "SEO ayuda a que tu sitio web aparezca en Google cuando los clientes buscan tus servicios. Un mejor SEO significa mas visibilidad, mas trafico y mas prospectos.",
+  },
+  {
+    question: "Mi negocio puede aparecer tanto en Google como en resultados de IA?",
+    answer:
+      "Si. Al mejorar la estructura, el contenido y los datos de tu sitio web, tu negocio puede posicionarse en Google y tambien ser recomendado en herramientas de IA como ChatGPT y Perplexity.",
+  },
+  {
+    question: "Necesito un sitio nuevo o pueden mejorar el que ya tengo?",
+    answer:
+      "Podemos hacer ambas cosas. Ya sea que necesites un sitio nuevo o quieras mejorar el actual, lo optimizamos para que funcione mejor en busqueda y atraiga mas clientes.",
+  },
+  {
+    question: "Cuanto tiempo toma ver resultados con SEO y optimizacion para IA?",
+    answer:
+      "La mayoria de los negocios empieza a notar mejoras en unas pocas semanas, con resultados mas fuertes durante los meses siguientes dependiendo de la competencia y del estado del sitio web.",
+  },
+  {
+    question: "Con que tipos de negocios trabajan?",
+    answer:
+      "Trabajamos con negocios locales como restaurantes, contratistas, realtors y proveedores de servicios que quieren mejorar su visibilidad en Google y en herramientas de busqueda con IA.",
+  },
+];
 
-export default function GlobalServicesFaqSection() {
+type Locale = "en" | "es";
+
+export default function GlobalServicesFaqSection({ locale = "en" }: { locale?: Locale }) {
+  const items = locale === "en" ? faqItems : faqItemsEs;
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 md:px-8 lg:px-12">
       <script
@@ -66,19 +102,21 @@ export default function GlobalServicesFaqSection() {
             FAQ
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-white/70 sm:text-base">
-            Still have questions? Here are some of the most common ones:
+            {locale === "en" ? "Still have questions? Here are some of the most common ones:" : "Todavia tienes preguntas? Aqui estan algunas de las mas comunes:"}
           </p>
           <h2 className="mt-4 text-xl font-semibold tracking-tight text-[#d4af37] sm:text-4xl">
-            Frequently Asked Questions
+            {locale === "en" ? "Frequently Asked Questions" : "Preguntas frecuentes"}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
-            Clear answers about SEO, AI visibility, and how your website can turn search into customers.
+            {locale === "en"
+              ? "Clear answers about SEO, AI visibility, and how your website can turn search into customers."
+              : "Respuestas claras sobre SEO, visibilidad en IA y como tu sitio web puede convertir busqueda en clientes."}
           </p>
         </div>
 
         <div className="mx-auto mt-12 max-w-5xl">
           <div className="grid gap-4">
-            {faqItems.map((item, index) => (
+            {items.map((item, index) => (
               <motion.details
                 key={item.question}
                 initial={{ opacity: 0, y: 16 }}

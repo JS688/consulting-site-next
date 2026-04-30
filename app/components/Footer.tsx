@@ -1,30 +1,37 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
-  const privacyHref = "/legal/privacy";
-  const termsHref = "/legal/terms";
+  const pathname = usePathname();
+  const isSpanish = pathname === "/es" || pathname?.startsWith("/es/");
+  const privacyHref = isSpanish ? "/es/legal/privacy" : "/legal/privacy";
+  const termsHref = isSpanish ? "/es/legal/terms" : "/legal/terms";
   const linkedInHref = "https://www.linkedin.com/in/julia-sokolsky/";
-  const servicesHref = "#services";
-  const pricingHref = "#services";
-  const approachHref = "/about";
-  const contactHref = "#contact";
-  const privacyLabel = "Privacy";
-  const termsLabel = "Terms";
+  const servicesHref = isSpanish ? "/es/services" : "/services";
+  const pricingHref = servicesHref;
+  const approachHref = isSpanish ? "/es/about" : "/about";
+  const contactHref = isSpanish ? "/es/contact" : "/contact";
+  const privacyLabel = isSpanish ? "Privacidad" : "Privacy";
+  const termsLabel = isSpanish ? "Terminos" : "Terms";
 
   return (
     <footer id="contact" className="bg-black px-6 pb-8 pt-16 text-white">
       <div id="audit" className="relative -top-24" aria-hidden="true" />
       <div className="mb-10 border-t border-[#d4af37]/10 py-10 text-center">
-        <p className="text-gray-400">Need answers fast?</p>
-        <h3 className="mt-2 text-xl font-semibold">Talk to an Expert Now</h3>
+        <p className="text-gray-400">{isSpanish ? "Necesitas respuestas rapido?" : "Need answers fast?"}</p>
+        <h3 className="mt-2 text-xl font-semibold">{isSpanish ? "Habla con un experto ahora" : "Talk to an Expert Now"}</h3>
         <a
           href="tel:+18033861672"
           className="mt-4 inline-block rounded-full bg-yellow-500 px-8 py-3 font-medium text-black transition hover:bg-yellow-400"
         >
-          📞 Call (803) 386-1672
+          📞 {isSpanish ? "Llama al (803) 386-1672" : "Call (803) 386-1672"}
         </a>
         <p className="mt-3 text-sm text-gray-500">
-          No commitment — just clear answers about your website and visibility.
+          {isSpanish
+            ? "Sin compromiso — solo respuestas claras sobre tu sitio web y tu visibilidad."
+            : "No commitment — just clear answers about your website and visibility."}
         </p>
       </div>
 
@@ -32,23 +39,25 @@ export default function Footer() {
         <div>
           <p className="mb-2 text-yellow-400">JULTECH AI</p>
           <p className="mb-2 max-w-sm text-white/70">
-            Websites built to rank on Google and get recommended by AI tools.
+            {isSpanish
+              ? "Sitios web construidos para posicionarse en Google y ser recomendados por herramientas de IA."
+              : "Websites built to rank on Google and get recommended by AI tools."}
           </p>
           <p className="text-white/40">Columbia, SC · Remote</p>
         </div>
 
         <div className="flex flex-col items-start space-y-2 text-sm text-white/60 md:items-center">
           <Link href={servicesHref} className="transition hover:text-[#d4af37]">
-            Services
+            {isSpanish ? "Servicios" : "Services"}
           </Link>
           <Link href={pricingHref} className="transition hover:text-[#d4af37]">
-            Solutions
+            {isSpanish ? "Soluciones" : "Solutions"}
           </Link>
           <Link href={approachHref} className="transition hover:text-[#d4af37]">
-            Our Approach
+            {isSpanish ? "Nuestro enfoque" : "Our Approach"}
           </Link>
           <Link href={contactHref} className="transition hover:text-[#d4af37]">
-            Contact
+            {isSpanish ? "Contacto" : "Contact"}
           </Link>
         </div>
 

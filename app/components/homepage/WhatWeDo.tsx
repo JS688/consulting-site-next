@@ -29,22 +29,59 @@ const services = [
   },
 ];
 
-export default function WhatWeDo() {
+type Locale = "en" | "es";
+
+const servicesEs = [
+  {
+    number: 1,
+    position: "lg:col-start-1 lg:row-start-1",
+    title: "Construye la base correcta",
+    description: "Disenamos y estructuramos tu sitio web para que Google y las herramientas de IA entiendan con claridad lo que haces.",
+    featured: false,
+  },
+  {
+    number: 2,
+    position: "lg:col-start-1 lg:row-start-2",
+    title: "Alinea tu contenido con busquedas reales",
+    description: "Optimizamos tu contenido segun la forma en que tus clientes realmente buscan tus servicios.",
+    featured: false,
+  },
+  {
+    number: 3,
+    position: "lg:col-start-2 lg:row-start-1",
+    title: "Mejora visibilidad y posicionamiento",
+    description: "Refinamos tu sitio web y tu contenido para mejorar posiciones y aumentar descubrimiento.",
+    featured: true,
+  },
+  {
+    number: 4,
+    position: "lg:col-start-2 lg:row-start-2",
+    title: "Haz crecer trafico y consultas",
+    description: "Seguimos mejorando tu visibilidad para que tu negocio atraiga mas trafico, prospectos y clientes con el tiempo.",
+    featured: false,
+  },
+];
+
+export default function WhatWeDo({ locale = "en" }: { locale?: Locale }) {
+  const cards = locale === "en" ? services : servicesEs;
+
   return (
     <section id="ai-explanation" className="relative overflow-hidden bg-[#050814] px-6 py-20 text-white sm:px-8 lg:px-12">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-left">
           <p className="mb-4 inline-flex items-center rounded-full border border-[#f5c84c]/70 bg-[#f5c84c]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#f5c84c] sm:text-sm">
-            Solutions
+            {locale === "en" ? "Solutions" : "Soluciones"}
           </p>
-          <h2 className="text-lg font-semibold tracking-tight text-[#f5c84c] sm:text-4xl">How We Help You Get Found</h2>
+          <h2 className="text-lg font-semibold tracking-tight text-[#f5c84c] sm:text-4xl">{locale === "en" ? "How We Help You Get Found" : "Como ayudamos a que te encuentren"}</h2>
           <p className="mt-4 text-xs leading-relaxed text-white/60 sm:text-base">
-            We follow a structured process to improve your visibility in Google search and help your business be clearly understood across modern search platforms.
+            {locale === "en"
+              ? "We follow a structured process to improve your visibility in Google search and help your business be clearly understood across modern search platforms."
+              : "Seguimos un proceso estructurado para mejorar tu visibilidad en Google y ayudar a que tu negocio sea entendido con claridad en las plataformas de busqueda actuales."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2 lg:gap-8">
-          {services.map((service) => {
+          {cards.map((service) => {
             return (
               <div
                 key={service.title}
@@ -63,7 +100,7 @@ export default function WhatWeDo() {
 
                   {service.featured && (
                     <span className="absolute -top-4 right-6 inline-flex items-center gap-1.5 rounded-full border border-[#f5c84c]/30 bg-black px-2.5 py-1 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">
-                      ✅ Core System
+                      ✅ {locale === "en" ? "Core System" : "Sistema central"}
                     </span>
                   )}
                   <h3 className={`text-sm font-semibold sm:text-xl ${service.featured ? "text-[#f5c84c]" : "text-white"}`}>

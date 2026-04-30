@@ -16,7 +16,7 @@ export default function HomePage() {
         <Hero />
         <WhatWeDo />
         <PricingSection />
-        <VisibilityReportCTA />
+        <VisibilityReportCTA locale="es" />
       </div>
       <SectionLocalSeoFaq />
     </main>

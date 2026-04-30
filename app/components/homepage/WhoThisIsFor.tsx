@@ -74,7 +74,7 @@ const copy = {
     painPoints: [
       {
         number: "1",
-        title: "Depende de recomendaciones — pero necesita clientes más constantes",
+        title: "Depende de las recomendaciones — pero necesita clientes más constantes",
         description:
           "El boca a boca es valioso, pero no genera un crecimiento predecible.",
       },
@@ -153,9 +153,9 @@ export default function WhoThisIsFor({ locale = "en" }: { locale?: Locale }) {
                 </>
               ) : (
                 <>
-                  Si esto se <span className="text-[#d1a12d]">suena familiar,</span>
+                  Si esto le <span className="text-[#d1a12d]">suena familiar,</span>
                   <br />
-                  no es la unica empresa.
+                  no está solo.
                 </>
               )}
             </h2>

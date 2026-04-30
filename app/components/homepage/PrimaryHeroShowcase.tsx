@@ -50,14 +50,14 @@ const heroCopy = {
     mobilePrimaryLabel: "Get Report",
   },
   es: {
-    alert: "Construimos paginas web que aparecen en Google y ayudan a que sus clientes se encuentren.",
+    alert: "Construimos páginas web que aparecen en Google y le traen más clientes",
     title: "Páginas modernas y de alto rendimiento, diseñadas para atraer clientes, posicionarse en Google y ser entendidas claramente por los sistemas de búsqueda actuales.",
     description: " Desde Columbia, SC — trabajamos con usted para que su negocio se vea más, atraiga clientes y crezca",
-    location: "Desde Columbia, SC — trabajamos con usted para que su negocio se vea más, atraiga clientes y crezca..",
+    location: "",
     primaryCta: "Reciba su reporte de visibilidad gratis →",
     primaryHref: "/es/free-appraisal",
     callLabel: "Llame al (803) 386-1672",
-    trustPoints: ["✔ Sin compromiso", "✔ Le toma 2 minutos", "✔ Pasos claros a seguir"],
+    trustPoints: ["• Sin compromiso", "Le toma 2 minutos", "Pasos claros a seguir"],
     footer: "Diseñado para cómo las personas buscan hoy. Para que su negocio sea encontrado, atraiga clientes y crezca.",
     mobileCallLabel: "Llamar",
     mobilePrimaryLabel: "Ver reporte",
@@ -95,9 +95,13 @@ export default function PrimaryHeroShowcase({ locale = "en" }: { locale?: Locale
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-12 lg:min-h-130 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-14">
           <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:max-w-3xl lg:text-left">
-            <div className="animate-fadeUp delay-1 mb-6 mx-auto flex max-w-md flex-wrap items-center justify-center gap-2 rounded-[28px] border border-[#f5c84c] bg-[#f5c84c]/10 px-4 py-3 text-center text-xs font-semibold text-white sm:text-sm lg:mx-0 lg:max-w-xl lg:justify-start">
+            <div className="animate-fadeUp delay-1 mb-6 mx-auto flex max-w-md flex-nowrap items-center justify-center gap-2 rounded-[28px] border border-[#f5c84c] bg-[#f5c84c]/10 px-4 py-3 text-center text-xs font-semibold text-white sm:text-sm lg:mx-0 lg:max-w-xl lg:justify-start">
               <AlertCircle className="h-4 w-4 shrink-0 text-[#f5c84c]" />
-              <span className="leading-snug uppercase">{copy.alert}</span>
+              {locale === "es" ? (
+                <span className="leading-snug uppercase whitespace-nowrap">Construimos páginas web que aparecen en Google y le traen más clientes</span>
+              ) : (
+                <span className="leading-snug uppercase">{copy.alert}</span>
+              )}
             </div>
 
             <h1 className="animate-fadeUp delay-1 mt-4 text-2xl font-medium leading-tight tracking-tight text-[#f5c84c] sm:text-5xl lg:text-6xl">

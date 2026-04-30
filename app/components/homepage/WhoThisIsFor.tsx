@@ -74,27 +74,27 @@ const copy = {
     painPoints: [
       {
         number: "1",
-        title: "Depende de las recomendaciones — pero necesita clientes más constantes",
+        title: "Depende de recomendaciones — pero necesita más clientes",
         description:
-          "El boca a boca es valioso, pero no genera un crecimiento predecible.",
+          "El boca a boca ayuda, pero no es constante.",
       },
       {
         number: "2",
-        title: "No aparece en Google cuando los clientes buscan",
+        title: "No aparece en Google cuando lo buscan",
         description:
-          "Si su negocio no aparece, esos clientes terminan con su competencia.",
+          "Si no aparece, sus clientes se van con la competencia.",
       },
       {
         number: "3",
-        title: "No está en las herramientas modernas de búsqueda",
+        title: "No está en las nuevas formas de buscar\nen Google y en la\nInteligencia Artificial (IA)",
         description:
-          "La forma de buscar está cambiando, pero muchos negocios aún no se han adaptado.",
+          "La forma de buscar cambió, pero su negocio no está ahí.",
       },
       {
         number: "4",
-        title: "Su página web no le genera clientes",
+        title: "Su página web no le trae clientes",
         description:
-          "Una página web no solo debe existir — debe generar resultados.",
+          "Está ahí, pero no le genera ventas.",
       },
     ],
     approachEyebrow: "Nuestro enfoque",
@@ -104,22 +104,22 @@ const copy = {
     outcomes: [
       {
         icon: TrendingUp,
-        title: "✔ Mayor visibilidad en Google",
+        title: "Mayor visibilidad en Google",
         description: "Aparezca cuando sus clientes realmente están buscando.",
       },
       {
         icon: Users,
-        title: "✔ Clientes mejor calificados",
+        title: "Clientes mejor calificados",
         description: "Atraiga a las personas correctas para hacer crecer su negocio.",
       },
       {
         icon: Shield,
-        title: "✔ Más confianza y mejor posicionamiento",
+        title: "Más confianza y mejor\nposicionamiento",
         description: "Genere credibilidad y mantenga ventaja frente a su competencia.",
       },
       {
         icon: Sparkles,
-        title: "✔ Crecimiento constante a largo plazo",
+        title: "Crecimiento constante a largo plazo",
         description: "Convierta su visibilidad en una fuente estable de clientes.",
       },
     ],
@@ -204,25 +204,7 @@ export default function WhoThisIsFor({ locale = "en" }: { locale?: Locale }) {
                   "font-serif text-[1.6rem] font-light leading-[1.04] tracking-[-0.025em] text-[#f4efe7] sm:text-[2.15rem] sm:leading-[1.02]",
                   index === 0 ? "max-w-[18rem] md:max-w-none" : "max-w-[18rem]",
                 ].join(" ")}>
-                  {index === 0 && locale === "en" ? (
-                    <>
-                      Relying on referrals —
-                      <br />
-                      but need more
-                      <br />
-                      <span className="whitespace-nowrap">consistent customers</span>
-                    </>
-                  ) : index === 0 && locale === "es" ? (
-                    <>
-                      Dependes de referidos —
-                      <br />
-                      pero necesitas
-                      <br />
-                      <span className="whitespace-nowrap">clientes mas constantes</span>
-                    </>
-                  ) : (
-                    point.title
-                  )}
+                  {point.title}
                 </h3>
                 <p className="mt-3 max-w-76 text-sm leading-6 text-white/60 sm:mt-4 sm:text-[1.02rem] sm:leading-7">
                   {point.description}

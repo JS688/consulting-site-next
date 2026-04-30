@@ -143,7 +143,7 @@ export default function PrimaryHeroShowcase({ locale = "en" }: { locale?: Locale
 
               <div className="mt-6 space-y-1 text-sm text-white/55 lg:max-w-xs">
                 {copy.trustPoints.map((item) => (
-                  <p key={item}>✔ {item}</p>
+                  <p key={item}>{item}</p>
                 ))}
               </div>
 

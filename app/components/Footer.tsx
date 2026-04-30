@@ -20,8 +20,8 @@ export default function Footer() {
     <footer id="contact" className="bg-black px-6 pb-8 pt-16 text-white">
       <div id="audit" className="relative -top-24" aria-hidden="true" />
       <div className="mb-10 border-t border-[#d4af37]/10 py-10 text-center">
-        <p className="text-gray-400">{isSpanish ? "Necesitas respuestas rapido?" : "Need answers fast?"}</p>
-        <h3 className="mt-2 text-xl font-semibold">{isSpanish ? "Habla con un experto ahora" : "Talk to an Expert Now"}</h3>
+        <p className="text-gray-400">{isSpanish ? "¿Necesite respuestas rápido?" : "Need answers fast?"}</p>
+        <h3 className="mt-2 text-xl font-semibold">{isSpanish ? "Hable con un experto ahora" : "Talk to an Expert Now"}</h3>
         <a
           href="tel:+18033861672"
           className="mt-4 inline-block rounded-full bg-yellow-500 px-8 py-3 font-medium text-black transition hover:bg-yellow-400"

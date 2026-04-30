@@ -1,3 +1,5 @@
+"use client";
+import React from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -117,15 +119,16 @@ type Locale = "en" | "es";
 
 const pricingPackagesEs = [
   {
-    eyebrow: "1. Creamos su página web completa",
-    title: "Creamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
+    eyebrow: "1. Recreamos su página web completa",
+    title: "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
     subtitle: "Incluimos imágenes, animaciones modernas y una estructura pensada para atraer clientes. También le ayudamos a proteger su marca, para que su negocio sea único. Su página estará disponible en inglés y en español, con redacción clara y correcta en ambos idiomas. Nosotros nos encargamos de la traducción para que su mensaje conecte con más clientes. Además, creamos una estrategia para conseguir reseñas reales y las mostramos en su página web para generar confianza. También desarrollamos su marca (branding) para que su negocio destaque en Columbia, SC. 🔹 Sus clientes que hablan inglés podrán entender su negocio perfectamente, porque su página tendrá mensajes claros, bien organizados y fáciles de seguir. 👉 Resultado: una página web profesional que genera confianza y le trae más clientes.",
+    verMas: true,
     icon: BriefcaseBusiness,
     price: "$1,500",
     timeline: "4-8 semanas",
     bestFor: "Negocios que están lanzando o reconstruyendo su presencia local",
     bullets: [
-      "Creamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
+      "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
       "Incluimos imágenes, animaciones modernas y una estructura pensada para atraer clientes.",
       "Le ayudamos a proteger su marca, para que su negocio sea único.",
       "Su página estará disponible en inglés y en español, con redacción clara y correcta en ambos idiomas.",
@@ -142,22 +145,23 @@ const pricingPackagesEs = [
   },
   {
     eyebrow: "Mas elegido",
-    title: "Compite en busqueda local",
-    subtitle: "SEO y optimizacion de visibilidad",
+    title: "Compite en búsqueda local",
+    subtitle: "SEO y optimización de visibilidad para que su negocio aparezca en Google y atraiga más clientes en Columbia, SC.",
     icon: TrendingUp,
     price: "$500",
     timeline: "3-6 semanas",
     featured: true,
-    bestFor: "Negocios que no estan posicionando en Google",
+    bestFor: "Negocios que no están posicionando en Google",
     bullets: [
-      "Mejoras SEO",
-      "Alineacion de keywords con busquedas reales",
-      "Estructuracion de contenido",
-      "Enlaces internos",
+      "Mejoras SEO para que su página suba posiciones en Google.",
+      "Alineación de keywords con búsquedas reales de sus clientes.",
+      "Estructuración de contenido para que Google y los clientes entiendan mejor sus servicios.",
+      "Enlaces internos que ayudan a que su página sea más visible y fácil de navegar.",
     ],
-    description: "Mejora como aparece tu negocio en Google en Columbia.",
-    ctaLabel: "Comienza la optimizacion",
+    description: "Mejora cómo aparece su negocio en Google en Columbia y empiece a atraer más clientes locales.",
+    ctaLabel: "Comienza la optimización",
     href: "#contact",
+    offsetClass: "md:translate-y-2",
   },
   {
     eyebrow: "Crecimiento",
@@ -221,6 +225,9 @@ const trustPointsEs = [
 ];
 
 export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
+
+    // Expand/collapse state for 'ver más' (Spanish only, first card)
+    const [showMore, setShowMore] = React.useState(false);
   const packages = locale === "en" ? pricingPackages : pricingPackagesEs;
   const highlights = locale === "en" ? sectionHighlights : sectionHighlightsEs;
   const benefitPoints = locale === "en" ? whyItWorks : whyItWorksEs;
@@ -327,8 +334,18 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                         {pkg.title}
                       </h3>
                       <p className="mt-2 text-sm text-zinc-500 sm:text-[0.95rem]">
-                        {pkg.subtitle}
+                        {pkg.subtitle && pkg.verMas && locale === "es" && !showMore
+                          ? pkg.subtitle.slice(0, 90) + "..."
+                          : pkg.subtitle}
                       </p>
+                      {pkg.verMas && locale === "es" && (
+                        <button
+                          className="mt-2 text-xs text-[#f5c84c] underline hover:text-[#e3b83f] focus:outline-none"
+                          onClick={() => setShowMore((v) => !v)}
+                        >
+                          {showMore ? "Ver menos" : "Ver más información"}
+                        </button>
+                      )}
                     </div>
                   </div>
 
@@ -340,7 +357,10 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                         </p>
 
                         <ul className="mt-4 space-y-3 text-sm text-zinc-300">
-                          {pkg.bullets.map((bullet) => (
+                          {(pkg.verMas && locale === "es" && !showMore
+                            ? pkg.bullets.slice(0, 2)
+                            : pkg.bullets
+                          ).map((bullet) => (
                             <li key={bullet} className="flex items-start gap-3">
                               <CircleCheck className="mt-0.5 h-4.5 w-4.5 shrink-0 text-[#f5c84c]" />
                               <span>{bullet}</span>

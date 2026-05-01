@@ -119,7 +119,7 @@ type Locale = "en" | "es";
 
 const pricingPackagesEs = [
   {
-    eyebrow: "1. Recreamos su página web completa",
+    eyebrow: "",
     title: "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
     subtitle: "Incluimos imágenes, animaciones modernas y una estructura pensada para atraer clientes. También le ayudamos a proteger su marca, para que su negocio sea único. Su página estará disponible en inglés y en español, con redacción clara y correcta en ambos idiomas. Nosotros nos encargamos de la traducción para que su mensaje conecte con más clientes. Además, creamos una estrategia para conseguir reseñas reales y las mostramos en su página web para generar confianza. También desarrollamos su marca (branding) para que su negocio destaque en Columbia, SC. 🔹 Sus clientes que hablan inglés podrán entender su negocio perfectamente, porque su página tendrá mensajes claros, bien organizados y fáciles de seguir. 👉 Resultado: una página web profesional que genera confianza y le trae más clientes.",
     verMas: true,

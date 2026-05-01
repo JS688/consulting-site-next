@@ -121,7 +121,7 @@ const pricingPackagesEs = [
   {
     eyebrow: "",
     title: "Base",
-    subtitle: "",
+    subtitle: "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
     verMas: false,
     icon: BriefcaseBusiness,
     price: "$1,500",

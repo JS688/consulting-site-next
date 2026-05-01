@@ -120,7 +120,7 @@ type Locale = "en" | "es";
 const pricingPackagesEs = [
   {
     eyebrow: "",
-    title: "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
+    title: "Base",
     subtitle: "",
     verMas: false,
     icon: BriefcaseBusiness,

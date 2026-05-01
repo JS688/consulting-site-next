@@ -295,6 +295,7 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
         <div className="mt-14 grid items-start gap-8 text-left md:grid-cols-3 md:gap-6 lg:mt-16 lg:gap-10">
           {packages.map((pkg) => {
             const Icon = pkg.icon;
+            const hasVerMas = locale === "es" && "verMas" in pkg && Boolean(pkg.verMas);
 
             return (
               <article
@@ -334,11 +335,11 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                         {pkg.title}
                       </h3>
                       <p className="mt-2 text-sm text-zinc-500 sm:text-[0.95rem]">
-                        {pkg.subtitle && pkg.verMas && locale === "es" && !showMore
+                        {pkg.subtitle && hasVerMas && !showMore
                           ? pkg.subtitle.slice(0, 90) + "..."
                           : pkg.subtitle}
                       </p>
-                      {pkg.verMas && locale === "es" && (
+                      {hasVerMas && (
                         <button
                           className="mt-2 text-xs text-[#f5c84c] underline hover:text-[#e3b83f] focus:outline-none"
                           onClick={() => setShowMore((v) => !v)}
@@ -357,7 +358,7 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                         </p>
 
                         <ul className="mt-4 space-y-3 text-sm text-zinc-300">
-                          {(pkg.verMas && locale === "es" && !showMore
+                          {(hasVerMas && !showMore
                             ? pkg.bullets.slice(0, 2)
                             : pkg.bullets
                           ).map((bullet) => (

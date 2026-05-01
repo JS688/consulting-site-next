@@ -119,7 +119,7 @@ type Locale = "en" | "es";
 
 const pricingPackagesEs = [
   {
-    eyebrow: "",
+    eyebrow: "Mas elegido",
     title: "Base",
     subtitle: "Recreamos su página web desde cero o mejoramos su página actual, con diseño profesional y calidad que atrae clientes.",
     verMas: false,

@@ -63,6 +63,7 @@ export default function FinalCTASection() {
 
         <div className="relative overflow-hidden rounded-2xl">
           <video
+          aria-hidden="true"
             className="h-full w-full object-cover opacity-80 mask-[radial-gradient(120%_95%_at_50%_50%,black_68%,transparent_100%)]"
             src="/logos/to%20the%20right.mp4"
             autoPlay

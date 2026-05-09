@@ -45,10 +45,11 @@ export default function SectionJourneyBridge() {
           Google shows options. AI makes decisions.
         </p>
 
-        <div className={`relative left-1/2 z-20 mt-12 w-screen -translate-x-1/2 overflow-hidden ${visible ? "animate-paintIn [animation-delay:0.25s]" : "opacity-0"}`}>
+        <div className={`relative z-20 mt-12 overflow-hidden ${visible ? "animate-paintIn [animation-delay:0.25s]" : "opacity-0"}`}>
           <div className="relative h-6 w-full overflow-hidden md:h-8 lg:h-10">
             <div className="absolute inset-0 z-10 bg-linear-to-b from-transparent via-transparent to-black/18" />
             <video
+          aria-hidden="true"
               src="/logos/line.mp4"
               autoPlay
               loop

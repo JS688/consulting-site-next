@@ -3,11 +3,31 @@
 import type { MouseEvent, ReactNode } from "react";
 import { useState } from "react";
 import Link from "next/link";
+import { Pacifico } from "next/font/google";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-import BrandLogo from "./BrandLogo";
+const pacifico = Pacifico({ weight: "400", subsets: ["latin"] });
+
+function SignatureJT({ className = "" }: { className?: string }) {
+  return (
+    <span className={`${pacifico.className} inline-flex items-center text-[1.16em] leading-none ${className}`} aria-hidden="true">
+      <span className="text-[#c9a64d]">J</span>
+      <span className="-ml-1 text-white">T</span>
+    </span>
+  );
+}
+
+function HeaderBrandWordmark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-baseline leading-none ${className}`}>
+      <span className="text-[#c9a64d]">Jul</span>
+      <span className="text-white">Tech</span>
+      <sup className="ml-0.5 align-super text-[0.52em] font-medium uppercase tracking-[0.08em] text-white">TM</sup>
+    </span>
+  );
+}
 
 const LOCALIZED_PATHS: Record<string, string> = {
   "/": "/es",
@@ -80,16 +100,17 @@ export default function Header() {
   const strategyCallHref = isSpanish ? "/es/strategy-call/15-min" : "/strategy-call/15-min";
   const navItems = isSpanish
     ? [
+        { href: "/es", label: "Inicio" },
         // { href: "/es", label: "Enfoque" }, // Removed as requested
-        { href: "/es/about", label: "Nosotros" },
         { href: "/es/services", label: "Servicios" },
+        { href: "/es/about", label: "Nosotros" },
         { href: "/es/ai-visibility", label: "Visibilidad AI" },
         { href: "/es/blog", label: "Blog" },
         { href: "/es/contact", label: "Contacto" },
       ]
     : [
-        { href: "#services", label: "Services" },
-        { href: "#ai-explanation", label: "How It Works" },
+        { href: homeAnchorHref, label: "Home" },
+        { href: "#packages", label: "Services" },
         { href: "/ai-visibility", label: "AI Visibility" },
         { href: "/about", label: "About" },
         { href: "/blog", label: "Blog" },
@@ -104,6 +125,8 @@ export default function Header() {
 
     const sectionOffsets: Record<string, number> = {
       services: -96,
+      "growth-engine": -96,
+      packages: -96,
     };
     const yOffset = sectionOffsets[id] ?? -120;
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -137,17 +160,11 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Link
               href={homeHref}
-              className="flex items-center"
+              className="flex items-center gap-2"
               aria-label="JulTech homepage"
             >
-              <BrandLogo priority />
-            </Link>
-            <Link
-              href={homeAnchorHref}
-              onClick={handleNavClick(homeAnchorHref)}
-              className="hidden text-sm font-medium text-white/82 transition hover:text-white sm:inline-flex"
-            >
-              {isSpanish ? "Inicio" : "Home"}
+              <SignatureJT className="text-base sm:text-lg" />
+              <HeaderBrandWordmark className="text-lg font-semibold tracking-tight" />
             </Link>
           </div>
 
@@ -168,12 +185,16 @@ export default function Header() {
             <div className="hidden items-center gap-2 border-l border-white/10 pl-3 sm:flex lg:order-2">
               <Link
                 href={alternatePaths.en}
+                aria-label="Switch to English"
+                aria-current={!isSpanish ? "true" : undefined}
                 className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${!isSpanish ? "border border-yellow-400/35 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white/70"}`}
               >
                 EN
               </Link>
               <Link
                 href={alternatePaths.es}
+                aria-label="Cambiar a español"
+                aria-current={isSpanish ? "true" : undefined}
                 className={`rounded-md px-2.5 py-1 text-xs font-semibold transition ${isSpanish ? "border border-yellow-400/35 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white/70"}`}
               >
                 ES
@@ -185,7 +206,7 @@ export default function Header() {
                 href={strategyCallHref}
                 className="rounded-full border border-yellow-400/35 bg-yellow-400 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-yellow-300"
               >
-                {isSpanish ? "Llamada estrategica" : "Book a Call"}
+                {isSpanish ? "Llamada estrategica" : "Call an Expert"}
               </Link>
             </div>
 
@@ -203,6 +224,9 @@ export default function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             className="fixed inset-0 z-50 lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -232,8 +256,9 @@ export default function Header() {
               <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-white/15" />
 
               <div className="flex items-center justify-between">
-                <Link href={homeHref} onClick={() => setOpen(false)} aria-label="JulTech homepage" className="flex items-center">
-                  <BrandLogo />
+                <Link href={homeHref} onClick={() => setOpen(false)} aria-label="JulTech homepage" className="flex items-center gap-2">
+                  <SignatureJT className="text-base" />
+                  <HeaderBrandWordmark className="text-lg font-semibold tracking-tight" />
                 </Link>
 
                 <button
@@ -262,6 +287,8 @@ export default function Header() {
                 <Link
                   href={alternatePaths.en}
                   onClick={() => setOpen(false)}
+                  aria-label="Switch to English"
+                  aria-current={!isSpanish ? "true" : undefined}
                   className={`flex-1 rounded-md px-3 py-2 text-center text-xs font-semibold transition sm:text-sm ${!isSpanish ? "border border-yellow-400/40 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white"}`}
                 >
                   EN
@@ -269,6 +296,8 @@ export default function Header() {
                 <Link
                   href={alternatePaths.es}
                   onClick={() => setOpen(false)}
+                  aria-label="Cambiar a español"
+                  aria-current={isSpanish ? "true" : undefined}
                   className={`flex-1 rounded-md px-3 py-2 text-center text-xs font-semibold transition sm:text-sm ${isSpanish ? "border border-yellow-400/40 text-yellow-400" : "border border-white/10 text-white/45 hover:text-white"}`}
                 >
                   ES
@@ -280,8 +309,17 @@ export default function Header() {
                 onClick={() => setOpen(false)}
                 className="mt-4 flex items-center justify-center rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-black transition hover:bg-yellow-300"
               >
-                {isSpanish ? "Llamada estrategica" : "Book a Call"}
+                {isSpanish ? "Llamada estrategica" : "Call an Expert"}
               </Link>
+              {!isSpanish && (
+                <a
+                  href="tel:+18033861672"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 flex items-center justify-center gap-1.5 text-xs text-white/45 hover:text-white/70 transition"
+                >
+                  📞 (803) 386-1672
+                </a>
+              )}
 
               <p className="mt-3 text-xs leading-5 text-white/40 sm:text-sm sm:leading-6">
                 {isSpanish ? "Estructura clara. Ejecucion premium." : "Clear structure. Premium execution."}

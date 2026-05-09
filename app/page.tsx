@@ -1,23 +1,19 @@
 
 import PrimaryHeroShowcase from "./components/homepage/PrimaryHeroShowcase";
 import PricingSection from "./components/homepage/PricingSection";
-import VisibilityReportCTA from "./components/homepage/VisibilityReportCTA";
 import SectionLocalSeoFaq from "./components/homepage/FAQ";
-import WhatWeDo from "./components/homepage/WhatWeDo";
 import WhoThisIsFor from "./components/homepage/WhoThisIsFor";
-import Hero from "./components/homepage/Hero";
+import CTASection from "./components/CTASection";
 
 export default function HomePage() {
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white overflow-x-clip w-full">
       <div id="home">
         <PrimaryHeroShowcase />
         <WhoThisIsFor />
-        <Hero />
-        <WhatWeDo />
         <PricingSection />
-        <VisibilityReportCTA locale="es" />
       </div>
+      <CTASection />
       <SectionLocalSeoFaq />
     </main>
   );

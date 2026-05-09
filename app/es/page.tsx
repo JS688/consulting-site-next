@@ -4,7 +4,6 @@ import PrimaryHeroShowcase from "../components/homepage/PrimaryHeroShowcase";
 import PricingSection from "../components/homepage/PricingSection";
 import VisibilityReportCTA from "../components/homepage/VisibilityReportCTA";
 import SectionLocalSeoFaq from "../components/homepage/FAQ";
-import WhatWeDo from "../components/homepage/WhatWeDo";
 import WhoThisIsFor from "../components/homepage/WhoThisIsFor";
 import Hero from "../components/homepage/Hero";
 
@@ -20,8 +19,7 @@ export default function EsHomePage() {
       <div id="home">
         <PrimaryHeroShowcase locale="es" />
         <WhoThisIsFor locale="es" />
-        <Hero locale="es" />
-        <WhatWeDo locale="es" />
+        <Hero />
         <PricingSection locale="es" />
         <VisibilityReportCTA locale="es" />
       </div>

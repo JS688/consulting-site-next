@@ -96,6 +96,7 @@ export default function SectionFourSystem() {
       >
         <div className="pointer-events-none absolute inset-x-0 -top-2 bottom-0">
           <video
+          aria-hidden="true"
             src="/back.mp4"
             autoPlay
             loop

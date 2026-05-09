@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/logo.png",
-        width: 1000,
-        height: 1000,
-        alt: "JulTech AI Consulting logo",
+        url: "/logos/juls.png",
+        width: 1200,
+        height: 630,
+        alt: "JulTech AI Consulting",
       },
     ],
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "JulTech AI | AI Automation & Web Development",
     description:
       "We build AI-powered solutions and websites to automate your business.",
-    images: ["/logo.png"],
+    images: ["/logos/juls.png"],
   },
   icons: {
     icon: [{ url: "/logo.png", sizes: "1000x1000", type: "image/png" }],
@@ -75,6 +75,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="bg-black">
       <head>
+        {/* Preload hero video so browser fetches it before rendering the video element */}
+        <link rel="preload" href="/animat-hero-opt.webm" as="video" type="video/webm" />
+        <link rel="preload" href="/animat-hero-opt.mp4" as="video" type="video/mp4" />
         {/* Remix Icons for footer + header icons */}
         <link
           href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -128,13 +131,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
 
-      <body className="bg-zinc-900 text-white antialiased flex flex-col min-h-screen">
+      <body className="bg-zinc-900 text-white antialiased flex flex-col min-h-screen overflow-x-hidden">
+        {/* Skip to main content – visible only on keyboard focus */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-[#f2c14e] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black focus:outline-none"
+        >
+          Skip to content
+        </a>
         {/* Header stays at the top */}
         <Header />
 
 
         {/* Main content grows naturally */}
-        <main className="flex-1 pt-14">
+        <main id="main-content" className="flex-1 pt-14">
           {children}
         </main>
 

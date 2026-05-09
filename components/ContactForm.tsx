@@ -87,8 +87,8 @@ function FloatingField({
 
     return (
       <div className="relative">
-        <textarea {...textareaProps} />
-        <label className="pointer-events-none absolute left-5 top-4 text-sm text-white/45 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/35 peer-focus:top-3 peer-focus:text-sm peer-focus:text-white/70">
+        <textarea {...textareaProps} id={name} />
+        <label htmlFor={name} className="pointer-events-none absolute left-5 top-4 text-sm text-white/45 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/35 peer-focus:top-3 peer-focus:text-sm peer-focus:text-white/70">
           {label}
         </label>
       </div>
@@ -99,6 +99,7 @@ function FloatingField({
     <div className="relative">
       <input
         type={type}
+        id={name}
         name={name}
         className={baseClasses}
         placeholder={placeholder || label}
@@ -106,7 +107,7 @@ function FloatingField({
         onChange={onChange}
         required={required}
       />
-      <label className="pointer-events-none absolute left-5 top-4 text-sm text-white/45 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/35 peer-focus:top-3 peer-focus:text-sm peer-focus:text-white/70">
+      <label htmlFor={name} className="pointer-events-none absolute left-5 top-4 text-sm text-white/45 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/35 peer-focus:top-3 peer-focus:text-sm peer-focus:text-white/70">
         {label}
       </label>
     </div>
@@ -231,10 +232,11 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
           className="mx-auto mt-14 max-w-5xl rounded-4xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-6 lg:p-8"
         >
           <div className="rounded-3xl border border-white/10 bg-[#0a1020]/60 p-4 sm:p-6 lg:p-8">
-            <div className="mb-6 flex items-center gap-3 text-lg font-medium text-white/90">
-              <CheckCircle2 className="h-5 w-5 text-blue-300" />
+            <fieldset>
+            <legend className="mb-4 flex items-center gap-3 text-lg font-medium text-white/90">
+              <CheckCircle2 className="h-5 w-5 text-blue-300" aria-hidden="true" />
               {copy.focusLabel}
-            </div>
+            </legend>
 
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {projectTypes.map(({ label, icon: Icon }) => {
@@ -259,6 +261,19 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
                   </button>
                 );
               })}
+            </div>
+            </fieldset>
+
+            {/* aria-live region announces status to screen readers without moving focus */}
+            <div
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              className="sr-only"
+            >
+              {status === "sent" ? copy.successText : ""}
+              {status === "error" ? copy.errorText : ""}
+              {status === "sending" ? copy.submitSending : ""}
             </div>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-5" aria-label="Contact form">

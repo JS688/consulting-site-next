@@ -88,7 +88,7 @@ const heroCopy = {
     location: "Based in",
     locationHighlight: "Columbia, SC",
     locationSuffix: "helping local businesses attract more customers",
-    primaryCta: "Get Your Free Visibility Report →",
+    primaryCta: "See Your Visibility Score",
     primaryHref: "https://calendly.com/jultech-ai/new-meeting-1",
     callLabel: "Call (803) 386-1672",
     trustPoints: ["No commitment", "Takes 2 minutes", "Clear next steps"],

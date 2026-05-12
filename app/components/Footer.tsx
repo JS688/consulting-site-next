@@ -5,6 +5,7 @@ import { Pacifico } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Mail, Phone, Sparkles, MapPin } from "lucide-react";
+import { CALENDLY_LINKS } from "@/lib/sessionLinks";
 
 type FooterItem = {
   label: string;
@@ -54,12 +55,13 @@ export default function Footer() {
   const privacyHref = isSpanish ? "/es/legal/privacy" : "/legal/privacy";
   const termsHref = isSpanish ? "/es/legal/terms" : "/legal/terms";
   const accessibilityHref = isSpanish ? "/es/accessibility" : "/accessibility";
-  const bookHref = isSpanish ? "/es/free-appraisal" : "/free-appraisal";
+  const bookHref = CALENDLY_LINKS.short;
   const linkedinHref = "https://www.linkedin.com/in/julia-sokolsky/";
 
   const servicesLabel = isSpanish ? "SERVICIOS" : "SERVICES";
   const companyLabel = isSpanish ? "EMPRESA" : "COMPANY";
   const contactLabel = isSpanish ? "CONTACTO" : "CONTACT";
+  const followLabel = isSpanish ? "Siguenos" : "Follow us";
   const privacyLabel = isSpanish ? "Privacidad" : "Privacy";
   const termsLabel = isSpanish ? "Terminos" : "Terms";
 
@@ -67,41 +69,27 @@ export default function Footer() {
     <footer id="contact" className="w-full bg-[#070707] text-zinc-200">
       <div id="audit" className="relative -top-24" aria-hidden="true" />
 
-      <div className="mx-auto max-w-6xl px-4 pb-6 pt-6 sm:px-6 lg:px-8 lg:pb-7 lg:pt-7">
-        <div className="mb-6 h-px w-full bg-linear-to-r from-transparent via-[#c9a64d]/60 to-transparent" />
+      <div className="mx-auto max-w-6xl px-4 pb-4 pt-4 sm:px-6 lg:px-8 lg:pb-7 lg:pt-7">
+        <div className="mb-4 h-px w-full bg-linear-to-r from-transparent via-[#c9a64d]/60 to-transparent md:mb-6" />
 
-        <div className="grid gap-8 md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-8">
-          <div>
+        <div className="grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-[1.25fr_1fr_1fr_1.25fr] md:gap-8">
+          <div className="col-span-2 md:col-span-1">
             <Link href={homeHref} className="inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-white transition hover:text-white">
               <SignatureJT className="text-lg sm:text-xl" />
               <FooterBrandWordmark className="text-2xl font-semibold tracking-[0.03em] sm:text-[1.75rem]" />
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-zinc-300">
+            <p className="mt-3 max-w-sm text-sm leading-6 text-zinc-300 md:mt-4 md:leading-7">
               {isSpanish ? (
                 "Sitios web con IA que posicionan en Google y son recomendados por herramientas de IA."
               ) : (
                 <>
-                  <span className="block">AI-powered websites that</span>
-                  <span className="block">rank on Google and</span>
-                  <span className="block">get recommended by AI tools.</span>
+                  <span className="inline md:block">AI-powered websites that </span>
+                  <span className="inline md:block">rank on Google and </span>
+                  <span className="inline md:block">get recommended by AI tools.</span>
                 </>
               )}
             </p>
-            <div className="mt-4 h-0.5 w-14 bg-[#c9a64d]" />
-            <p className="mt-6 inline-flex items-center gap-2 text-sm leading-6 text-zinc-200">
-              <MapPin className="h-4 w-4 text-[#c9a64d]" />
-              Columbia, SC · Remote
-            </p>
-            <p className="mt-5 text-sm text-zinc-300">{isSpanish ? "Siguenos" : "Follow us"}</p>
-            <a
-              href={linkedinHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#c9a64d] text-[#c9a64d] transition hover:bg-[#c9a64d]/10"
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon className="text-lg" />
-            </a>
+            <div className="mt-3 h-0.5 w-12 bg-[#c9a64d] md:mt-4 md:w-14" />
           </div>
 
           <div>
@@ -122,31 +110,76 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a64d]">{contactLabel}</p>
-            <div className="mt-2 h-px w-11 bg-[#c9a64d]/90" />
-            <div className="mt-4 space-y-2.5 text-sm">
-              <ContactLink href="mailto:ai@jul-tech.com" icon={<Mail className="h-4 w-4" />} label="ai@jul-tech.com" />
-              <ContactLink href="tel:+18033861672" icon={<Phone className="h-4 w-4" />} label="(803) 386-1672" />
-            </div>
+          <div className="hidden md:col-span-1 md:block">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a64d]">{contactLabel}</p>
+              <div className="mt-2 h-px w-11 bg-[#c9a64d]/90" />
+              <div className="mt-3 space-y-2 text-sm md:mt-4 md:space-y-2.5">
+                <ContactLink href="mailto:ai@jul-tech.com" icon={<Mail className="h-4 w-4" />} label="ai@jul-tech.com" noWrap />
+                <ContactLink href="tel:+18033861672" icon={<Phone className="h-4 w-4" />} label="(803) 386-1672" noWrap gapClassName="gap-1" />
+              </div>
 
-            <div className="mt-4">
-              <Link
-                href={bookHref}
-                className="group inline-flex w-full max-w-64 items-center gap-1.5 rounded-lg border border-[#c9a64d]/80 bg-[radial-gradient(circle_at_50%_50%,rgba(201,166,77,0.18),rgba(201,166,77,0.04)_58%,transparent_100%)] px-3 py-2 text-zinc-100 transition hover:border-[#c9a64d] sm:w-auto"
-              >
-                <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#c9a64d]" />
-                <span className="text-xs font-semibold leading-snug tracking-tight sm:text-sm">
+              <div className="mt-4">
+                <a
+                  href={bookHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex w-full max-w-56 items-center justify-center gap-1.5 rounded-full border border-[#c9a64d]/55 bg-[radial-gradient(circle_at_50%_45%,rgba(201,166,77,0.14),rgba(201,166,77,0.03)_62%,transparent_100%)] px-3 py-1.5 text-zinc-100 transition hover:border-[#c9a64d]/80 hover:bg-[#c9a64d]/8"
+                >
+                  <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#c9a64d]" />
+                  <span className="text-sm font-semibold leading-snug tracking-[0.01em] whitespace-nowrap">
                     {isSpanish ? "Recibe tu auditoria gratis" : "Get Your Free Audit"}
-                </span>
-                <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[#c9a64d] transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <p className="mt-2 text-xs text-zinc-400">{isSpanish ? "Sin compromiso. 100% gratis." : "No obligation. 100% free."}</p>
+                  </span>
+                  <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[#c9a64d] transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <p className="mt-2 text-[11px] text-zinc-400">{isSpanish ? "Sin compromiso. 100% gratis." : "No obligation. 100% free."}</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-4">
+        <div className="mt-6 space-y-4 md:hidden">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a64d]">{contactLabel}</p>
+            <div className="mt-2 h-px w-11 bg-[#c9a64d]/90" />
+            <div className="mt-3 space-y-2 text-sm text-zinc-300">
+              <a href="mailto:ai@jul-tech.com" className="block transition hover:text-white">
+                ai@jul-tech.com
+              </a>
+              <a href="tel:+18033861672" className="block transition hover:text-white">
+                (803) 386-1672
+              </a>
+            </div>
+            <p className="mt-3 text-sm text-zinc-400">Columbia, SC · Remote</p>
+          </div>
+
+          <div className="space-y-2">
+            <a
+              href={bookHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full border border-white/20 px-3 py-1.5 text-xs font-medium tracking-[0.01em] text-zinc-200 transition hover:border-[#c9a64d]/80 hover:text-white"
+            >
+              {isSpanish ? "Recibe tu auditoria gratis" : "Get Your Free Audit"}
+            </a>
+            <p className="text-[11px] text-zinc-400">{isSpanish ? "Sin compromiso. 100% gratis." : "No obligation. 100% free."}</p>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-sm text-zinc-300">{followLabel}</span>
+            <a
+              href={linkedinHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#c9a64d] transition hover:text-white"
+              aria-label="LinkedIn"
+            >
+              <span className="underline">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-5 border-t border-white/10 pt-3 md:mt-6 md:pt-4">
           <div className="flex flex-col gap-2 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
             <p>© 2026 JulTech · All Rights Reserved</p>
             <div className="flex flex-wrap items-center gap-3">
@@ -198,6 +231,8 @@ type ContactLinkProps = {
   label: string;
   href: string;
   external?: boolean;
+  noWrap?: boolean;
+  gapClassName?: string;
 };
 
 function LinkedInIcon({ className = "" }: { className?: string }) {
@@ -206,22 +241,22 @@ function LinkedInIcon({ className = "" }: { className?: string }) {
   );
 }
 
-function ContactLink({ icon, label, href, external = false }: ContactLinkProps) {
+function ContactLink({ icon, label, href, external = false, noWrap = false, gapClassName = "gap-1.5" }: ContactLinkProps) {
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="inline-flex max-w-full items-center gap-3 text-sm font-normal text-zinc-400 transition hover:text-white"
+      className={`flex max-w-full items-center ${gapClassName} text-sm font-normal text-zinc-400 transition hover:text-white`}
     >
       <span className="text-[#c9a64d]">{icon}</span>
-      <span>{label}</span>
+      <span className={noWrap ? "whitespace-nowrap" : ""}>{label}</span>
     </a>
   );
 }
 
 function ServicesLink({ label, href, external = false }: FooterLinkProps) {
   const className =
-    "flex w-full items-center border-b border-white/10 py-2 text-sm font-normal text-zinc-300 transition hover:text-white md:w-[70%]";
+    "flex w-full items-center border-b border-white/10 py-1.5 text-sm font-normal text-zinc-300 transition hover:text-white md:w-[70%] md:py-2";
 
   if (external) {
     return (

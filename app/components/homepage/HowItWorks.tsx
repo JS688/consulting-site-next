@@ -21,7 +21,6 @@ export default function HowItWorks() {
 
   return (
     <section className="bg-black px-6 pb-16 pt-12 text-white md:pb-20 md:pt-16">
-      {/* Header */}
       <div className="mx-auto mb-12 max-w-5xl text-center">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#b88a1a]">How it works</p>
         <h2 className="text-3xl font-bold md:text-4xl">
@@ -33,21 +32,16 @@ export default function HowItWorks() {
         </h2>
       </div>
 
-      {/* Steps */}
       <div className="mx-auto max-w-5xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-0">
           {steps.map((step, i) => (
             <div key={step.number} className="relative flex flex-col items-center text-center md:px-10">
-              {/* Connector line between steps */}
               {i < steps.length - 1 && (
                 <div className="absolute top-[1.85rem] left-1/2 hidden h-px w-full bg-gradient-to-r from-[#b88a1a]/40 to-transparent md:block" />
               )}
 
-              {/* Number badge */}
               <div className="relative z-10 mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-[#b88a1a]/40 bg-[#0d0d0d]">
-                <span className="font-mono text-sm font-semibold tracking-widest text-[#f2c14e]">
-                  {step.number}
-                </span>
+                <span className="font-mono text-sm font-semibold tracking-widest text-[#f2c14e]">{step.number}</span>
               </div>
 
               <h3 className="mb-2 text-xl font-bold text-[#f5f1e8]">{step.title}</h3>
@@ -57,7 +51,6 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      {/* Tagline */}
       <div className="mx-auto mt-16 px-4 text-center">
         <p className="text-sm font-medium tracking-widest text-[#b88a1a] uppercase">
           ✦ Turn your website into a growth revenue engine ✦
@@ -65,13 +58,12 @@ export default function HowItWorks() {
         <div className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-[#b88a1a]/40 to-transparent" />
       </div>
 
-      {/* CTA */}
       <div className="mt-10 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <a
           href="/free-appraisal"
           className="inline-flex items-center justify-center rounded-full bg-[#f2c14e] px-8 py-3.5 text-sm font-semibold text-[#151515] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#f6cd64]"
         >
-          Get Your Free Visibility Report &rarr;
+          See How Your Business Performs →
         </a>
         <a
           href="tel:+18033861672"
@@ -81,18 +73,9 @@ export default function HowItWorks() {
         </a>
       </div>
 
-      {/* Trust badges */}
-      <div className="mx-auto mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
-        {["No commitment", "Takes 2 minutes", "Clear next steps"].map((badge) => (
-          <span key={badge} className="flex items-center gap-1.5 text-xs text-[#666]">
-            <svg viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5 text-[#888]" aria-hidden="true">
-              <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.2" />
-              <path d="M7 10.5l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            {badge}
-          </span>
-        ))}
-      </div>
+      <p className="mx-auto mt-5 text-center text-xs text-[#8d8d8d] sm:text-sm">
+        Most reports are reviewed within a few hours.
+      </p>
     </section>
   );
 }

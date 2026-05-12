@@ -757,7 +757,7 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                     href="/free-appraisal"
                     className="inline-flex items-center justify-center rounded-full bg-[#f2c14e] px-7 py-3 text-sm font-semibold text-[#151515] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#f6cd64]"
                   >
-                    Get Your Free Visibility Report &rarr;
+                    See Your Visibility Score &rarr;
                   </a>
                   <a
                     href="tel:+18033861672"
@@ -997,7 +997,7 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-serif text-[1.05rem] leading-snug text-[#f5f1e8]">Get Your Free Visibility Report</p>
+                      <p className="font-serif text-[1.05rem] leading-snug text-[#f5f1e8]">See My Visibility Score</p>
                       <p className="mt-0.5 text-xs leading-5 text-[#c1c1c1]">See how your business shows up — and where you&apos;re losing customers.</p>
                     </div>
                   </div>
@@ -1005,7 +1005,7 @@ export default function PricingSection({ locale = "en" }: { locale?: Locale }) {
                     href="https://calendly.com/jultech-ai/new-meeting-1"
                     className="inline-flex w-full items-center justify-center rounded-xl bg-[#f2c14e] px-4 py-2.5 text-sm font-medium text-[#151515] transition-transform duration-200 hover:-translate-y-0.5"
                   >
-                    Get Your Report &rarr;
+                    See My Visibility Score &rarr;
                   </a>
                 </div>
               </div>

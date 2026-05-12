@@ -70,7 +70,7 @@ const copy = {
     ],
     footer:
       "We design websites that search systems understand — and customers trust",
-    ctaLabel: "Explore your visibility",
+    ctaLabel: "See How Your Website Should Perform",
   },
   es: {
     eyebrow: "¿Para quién es?",
@@ -130,7 +130,7 @@ const copy = {
     ],
     footer:
       "Diseñamos páginas web que los motores de búsqueda entienden — y en las que sus clientes confían.",
-    ctaLabel: "Explora su visibilidad",
+    ctaLabel: "Vea cómo debería rendir su sitio web",
   },
 } as const;
 
@@ -385,22 +385,14 @@ export default function WhoThisIsFor({ locale = "en" }: { locale?: Locale }) {
               href="https://calendly.com/jultech-ai/new-meeting-1"
               className="inline-flex w-auto items-center gap-2 rounded-full bg-[#f5c84c] px-5 py-2.5 text-sm font-semibold text-black no-underline transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/30"
             >
-              <span>Get Your Free Visibility Report</span>
+              <span>Show Me What I’m Missing</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
 
-            <div className="flex flex-col items-center gap-2 text-[10px] tracking-wide text-white/65 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3 sm:text-[11px] lg:items-start lg:justify-start">
-              {englishTrustPoints.map((item) => {
-                const Icon = trustPointIcons[item];
-
-                return (
-                  <div key={item} className="flex items-center gap-2">
-                    <Icon className="h-4 w-4 text-white/70" />
-                    <span>{item}</span>
-                  </div>
-                );
-              })}
-            </div>
+            <p className="inline-flex items-center gap-1.5 text-[11px] text-white/65 sm:text-xs">
+              <Clock3 className="h-3.5 w-3.5 text-[#f5c84c]" />
+              Most reports are reviewed within a few hours.
+            </p>
           </div>
         </div>
       </section>

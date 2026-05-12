@@ -1,55 +1,93 @@
+import { ArrowRight, FileSearch, Timer, TrendingUp, Sparkles } from "lucide-react";
+
 export default function CTASection() {
   return (
-    <section className="hidden bg-[#070707] px-4 pb-8 pt-4 text-white md:block md:px-6 md:pb-12 md:pt-6">
-      <div className="mx-auto flex max-w-4xl flex-col gap-4 md:gap-5">
-        {/* Primary CTA */}
-        <div className="rounded-2xl border border-[#b88a1a]/70 bg-linear-to-r from-[#171717] to-[#101010] px-4 py-5 md:rounded-2xl md:px-8 md:py-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#b88a1a]/35 bg-[#111111] md:h-12 md:w-12">
-                <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-[#f2c14e] md:h-5 md:w-5" aria-hidden="true">
-                  <path d="M6 3.5h7l5 5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                  <path d="M13 3.5V9h5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                  <path d="M8 14h8M8 17h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+    <section className="hidden bg-[#060606] px-6 pb-8 pt-6 text-white md:block md:px-8 md:pb-10 md:pt-8">
+      <div className="mx-auto max-w-5xl">
+        <div className="relative overflow-hidden rounded-3xl border border-[#c59b2f]/50 bg-[radial-gradient(120%_95%_at_0%_0%,rgba(255,255,255,0.06),transparent_45%),radial-gradient(130%_90%_at_100%_0%,rgba(212,175,55,0.14),transparent_45%),linear-gradient(145deg,#111317_0%,#08090c_45%,#060607_100%)] px-7 py-7 shadow-[0_14px_60px_rgba(0,0,0,0.45)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_45%_at_20%_0%,rgba(255,255,255,0.05),transparent_80%)]" />
+          <div className="pointer-events-none absolute right-10 top-0 h-px w-40 bg-linear-to-r from-transparent via-[#f2c14e] to-transparent" />
+
+          <div className="relative grid gap-7 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div className="lg:pr-9 lg:border-r lg:border-white/12">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#d4af37]/45 bg-black/35 shadow-[0_0_16px_rgba(212,175,55,0.2)]">
+                <FileSearch className="h-6 w-6 text-[#f2c14e]" />
               </div>
-              <div>
-                <h2 className="font-serif text-[1.05rem] leading-snug text-[#f5f1e8] md:text-2xl">Get Your Free Visibility Report</h2>
-                <p className="mt-0.5 text-xs leading-5 text-[#c1c1c1] md:mt-1 md:text-sm">See how your business shows up — and where you&apos;re losing customers.</p>
-              </div>
+
+              <h2 className="mt-4 font-serif text-3xl leading-[1.05] text-[#f5f1e8] lg:text-[40px]">
+                Get Your
+                <br />
+                <span className="text-[#f2c14e]">Visibility Report</span>
+              </h2>
+
+              <div className="my-4 h-px w-20 bg-linear-to-r from-[#f2c14e] to-transparent" />
+
+              <p className="max-w-xl text-sm leading-6 text-white/72 lg:text-base">
+                Most businesses are being overlooked by Google and AI - even when they offer great services.
+              </p>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-white/72 lg:text-base">
+                We&apos;ll show you exactly where you&apos;re missing opportunities and what to fix first.
+              </p>
             </div>
-            <a
-              href="https://calendly.com/jultech-ai/new-meeting-1"
-              className="inline-flex w-full items-center justify-center rounded-xl bg-[#f2c14e] px-4 py-2.5 text-sm font-medium text-[#151515] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#f6cd64] md:w-auto md:px-6 md:py-3 whitespace-nowrap"
-            >
-              Get Your Report <span className="ml-1.5">&rarr;</span>
-            </a>
+
+            <div className="mt-8 flex flex-col gap-3.5 lg:mt-10 lg:pl-4">
+              <a
+                href="/contact"
+                className="group inline-flex items-center justify-between gap-3 rounded-2xl bg-[linear-gradient(180deg,#f7d46b_0%,#d6ad39_100%)] px-5 py-3 text-base font-semibold leading-tight text-[#171717] shadow-[0_14px_28px_rgba(212,175,55,0.22)] transition duration-200 hover:-translate-y-px hover:shadow-[0_18px_34px_rgba(212,175,55,0.28)] lg:text-lg"
+              >
+                <span className="inline-flex items-center gap-2.5 whitespace-nowrap">
+                  <span className="flex h-8.5 w-8.5 items-center justify-center rounded-full bg-black text-[#f3c955]">
+                    <FileSearch className="h-4.5 w-4.5" />
+                  </span>
+                  Find Out What&apos;s Costing You Customers
+                </span>
+                <ArrowRight className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+
+              <div className="flex items-center gap-4 text-white/50">
+                <span className="h-px flex-1 bg-white/15" />
+                <span className="text-sm">or</span>
+                <span className="h-px flex-1 bg-white/15" />
+              </div>
+
+              <a
+                href="/15-min-strategy-call"
+                className="group mt-1 inline-flex items-center justify-between gap-3 rounded-2xl border border-[#c59b2f]/60 bg-[#0b0c0f] px-5 py-3 text-base font-medium text-white transition duration-200 hover:border-[#f2c14e] hover:bg-[#111317] lg:text-lg"
+              >
+                <span className="inline-flex items-center gap-2.5">
+                  <span className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-[#f2c14e]/50 bg-[#141518] text-[#f2c14e]">
+                    <Timer className="h-4 w-4" />
+                  </span>
+                  Book Your Strategy Session
+                </span>
+                <ArrowRight className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+
+            </div>
           </div>
-        </div>
 
-        {/* Separator */}
-        <div className="mx-auto h-px w-16 bg-linear-to-r from-transparent via-[#b88a1a]/60 to-transparent" />
-
-        {/* Secondary CTA */}
-        <div className="rounded-2xl border border-white/10 bg-[#0f0f0f] px-4 py-5 md:rounded-2xl md:px-8 md:py-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#141414] md:h-12 md:w-12">
-                <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-[#a9a9a9] md:h-5 md:w-5" aria-hidden="true">
-                  <path d="M5.5 4.8c.4-.9 1.2-1.4 2.2-1.4h1.4c.8 0 1.5.5 1.7 1.2l.7 2.4c.2.7 0 1.4-.5 1.9l-1.1 1.1c.8 1.6 2.2 3 3.8 3.8l1.1-1.1c.5-.5 1.2-.7 1.9-.5l2.4.7c.7.2 1.2.9 1.2 1.7v1.4c0 1-.5 1.8-1.4 2.2-.8.4-1.7.5-2.7.2-6.1-1.7-10.7-6.3-12.4-12.4-.3-1-.2-1.9.2-2.7Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                </svg>
-              </div>
+          <div className="relative mt-7 grid gap-3 border-t border-white/10 pt-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="flex items-start gap-3 border-r border-white/10 pr-3 last:border-r-0">
+              <TrendingUp className="mt-0.5 h-5 w-5 text-[#f2c14e]" />
               <div>
-                <h3 className="font-serif text-[1.05rem] leading-snug text-[#f5f1e8] md:text-2xl">Prefer to speak directly?</h3>
-                <p className="mt-0.5 text-xs leading-5 text-[#c1c1c1] md:mt-1 md:text-sm">We&apos;ll walk through your website and opportunities together.</p>
+                <p className="text-sm font-medium text-[#f5f1e8]">Clear next steps</p>
+                <p className="mt-0.5 text-xs text-white/65">Know exactly what to do next</p>
               </div>
             </div>
-            <a
-              href="tel:+18033861672"
-              className="inline-flex w-full items-center justify-center rounded-xl border border-[#b88a1a] px-4 py-2.5 text-sm font-medium text-[#f2c14e] transition-colors duration-200 hover:bg-[#171717] md:w-auto md:px-6 md:py-3 whitespace-nowrap"
-            >
-              <span className="mr-1.5">📞</span> Call (803) 386-1672
-            </a>
+            <div className="flex items-start gap-3 border-r border-white/10 pr-3 last:border-r-0">
+              <FileSearch className="mt-0.5 h-5 w-5 text-[#f2c14e]" />
+              <div>
+                <p className="text-sm font-medium text-[#f5f1e8]">Real insights</p>
+                <p className="mt-0.5 text-xs text-white/65">Not generic advice</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 pr-3">
+              <Sparkles className="mt-0.5 h-5 w-5 text-[#f2c14e]" />
+              <div>
+                <p className="text-sm font-medium text-[#f5f1e8]">Built for your business</p>
+                <p className="mt-0.5 text-xs text-white/65">Focused on your market</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

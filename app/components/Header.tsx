@@ -42,6 +42,7 @@ const LOCALIZED_PATHS: Record<string, string> = {
   "/one-hour-consultation": "/es/one-hour-consultation",
   "/free-appraisal": "/es/free-appraisal",
   "/book": "/es/book",
+  "/pay": "/es/pay",
   "/payment-complete": "/es/payment-complete",
   "/booking-complete": "/es/booking-complete",
   "/web-design": "/es/web-design",
@@ -62,6 +63,7 @@ const LOCALIZED_PATHS: Record<string, string> = {
   "/es/one-hour-consultation": "/one-hour-consultation",
   "/es/free-appraisal": "/free-appraisal",
   "/es/book": "/book",
+  "/es/pay": "/pay",
   "/es/payment-complete": "/payment-complete",
   "/es/booking-complete": "/booking-complete",
   "/es/web-design": "/web-design",
@@ -107,6 +109,7 @@ export default function Header() {
         { href: "/es/ai-visibility", label: "Visibilidad AI" },
         { href: "/es/blog", label: "Blog" },
         { href: "/es/contact", label: "Contacto" },
+        { href: "/es/pay", label: "Pagos" },
       ]
     : [
         { href: homeAnchorHref, label: "Home" },
@@ -114,8 +117,17 @@ export default function Header() {
         { href: "/ai-visibility", label: "AI Visibility" },
         { href: "/about", label: "About" },
         { href: "/blog", label: "Blog" },
-        { href: "#contact", label: "Contact" },
+        { href: "/contact", label: "Contact" },
+        { href: "/pay", label: "Payments" },
       ];
+
+  const isActiveNavItem = (href: string) => {
+    if (!pathname || href.startsWith("#")) {
+      return false;
+    }
+
+    return pathname === href;
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -174,9 +186,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick(item.href)}
-                className="text-sm font-normal text-white/78 transition hover:text-white"
+                className={`relative text-sm font-normal transition hover:text-white ${isActiveNavItem(item.href) ? "text-[#e2bf61]" : "text-white/78"}`}
               >
                 {item.label}
+                {isActiveNavItem(item.href) ? <span className="absolute inset-x-0 -bottom-4.5 h-0.5 bg-[#e2bf61]" aria-hidden="true" /> : null}
               </Link>
             ))}
           </nav>
@@ -276,6 +289,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={handleNavClick(item.href, () => setOpen(false))}
+                    active={isActiveNavItem(item.href)}
                   >
                     {item.label}
                   </MobileLink>
@@ -337,16 +351,18 @@ function MobileLink({
   href,
   onClick,
   children,
+  active = false,
 }: {
   href: string;
   onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
   children: ReactNode;
+  active?: boolean;
 }) {
   return (
     <Link
       href={href}
       onClick={onClick}
-      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/3 px-4 py-3 text-sm text-white/80 transition hover:border-white/20 hover:bg-white/6 hover:text-white"
+      className={`flex items-center justify-between rounded-xl border px-4 py-3 text-sm transition ${active ? "border-[#e2bf61]/40 bg-[#e2bf61]/10 text-[#e2bf61]" : "border-white/10 bg-white/3 text-white/80 hover:border-white/20 hover:bg-white/6 hover:text-white"}`}
     >
       <span>{children}</span>
     </Link>

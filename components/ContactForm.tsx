@@ -129,9 +129,9 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
 
   const glowBlobs = useMemo(
     () => [
-      { className: "left-[4%] top-[8%] h-72 w-72 bg-blue-500/20 blur-3xl" },
-      { className: "right-[8%] top-[20%] h-80 w-80 bg-orange-400/10 blur-3xl" },
-      { className: "left-[18%] bottom-[8%] h-96 w-96 bg-slate-500/10 blur-3xl" },
+      { className: "left-[4%] top-[8%] h-72 w-72 bg-[#e2bf61]/14 blur-3xl" },
+      { className: "right-[8%] top-[20%] h-80 w-80 bg-[#e2bf61]/10 blur-3xl" },
+      { className: "left-[18%] bottom-[8%] h-96 w-96 bg-[#e2bf61]/8 blur-3xl" },
     ],
     []
   );
@@ -164,7 +164,25 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
     setStatus("sending");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          details: form.details,
+          service: selectedType,
+          locale,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit contact form");
+      }
+
       setForm({
         name: "",
         email: "",
@@ -180,8 +198,8 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#04060c] text-white shadow-[0_35px_120px_rgba(0,0,0,0.5)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_80%_15%,rgba(251,146,60,0.10),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(96,165,250,0.08),transparent_35%)]" />
+    <section className="relative overflow-hidden rounded-[2.5rem] border border-[#e2bf61]/24 bg-[#040404] text-white shadow-[0_35px_120px_rgba(0,0,0,0.5),0_0_0_1px_rgba(226,191,97,0.04)]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(226,191,97,0.16),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(226,191,97,0.10),transparent_34%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.04),transparent_22%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[56px_56px] opacity-60" />
 
       {glowBlobs.map((blob, index) => (
@@ -200,9 +218,9 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 shadow-[0_0_40px_rgba(59,130,246,0.08)] backdrop-blur-xl"
+            className="inline-flex items-center gap-2 rounded-full border border-[#e2bf61]/18 bg-white/5 px-4 py-2 text-sm text-white/70 shadow-[0_0_40px_rgba(226,191,97,0.08)] backdrop-blur-xl"
           >
-            <Sparkles className="h-4 w-4 text-blue-300" />
+            <Sparkles className="h-4 w-4 text-[#e2bf61]" />
             {copy.badge}
           </motion.div>
 
@@ -225,16 +243,16 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
           </motion.p>
         </div>
 
-        <motion.div
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.22 }}
-          className="mx-auto mt-14 max-w-5xl rounded-4xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-6 lg:p-8"
+          className="mx-auto mt-14 max-w-5xl rounded-4xl border border-[#e2bf61]/24 bg-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55),0_0_0_1px_rgba(226,191,97,0.05)] backdrop-blur-2xl sm:p-6 lg:p-8"
         >
-          <div className="rounded-3xl border border-white/10 bg-[#0a1020]/60 p-4 sm:p-6 lg:p-8">
+          <div className="rounded-3xl border border-[#e2bf61]/15 bg-[linear-gradient(180deg,rgba(15,15,15,0.96),rgba(8,8,8,0.98))] p-4 sm:p-6 lg:p-8">
             <fieldset>
             <legend className="mb-4 flex items-center gap-3 text-lg font-medium text-white/90">
-              <CheckCircle2 className="h-5 w-5 text-blue-300" aria-hidden="true" />
+              <CheckCircle2 className="h-5 w-5 text-[#e2bf61]" aria-hidden="true" />
               {copy.focusLabel}
             </legend>
 
@@ -252,11 +270,11 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
                     }}
                     className={`group flex items-center justify-center gap-2 rounded-2xl border px-4 py-4 text-sm font-medium transition-all duration-300 ${
                       active
-                        ? "border-blue-400/70 bg-blue-500/15 text-white shadow-[0_0_0_1px_rgba(96,165,250,0.25),0_10px_30px_rgba(59,130,246,0.14)]"
+                        ? "border-[#e2bf61]/70 bg-[#e2bf61]/15 text-white shadow-[0_0_0_1px_rgba(226,191,97,0.20),0_10px_30px_rgba(226,191,97,0.12)]"
                         : "border-white/10 bg-white/5 text-white/75 hover:border-white/20 hover:bg-white/8"
                     }`}
                   >
-                    <Icon className={`h-4 w-4 ${active ? "text-blue-300" : "text-white/45"}`} />
+                    <Icon className={`h-4 w-4 ${active ? "text-[#e2bf61]" : "text-white/45"}`} />
                     {label}
                   </button>
                 );
@@ -317,7 +335,7 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
                 <button
                   type="submit"
                   disabled={!canSubmit || status === "sending"}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f8df7,#6bafff)] px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(59,130,246,0.35)] ring-1 ring-blue-200/20 transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(59,130,246,0.45)] hover:ring-blue-200/35 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#e2bf61] px-6 py-4 text-sm font-semibold text-black shadow-[0_18px_50px_rgba(226,191,97,0.22)] ring-1 ring-[#e2bf61]/25 transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(226,191,97,0.28)] hover:ring-[#e2bf61]/35 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === "sending" ? copy.submitSending : copy.submitIdle}
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
@@ -332,7 +350,7 @@ export default function ContactForm({ locale = "en" }: { locale?: Locale }) {
               </div>
 
               <div className="flex items-center justify-center gap-2 text-center text-xs uppercase tracking-[0.2em] text-white/52 sm:text-sm sm:tracking-[0.16em]">
-                <ShieldCheck className="h-4 w-4 shrink-0 text-blue-300" />
+                <ShieldCheck className="h-4 w-4 shrink-0 text-[#e2bf61]" />
                 <span>{copy.insuredText}</span>
               </div>
 

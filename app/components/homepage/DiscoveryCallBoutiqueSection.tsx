@@ -59,7 +59,7 @@ export default function DiscoverySection() {
               href="https://calendly.com/jultech-ai/new-meeting-1?month=2026-04"
               className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#f2c14e] px-6 py-3 text-black font-medium transition hover:-translate-y-1 hover:bg-[#f6cd64]"
             >
-              Book a Discovery Call →
+              Book Your Strategy Session →
             </a>
 
             <p className="mt-4 text-xs text-white/50 tracking-wide">
